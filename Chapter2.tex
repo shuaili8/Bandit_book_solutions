@@ -1,0 +1,75 @@
+%!TEX root =  main.tex
+
+\chapter*{Chapter 2 Foundations of Probability}
+\label{sec:second}
+
+% \kant[7-11] % Dummy text
+
+% \begin{theorem}[{\cite[95]{AM69}}]
+%     \label{thm:dedekind}
+%     Let \( A \) be a Noetherian domain of dimension one. Then the following are equivalent:
+%     \begin{enumerate}
+%         \item \( A \) is integrally closed;
+%         \item Every primary ideal in \( A \) is a prime power;
+%         \item Every local ring \( A_\mathfrak{p} \) \( (\mathfrak{p} \neq 0) \) is a discrete valuation ring.
+%     \end{enumerate}
+% \end{theorem}
+
+\noindent\textbf{2.1} Since $g$ is $\mathcal{G}/\mathcal{H}$-measurable, therefore $\forall C \in \mathcal{H}$,\ $ \exists  B=g^{-1}(C)\in \mathcal{G} $ . Similarly, since $f$ is $\mathcal{F}/\mathcal{G}$-measurable, $\forall B \in \mathcal{G}$,\ $ \exists  A=f^{-1}(B)\in \mathcal{F} $ . Thus $\forall C \in \mathcal{H}$, \ $ \exists  A=f^{-1}(g^{-1}(C))=(g\circ f)^{-1}(C)\in \mathcal{F} $ and the proof is complete. \\
+
+% \subsubsection{}
+
+\noindent\textbf{2.2} We claim that $X=(X_1,X_2,...,X_n)$ is $\mathcal{F}/\mathcal{B}(\mathbb{R}^n)$ measurable. Define $a=(a_1,a_2,...,a_n)$ $b=(b_1,b_2,...,b_n)$ with $a,b\in \mathbb{R}^n$ where $a<b$. Since $X_1,X_2,...,X_n$ is $\mathcal{F}/\mathcal{B}(\mathbb{R})$ measurable, therefore $\exists A_1=X^{-1}_1((a_1,b_1)),A_2=X^{-1}_2((a_2,b_2)),...,A_n=X^{-1}_n((a_n,b_n))\in \mathcal{F}$. Let $A=A_1\cap A_2 \cap...\cap A_n=\bigcap\limits^{n}_{i=1}A_i$. It follows that $X^{-1}((a,b))=\bigcap\limits^{n}_{i=1}((a,b))=A\in \mathcal{F}$. Therefore $X$ is $\mathcal{F}/\mathcal{B}(\mathbb{R}^n)$ measurable and $X$ is random vector. \\
+
+% \subsubsection{}
+
+\noindent\textbf{2.3}
+\begin{enumerate}
+\item[(i)] We need to show that $\Sigma_X$ is closed under countable union. Let $U_i=X^{-1}(A_i),A_i\in \Sigma, i\in \mathbb{N}$. It follows that $\bigcup\limits^{\infty}_{i=1}U_i=\bigcup\limits^{\infty}_{i=1}X^{-1}(A_i)=X^{-1}(\bigcup\limits^{\infty}_{i=1}A_i)$. Since $\bigcup\limits^{\infty}_{i=1}A_i\in \Sigma$($\Sigma$ is sigma algebra), $\bigcup\limits^{\infty}_{i=1}U_i\in \Sigma_X$.
+\item[(ii)] We need to show that $\Sigma_X$ is closed under set subtraction $-$. $\forall U_1,U_2\in \Sigma_X$,$U_1-U_2=X^{-1}(A_1)-X^{-1}(A_2)=X^{-1}(A_1-A_2)$. Since $A_1-A_2\in \Sigma$($Sigma$ is sigma algebra),$U_1-U_2\in \Sigma_X$.
+\item[(iii)] We need to show that $\Sigma_X$ is closed to $\mathcal{U}$ itself. Since $\mathcal{U}=X^{-1}(\mathcal{V})$ and $\mathcal{V}\in \Sigma$, it follows that $\mathcal{U}\in \Sigma_X$.
+\end{enumerate} 
+
+
+\noindent\textbf{2.4}
+\begin{enumerate}
+\item[(a)] \begin{enumerate}
+        \item[(i)] We need to show that $\mathcal{F}|_A$ is closed under countable union. Let $X_1=A\cap B_1,X_2=A\cap B_2,...$ and $X^{\prime}=\bigcup\limits^{\infty}_{i=1}X_i$ and $B^{\prime}=\bigcup\limits^{\infty}_{i=1}$ where $B_1,B_2,...\in \mathcal{F}$. Since $\mathcal{F}$ is sigma algebra, $B^{\prime}\in \mathcal{F}$. Furthermore, since $X^{\prime}=\bigcup^{\infty}_{i=1}X_i=\bigcup^{\infty}_{i=1}A\bigcap B_i=A\bigcap\left(\bigcup\limits^{\infty}_{i=1} \right)=A\bigcap B^{\prime}$, we can see that $X^{\prime}\in \mathcal{F}|_A$.
+        \item[(ii)] We need to show that $\mathcal{F}|_A$ is closed under set subtraction $-$. $\forall X_1,X_2\in \mathcal{F}|_A$, $X_1-X_2=(A\bigcap B_1)-(A\bigcap B_2)=A\bigcap(B_1-B_2)$. Since $B_1-B_2\in \mathcal{F}$($F$ is sigma algebra), it follows that $X_1-X_2\in \mathcal{F}|_A$.
+        \item[(iii)] We need to show that $\Sigma_X$ is closed to $A$ itself. Since $\varnothing \in \mathcal{F}$, we have $\varnothing=A\bigcap\varnothing\in \mathcal{F}|_A$ and $A=\varnothing^{C}\in \mathcal{F}|_A$. 
+      \end{enumerate}
+\item[(b)] Let $P=\{ A\bigcap B:B\in \mathcal{F} \}, Q=\{ B: B\subset A, B\in \mathcal{F} \}$.
+        \begin{enumerate}
+            \item[(i)] We claim that $P\subset Q$. Let $X=A\bigcap B, B\in \mathcal{F}$. Since $A\in \mathcal{F}$, $X=A\bigcap B\in \mathcal{F}$. Furthermore, $X\in Q=\{B:B\subset A, B\in \mathcal{F} \}$.
+            \item[(ii)] We claim that $Q\subset P$. $\forall X\in Q$, we have $X\subset A$ and $X\in \mathcal{F}$, which means that $X=X\bigcap A$ and $X\in \mathcal{F}$. It follows that $X\in P$.
+            \item[(iii)] Take both (i)(ii) into consideration, we can see that $P=Q$.
+        \end{enumerate}
+\end{enumerate}
+
+\noindent\textbf{2.5}
+\begin{enumerate}
+    \item[(a)] Clearly $\sigma(\mathcal{G})$ should be the intersection of all $\sigma$-algebras that contain $\mathcal{G}$. Formally speaking, let $\mathcal{K} = \{\mathcal{F} | \mathcal{F} \mbox{ is a }\sigma\mbox{-algebra and contains } \mathcal{G}\}$. Then $\bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$ contains exactly those sets that are in every $\sigma$-algebra that contains $\mathcal{G}$. Given its existence, we only need to prove that $\bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$ is the smallest $\sigma$-algebra that contains $\mathcal{G}$.
+    
+    First we show $\bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$ is a $\sigma$-algebra. Since $\mathcal{F}$ is a $\sigma$-algebra and therefore $\Omega \in \mathcal{F}$ for all $\mathcal{F} \in \mathcal{K}$, it follows that $\Omega \in \bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$. Next, for any $A \in \bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$, $A^c \in \mathcal{F}$ for all $\mathcal{F} \in \mathcal{K}$. Since they are all $\sigma$-algebras, $A^c \in \mathcal{F}$ for all $\mathcal{F} \in \mathcal{K}$. Hence $A^c \in \bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$. Finally, for any $\{A_i\}_i \subset \bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$, $\{A_i\}_i \subset \mathcal{F}$ for all $\mathcal{F} \in \mathcal{K}$. Since they are all $\sigma$-algebras, $\bigcup_i A_i \in \mathcal{F}$ for all $\mathcal{F} \in \mathcal{K}$. Hence $\bigcup_i A_i \in \bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$.
+    
+    It is quite obvious that $\bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$ is the smallest one as $\bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F} \subseteq \mathcal{F}'$ for all $\mathcal{F}' \in \mathcal{K}$.
+    
+    \item[(b)] We first introduce a useful lemma: the map $X$ is $\mathcal{F} / \mathcal{G}$-measurable if and only $\sigma(X) \subseteq \mathcal{F}$, where $\sigma(X) = \{X^{-1}(A): A \in \mathcal{G}\}$ is the $\sigma$-algebra generated by $X$. With this lemma, the main idea to prove $X$ is $\mathcal{F} / \sigma(\mathcal{G})$-measurable is to show that $\sigma(X) = \{X^{-1}(A): A \in \sigma(\mathcal{G})\} \subseteq \mathcal{F}$.
+    
+    Let $X^{-1}(\mathcal{G}) = \{X^{-1}(A): A \in \mathcal{G}\}$. Clearly we have $X^{-1}(\mathcal{G}) \subseteq \mathcal{F}$. $\sigma(X^{-1}(\mathcal{G}))$ is the smallest $\sigma$-algebra that contains $X^{-1}(\mathcal{G})$. And we know $\mathcal{F}$ is a $\sigma$-algebra that contains $X^{-1}(\mathcal{G})$. According to the result of the previous question, $\sigma(X^{-1}(\mathcal{G})) \subseteq \mathcal{F}$. Furthermore, $\sigma(X^{-1}(\mathcal{G})) = X^{-1}(\sigma(\mathcal{G})) = \{X^{-1}(A): A \in \sigma(\mathcal{G})\} = \sigma(X)$. Hence $\sigma(X) \subseteq \mathcal{F}$.
+    
+    Readers can further refer to the penultimate paragraph in Page 16, where the author provides a general idea to check whether a map is measurable.
+    
+    \item[(c)] The idea is to show $\forall B \in \mathfrak{B}(\mathbb{R})$, $\mathbb{I}\{A\}^{-1}(B) \in \mathcal{F}$. 
+    
+    If $\{0,1\} \in B$, $\mathbb{I}\{A\}^{-1}(B)=\Omega \in \mathcal{F}$. If $\{0\} \in B$, $\mathbb{I}\{A\}^{-1}(B)=A^c \in \mathcal{F}$. If $\{1\} \in B$, $\mathbb{I}\{A\}^{-1}(B)=A \in \mathcal{F}$. If $\{0,1\} \cap B = \emptyset$, $\mathbb{I}\{A\}^{-1}(B)=\emptyset \in \mathcal{F}$.
+\end{enumerate} 
+
+\noindent\textbf{2.6}
+As the hint suggests, $Y$ is not $\sigma(X)$-measurable under such conditions since $Y^{-1}((0, 1))=(0, 1) \notin \sigma(X)$, where $\sigma(X) = \{{X}^{-1}(A): A \in \mathcal{G}\} = \{\emptyset, \mathbb{R}\}$.\\
+
+\noindent\textbf{2.7}
+First we have $\mathbb{P}(\Omega \mid B) = \frac{\mathbb{P}(\Omega \cap B)}{\mathbb{P}(B)} = \frac{\mathbb{P}(B)}{\mathbb{P}(B)} = 1$. Then, for all $A \in \mathcal{F}$, $\mathbb{P}(A \mid B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)} \geq 0$. Next, for all $A \in \mathcal{F}$, $\mathbb{P}(A^c \mid B) = \frac{\mathbb{P}(A^c \cap B)}{\mathbb{P}(B)} = \frac{\mathbb{P}((\Omega - A) \cap B)}{\mathbb{P}(B)} = \frac{\mathbb{P}(B) - \mathbb{P}(A \cap B)}{\mathbb{P}(B)} = 1 - \mathbb{P}(A \mid B)$. Finally, for all countable collections of disjoint sets $\{A_i\}_i$ with $A_i \in \mathcal{F}$ for all $i$, we have $\mathbb{P}\left(\bigcup_{i} A_{i} \mid B\right) = \frac{\mathbb{P}((\bigcup_{i} A_{i}) \cap B)}{\mathbb{P}(B)} = \frac{\mathbb{P}(\bigcup_{i} (A_{i} \cap B))}{\mathbb{P}(B)} = \sum_{i} \frac{\mathbb{P}(A_{i} \cap B)}{\mathbb{P}(B)} = \sum_{i} \mathbb{P}(A_i \mid B)$. \\
+
+\noindent\textbf{2.8}
+With the definition of conditional probability, we have $\mathbb{P}(A \mid B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)} = \frac{\mathbb{P}(B \mid A) \mathbb{P}(A)}{\mathbb{P}(B)}$. \\
