@@ -76,7 +76,8 @@ With the definition of conditional probability, we have $\mathbb{P}(A \mid B) = 
 
 \noindent\textbf{2.9}
 
-(a)There are 36 possible events：
+\begin{enumerate}
+    \item[(a)]There are 36 possible events：
 
 1.$X_1 < 2$,$X_2=$even：
 $$X_1=1,X_2=2$$
@@ -88,17 +89,18 @@ and $P(X_1 < 2)=\frac(1)(6)$,P($X_2=$even)$=\frac{1}{2} $
 
 So,P($X_1 < 2$,$X_2=$even)$=P(X_1 < 2)*$P($X_2=$even).According to the definition of independent event, two events are independent。
 
-(b)Prove$P(A\bigcap B)=P(A)P(B)$
-
+\item[(b)]Prove$P(A\bigcap B)=P(A)P(B)$
+\end{enumerate}
 
 \noindent\textbf{2.10}
 
-(a)Empty sets and complete sets are independent of any event：
+\begin{enumerate}
+    \item[(a)]Empty sets and complete sets are independent of any event：
 
 $$P(A\bigcap\Omega)=P(A)=1*P(A)=P(\Omega)*P(A)$$
 $$P(A\bigcap\phi)=P(\phi)=0=P(\phi)*P(A)$$
 
-(b)Prove when$P(A)=0$or1，A is independent of any event：for any$B\in\Omega$
+\item[(b)]Prove when$P(A)=0$or1，A is independent of any event：for any$B\in\Omega$
 
 $P(A)\in\{0,1\}$
 
@@ -108,13 +110,13 @@ we have $P(A \bigcap B) = P(A \bigcap B) + P(A^c \bigcap B) = P(B) = P(A)P(B)$
 
 When$P(A)=0$ ,we have $P(A \bigcap B)\leq P(A) =0=P(A)P(B)$
 
-(c)$P(A^c \bigcap A) = P(A)P(A^c)$
+\item[(c)]$P(A^c \bigcap A) = P(A)P(A^c)$
 
 we have $0=P(A)(1-P(A))\Rightarrow P(A)\in\{0,1\}$
 
-(d)$P(A \bigcap A) = P(A)P(A)$,则$P(A)=0,1$
+\item[(d)]$P(A \bigcap A) = P(A)P(A)$,则$P(A)=0,1$
 
-(e)$\Omega=(1,1),(1,0),(0,1),(0,0)$
+\item[(e)]$\Omega=(1,1),(1,0),(0,1),(0,0)$
 
 Just verify that each case is independent ：$P(A=1,B=1)=\frac{1}{4}=\frac{1}{2} *\frac{1}{2}=P(A)P(B)$
 
@@ -124,7 +126,7 @@ $P(A=0,B=1)=\frac{1}{4}=\frac{1}{2} *\frac{1}{2}=P(A)P(B)$
 
 $P(A=0,B=0)=\frac{1}{4}=\frac{1}{2} *\frac{1}{2}=P(A)P(B)$
 
-(f)$P(X_1 \leq 2)=2/3$
+\item[(f)]$P(X_1 \leq 2)=2/3$
 
 $P(X_1 = X_2)=3/9=1/3$
 
@@ -132,7 +134,7 @@ $P(X_1 \leq 2,X_1 = X_2)=P(X_1 = X_2=1)+P(X_1 = X_2=2)=1/9+1/9=2/9$
 
 So, $P(X_1 \leq 2,X_1 = X_2)=P(X_1 = X_2)P(X_1 \leq 2)$
 
-(g)Necessity ：$\frac{|A\bigcap B|}{n}=P(A \bigcap B)=P(A)P(B)=\frac{|A|}{n}\frac{|B|}{n}$
+\item[(g)]Necessity ：$\frac{|A\bigcap B|}{n}=P(A \bigcap B)=P(A)P(B)=\frac{|A|}{n}\frac{|B|}{n}$
 
 $\Rightarrow |A\bigcap B|*n = |A||B|$
 
@@ -140,19 +142,21 @@ Sufficiency ：$|A\bigcap B|*n = |A||B|\Rightarrow \frac{|A|}{n}\frac{|B|}{n}=\f
 
 $\Rightarrow P(A \bigcap B)=P(A)P(B)$
 
-(h)$|A\bigcap B|*n = |A||B|$,$\Rightarrow n\leq |A|\leq n \Rightarrow A\neq\phi or \Omega$
+\item[(h)]$|A\bigcap B|*n = |A||B|$,$\Rightarrow n\leq |A|\leq n \Rightarrow A\neq\phi or \Omega$
 
-(j)Let's take a counter example: roll a die and set the A event to$\{1,2,3\}$,B event is set to$\{1,2,4\}$,C event is set to$\{1,4,5,6\}$
+\item[(j)]Let's take a counter example: roll a die and set the A event to$\{1,2,3\}$,B event is set to$\{1,2,4\}$,C event is set to$\{1,4,5,6\}$
 
 $P(X_1 X_2 X_3)=\frac{1}{6}$
 
 $P(X_1)P(X_2)P(X_3)=(1/2)*(1/2)*(2/3)=1/6$
 
 while$P(X_1\bigcap X_2)=1/3\neq \frac{1}{2}*\frac{1}{2}$
+\end{enumerate}
 
 \noindent\textbf{2.11}
 
-(a)X:$\Omega\rightarrow x$
+\begin{enumerate}
+    \item[(a)]X:$\Omega\rightarrow x$
 
 Because X, Y are independent equivalent to$\sigma(X)$,$\sigma(Y)$ are independent；
 
@@ -160,11 +164,11 @@ For any A$\in \sigma(Y)$,
 $$P(\phi \bigcap A)=P(\phi)=0=P(\phi)P(A)$$
 $$P(\Omega \bigcap A)=P(A)=P(\Omega)P(A)$$
 
-(b)We know that $P(X=x)=1$
+\item[(b)]We know that $P(X=x)=1$
 $$P(X=x|Y)=\frac{P((X=x)\bigcap Y)}{P(Y)}=1=P(X=x)$$
 $$P(X\neq x|Y)=1-P(X=x|Y)=0=P(X\neq x)$$
 
-(c)Notice the relation：$P(A)=P(X(A)=1)$
+\item[(c)]Notice the relation：$P(A)=P(X(A)=1)$
 
 $P(B)=P(X(B)=1)$
 
@@ -195,7 +199,7 @@ that is$P(X(A\bigcap B)=1)=P(A\bigcap B)$
 
 So，$P(A\bigcap B)=P(A)P(B)$ is equivalent to $P(X(A\bigcap B)=1)=P(X(A)=1)P(X(B)=1)$
 
-(d)$A_i$  pairwise i $\Leftrightarrow$ $I\{ A_i \}$  pairwise i
+\item[(d)]$A_i$  pairwise i $\Leftrightarrow$ $I\{ A_i \}$  pairwise i
 
 mutual i $\Leftrightarrow P(\bigcap_i A_i) = \prod_i P(A_i)$
 
@@ -209,13 +213,16 @@ $\Leftrightarrow  \sigma(I\{ w\in A_i\})$mutual i
 
 $\Leftrightarrow I\{ w\in A_i\}$ mutual i
 
+\end{enumerate}
+
 \noindent\textbf{2.12} X integrable  $|X|$ integrable
 
-(a)For any $A\in B(R)\Rightarrow $A is open,
+\begin{enumerate}
+    \item[(a)]For any $A\in B(R)\Rightarrow $A is open,
 
 so,$f^{-1}(A)$is open，so $f^{-1}(A)\in B(R)$
 
-(b)X is known to be a random variable ，$f(x)=|x|$ continuous。
+\item[(b)]X is known to be a random variable ，$f(x)=|x|$ continuous。
 
 r.v. X is $\textbf{F}/\textbf{B}(R)$-measurable
 
@@ -226,3 +233,4 @@ $\Rightarrow |X|$ is $\textbf{F}/\textbf{B}(R)$-measurable
 $\Rightarrow |X|$ is r.v.
 
 From (a)(b)，X integrable $\Leftrightarrow$ $| X |$ integrable.
+\end{enumerate}
