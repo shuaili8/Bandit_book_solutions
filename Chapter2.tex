@@ -1,5 +1,16 @@
 %!TEX root =  main.tex
 
+% for theorem etc ************************************************
+% \newtheorem{theorem}{Theorem}[section]
+% \newtheorem{lemma}[theorem]{Lemma}
+% \newtheorem{proposition}[theorem]{Proposition}
+% \newtheorem{corollary}[theorem]{Corollary}
+% \newtheorem{definition}{Definition}[section]
+% \newtheorem{remark}{Remark}[section]
+% \newtheorem{example}{Example}[section]
+% \newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}
+% ************************************************
+
 \chapter*{Chapter 2 Foundations of Probability}
 \label{sec:second}
 
@@ -234,3 +245,138 @@ $\Rightarrow |X|$ is r.v.
 
 From (a)(b)，X integrable $\Leftrightarrow$ $| X |$ integrable.
 \end{enumerate}
+
+
+
+\noindent\textbf{2.14}
+\begin{enumerate}
+\item[(a)] Assume $\forall i, X_i$ is simple function.
+    \begin{align}
+        \mathbb{E}[X]&=\mathbb{E}\left[{\sum^{n}_{i=1} X_i}\right] \notag \\
+        &=\mathbb{E}\left[\sum^{n}_{i=1}\sum^{m}_{j=1}\alpha_{i,j}\mathbb{I}_{A_{i,j}}\{\omega \}\right]\notag \\
+        &=\int_{\Omega}\sum^{n}_{i=1}\sum^{m}_{j=1}\alpha_{i,j}\mathbb{I}_{A_{i,j}}\{\omega\} d\mathbb{P}(\omega)\notag \\
+        &=\sum^{n}_{i=1}\sum^{m}_{j=1}\alpha_{i,j}\int_{\Omega}\mathbb{I}_{A_{i,j}}\{\omega\} d\mathbb{P}(\omega)\notag \\
+        &=\sum^{n}_{i=1}\sum^{m}_{j=1}\alpha_{i,j}\mathbb{P}(A_{i,j})\notag \\
+        &=\sum^{n}_{i=1}\mathbb{E}[X_i]\notag 
+    \end{align}
+\item[(b)] Assume $\forall i, X_i$ is non-negative random variable.
+    \begin{align}
+        \mathbb{E}[X]&=\mathbb{E}\left[\sum^{n}_{i=1}X_i\right]\notag \\
+        &=\sup\left\{\int_{\Omega}hd\mathbb{P}:{h \ \text{ is simple and} }\ 0\leq h\leq X=\sum^{n}_{i=1}X_i \right\}\notag \\
+        &=\sum^{n}_{i=1}\sup\left\{\int_{\Omega}h_id\mathbb{P}:{h_i \ \text{ is simple and} }\ 0\leq h_i\leq X_i \right\}\notag \\
+        &=\sum^{n}_{i=1}\mathbb{E}[X_i]\notag 
+    \end{align}
+\item[(c)] Assume $\forall i, X_i$ is arbitrary random variable.
+    \begin{align}
+        \mathbb{E}[X]&=\mathbb{E}\left[\sum^{n}_{i=1}X_i\right]\notag\\
+        &=\mathbb{E}\left[\sum^{n}_{i=1}(X^+_i-X^-_i)\right]\notag\\
+        &=\mathbb{E}\left[\sum^n_{i=1}X^+_i\right]-\mathbb{E}\left[\sum^n_{i=1}X^-_i\right]\notag\\
+        &=\sum^n_{i=1}\mathbb{E}\left[X^+_i\right]-\sum^n_{i=1}\mathbb{E}\left[X^-_i\right]\notag\\
+        &=\sum^n_{i=1}\left(\mathbb{E}[X^+_i]-\mathbb{E}[X^-_i] \right)\notag\\
+        &=\sum^n_{i=1}\mathbb{E}[X_i]\notag
+    \end{align}
+\end{enumerate}
+
+\noindent\textbf{2.15}
+\begin{enumerate}
+\item[(a)] Assume $ X$ is simple function.
+    \begin{align}
+        \mathbb{E}[cX]&=\mathbb{E}\left[{c\sum^{n}_{i=1}\alpha_i\mathbb{I}_{A_i}\{\omega\}}\right] \notag \\
+        &=\int_{\Omega}c\sum^n_{i=1}\alpha_i\mathbb{I}_{A_i}\{\omega \}d\mathbb{P}(\omega)\notag\\
+        &=c\int_{\Omega}\sum^n_{i=1}\alpha_i\mathbb{I}_{A_i}\{\omega \}d\mathbb{P}(\omega)\notag\\
+        &=c\mathbb{E}[X]\notag
+    \end{align}
+\item[(b)] Assume $X$ is non-negative random variable.
+    \begin{align}
+        \mathbb{E}[cX]&=\sup\left\{\int_{\Omega}hd\mathbb{P}: h\ \text{is simple and}\ 0\leq h\leq cX \right\}\notag\\
+        &=c\sup\left\{\int_{\Omega}h^{\prime}d\mathbb{P}: h^{\prime}\ \text{is simple and}\ 0\leq h^{\prime}\leq X \right\}\notag\\
+        &=c\mathbb{E}[X]\notag
+    \end{align}
+\item[(c)] Assume $X$ is arbitrary random variable.
+\begin{enumerate}
+    \item[(i)] $c\ge 0$
+        \begin{align}
+            \mathbb{E}[cX]&=\mathbb{E}[(cX)^+]-\mathbb{E}[(cX)^-]\notag\\
+            &=\mathbb{E}[c(X)^+]-\mathbb{E}[c(X)^-]\notag\\
+            &=c\mathbb{E}[(X)^+]-c\mathbb{E}[(X)^-]\notag\\
+            &=c\mathbb{E}[X]\notag
+        \end{align} 
+    \item[(ii)] $c<0 $ \\ By definition, we have
+        \begin{align}
+            (cX)^+&=cX\mathbb{I}\{cX>0 \}\notag\\
+            &=cX\mathbb{I}\{x<0 \}\ (\text{since c<0})\notag\\
+            &=(-c)(-X)\mathbb{I}\{X<0 \}\notag\\
+            &=(-c)(X)^-\notag
+        \end{align}
+        Along the similar line, we have
+        \begin{align}
+            (cX)^-&=-cX\mathbb{I}\{cX<0 \}\notag\\
+            &=-cX\mathbb{I}\{X>0 \}\notag\\
+            &=-c(X)^+\notag
+        \end{align}
+        Now we can see that
+        \begin{align}
+            \mathbb{E}[cX]&=\mathbb{E}[(cX)^+]-\mathbb{E}[(cX)^-]\notag\\
+            &=\mathbb{E}[(-c)(X)^-]-\mathbb{E}[-c(X)^+]\notag\\
+            &=-c\mathbb{E}[(X)^-]+c\mathbb{E}[(X)^+]\notag\\
+            &=c\mathbb{E}[X]\notag
+        \end{align}
+\end{enumerate} 
+\end{enumerate}
+
+\noindent\textbf{2.16}
+\begin{enumerate}
+\item[(a)] Assume $X=\sum^n_{i=1}\alpha_i\mathbb{I}_{A_i}\{\omega \},Y=\sum^m_{j=1}\beta_j\mathbb{I}_{B_j}\{\omega \}$ are simple functions.
+    \begin{align}
+        \mathbb{E}[XY]&=\mathbb{E}[\sum^n_{i=1}\sum^m_{j=1}\alpha_i\beta_j\mathbb{I}_{A_i}\{\omega \}\mathbb{I}_{B_j}\{\omega \}]\notag\\
+        &=\int_{\Omega}\sum^n_{i=1}\sum^m_{j=1}\alpha_i\beta_j\mathbb{I}_{A_i}\{\omega \}\mathbb{I}_{B_j}\{\omega \}d\mathbb{P}(\omega)\notag\\
+        &=\sum^n_{i=1}\sum^m_{j=1}\alpha_i\beta_j\mathbb{P}(A_i\bigcap B_j)\notag\\
+        &=\sum^n_{i=1}\sum^m_{j=1}\alpha_i\beta_j\mathbb{P}(A_i)\mathbb{P}(B_j)\ (\text{by the definition of independence})\notag\\
+        &=\left(\sum^n_{i=1}\alpha_i\mathbb{P}(A_i) \right)\left(\sum^m_{j=1}\beta_j\mathbb{P}(B_i)  \right)\notag\\
+        &=\mathbb{E}[X]\mathbb{E}[Y]\notag
+    \end{align}
+\item[(b)] Assume $X,Y$ are non-negative random variables.
+    \begin{align}
+        \mathbb{E}[XY]&=\sup\left\{\mathbb{E}[h]:h\ \text{h is simple and}\ 0\leq h\leq XY\right\}\notag\\
+        &=\sup\left\{\mathbb{E}[h_1h_2]:h_1,h_2\ \text{are simple and}\ 0\leq h_1\leq X,0\leq h_2\leq Y \right\}\notag\\
+        &=\sup\left\{\mathbb{E}[h_1]\mathbb{E}[h_2]:h_1,h_2\ \text{are simple and}\ 0\leq h_1\leq X,0\leq h_2\leq Y \right\}\notag\\
+        &=\sup\left\{\mathbb{E}[h_1]:h_1\ \text{is simple and}\ 0\leq h_1\leq X \right\}\cdot 
+        \sup\left\{\mathbb{E}[h_2]:h_2\ \text{is simple and}\ 0\leq h_2\leq Y \right\}\notag\\
+        &=\mathbb{E}[X]\mathbb{E}[Y]\notag
+    \end{align}
+\item[(c)] Assume $X,Y$ are arbitrary random variables.
+    \begin{align}
+        \mathbb{E}[XY]&=\mathbb{E}[(X^+-X^-)(Y^+-Y^-)]\notag\\
+        &=\mathbb{E}[X^+Y^+-X^+Y^--X^-Y^++X^-Y^-]\notag\\
+        &=\mathbb{E}[X^+]\mathbb{E}[Y^+]-\mathbb{E}[X^+]\mathbb{E}[Y^-]-\mathbb{E}[X^-]\mathbb{E}[Y^+]+\mathbb{E}[X^-]\mathbb{E}[Y^-]\notag\\
+        &=(\mathbb{E}[X^+]-\mathbb{E}[X^-])(\mathbb{E}[Y^+]-\mathbb{E}[Y^-])\notag\\
+        &=\mathbb{E}[X]\mathbb{E}[Y]\notag
+    \end{align}
+\end{enumerate}
+
+\noindent\textbf{2.17}
+Before proving Ex.2.17, we need to make minor changes to the definition of conditional expectation and give a small lemma. 
+\begin{definition}
+    Assume $(\Omega,\mathcal{F},\mathbb{P})$
+is a probability space. $\mathcal{G}\subset \mathcal{F}$ is a sub-$\sigma$-algebra of $\mathcal{F}$. $X:\Omega\rightarrow \mathbb{R}$ is a random variable. The
+conditional expectation of $X$ given $\mathcal{G}$ is denoted by any random variable $Y$ which satisfies the following 2 properties: 
+\begin{itemize}
+    \item $Y$ is $\mathcal{G}$-measurable
+    \item $\forall A\in \mathcal{G}$,
+        \begin{equation}
+            \int_A Yd\mathbb{P}=\int_AXd\mathbb{P}\notag
+        \end{equation}
+\end{itemize}
+Formally, we denoted $Y$ by notation $\mathbb{E}[X|\mathcal{G}]$.
+\end{definition}
+
+% {\sc Lemma 1.}\ If $X$ is $\mathcal{G}$-measurable, then $\mathbb{E}[X|\mathcal{G}]=X$ holds a.s.
+\begin{lemma}
+    If $X$ is $\mathcal{G}$-measurable, then $\mathbb{E}[X|\mathcal{G}]=X$ holds a.s.
+\end{lemma}
+\begin{proof}
+    Since $X$ is $\mathcal{G}$-measurable, property1 holds. And property2 holds trivially.
+\end{proof}
+\noindent We can now handily prove Ex.2.17. Since $\mathbb{E}[X|\mathcal{G}_1]$ is $\mathcal{G}_1$-measurable and $\mathcal{G}_1\subset \mathcal{G}_2$, we can see that
+$\mathbb{E}[X|\mathcal{G}_1]$ is $\mathcal{G}_2$-measurable. By Lemma 1, $\mathbb{E}[\mathbb{E}[X|\mathcal{G}_1]|\mathcal{G}_2]=\mathbb{E}[X|\mathcal{G}_1]$ holds almost
+surely.
