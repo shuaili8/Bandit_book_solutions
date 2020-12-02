@@ -1,0 +1,111 @@
+\chapter*{Chapter 3 Stochastic Processes and Markov Chains}
+\label{sec:second}
+
+\noindent\textbf{3.1}
+\begin{enumerate}[(a)]
+    \item On$([0,1],\mathcal{B},\lambda)$,for any $x\in[0,1]$
+    
+    Let $F_1(x),F_2(x),F_3(x)$,...be the binary expansion of x.
+    
+    $F_t(x)$=
+    $\begin{cases}
+    1 , A\\
+    0 , \overline{A}\quad(\overline{A}\text{ is the opposite case of }A)
+    \end{cases}$
+    
+    $F_t(x)$ is Bernoulli random variable.
+    
+    \item $\begin{cases}
+    F_1=0:0\le x<0.5\\
+    F_1=1:0.5\le x<1
+    \end{cases}$
+    
+    $\begin{cases}
+    F_2=0:0\le x'<0.5\\
+    F_2=1:0.5\le x'<1
+    \end{cases}$
+    \label (x'=2x-1
+    
+    ...
+    
+    $\begin{cases}
+    F_t=0:0\le x^t<0.5 \Rightarrow \mathbb{P}(F_t=0)=\frac{1}{2}\\
+    F_t=1:0.5\le x^t<1 \Rightarrow \mathbb{P}(F_t=1)=\frac{1}{2}
+    \end{cases}$
+    
+    \item It is obviously that $(F_t)^\infty_{t=1}$ are independent. It satisfies independent equation: $\mathbb{P}(A\cap B)=\mathbb{P}(A)\mathbb{P}(B)$.
+    
+    \item $(X_{m,t})^\infty_{t=1}$ is a subsequence of $(F_t)^\infty_{t=1}$ and $(X_{m,t})^\infty_{t=1}$ are mutually exclusive.
+    \item Such as(d).
+    \item Such as(d).
+    \end{enumerate}
+
+\noindent\textbf{3.2}
+\begin{enumerate}[(a)]
+    \item $S_t=\sum^t_{s=1}X_s2^{s-1}$
+    
+    $X_t$ is a F-adapted martingale.
+    
+    (1)$\mathbb{E}[X_t|\mathcal{F}_{t-1}]=X_{t-1}$.
+    
+    (2)$X_t$ is integrable $\Rightarrow S_t$ is integrable. 
+    
+    \begin{align}
+    \mathbb{E}[S_t|\mathcal{F}_{t-1}] &=\mathbb{E}[S_{t-1}+X_t2^{t-1}|\mathcal{F}_{t-1}]\notag\\
+    &=S_{t-1}+\mathbb{E}[X_t2^{t-1}|\mathcal{F}_{t-1}]\notag\\
+    &=S_{t-1}+2^t\times(1)\times\frac{1}{2}+2^t\times(-1)\times\frac{1}{2}\notag\\
+    &=S_{t-1}\notag
+    \end{align}
+    
+    $\Rightarrow (S_t)^\infty_{t=1}$
+    
+    \item t=1 , if $S_t\not=1 \Rightarrow X_1=-1 , S_t$=-1
+    
+    t=2 , if $S_t\not=1 \Rightarrow X_1=-1 , S_t$=-3
+    
+    t=3 , if $S_t\not=1 \Rightarrow X_1=-1 , S_t$=-7
+    
+    ...
+    
+    If avoid $S_t$=1 , the $X_s$ sequence must be $-1$.
+    
+    $\tau=\min\{t:S_t=1\}=\min\{t:X_T=1\}$
+    
+    $\Rightarrow \mathbb{P}(\tau<n) = 1-\mathbb{P}(\tau\ge n) = 1-\frac{1}{2^n}$
+    
+    $\Rightarrow \mathbb{P}(\tau < \infty) = 1-\lim\limits_{n \to \infty} \mathbb{P}(\tau\ge n) = 1-\frac{1}{2^n} = 1-\lim\limits_{n \to \infty}\frac{1}{2^n}$ 
+    
+    \item If t=$\tau$ , then $S_t$=1 , so $S_\tau\equiv1$
+    
+    $\Rightarrow \mathbb{E}[S_\tau]=1$
+    
+    \item Doob's(a)can be proved by 3.2(b)
+    
+    $\tau=1 \Rightarrow X_1=1 \Rightarrow \mathbb{P}(\tau=1)=\frac{1}{2}$
+    
+    $\tau=2 \Rightarrow X_1=-1 X_2=1 \Rightarrow \mathbb{P}(\tau=1)=\frac{1}{4}$
+    
+    $\tau=3 \Rightarrow X_1=-1 X_2=-1 X_3=1 \Rightarrow \mathbb{P}(\tau=1)=\frac{1}{8}$
+     	
+    ...
+    
+    $\mathbb{P}(\tau<\infty)=\mathbb{P}(\tau=1)+\mathbb{P}(\tau=2)+\mathbb{P}(\tau=3)+...
+    =\frac{1}{2}+\frac{1}{4}+\frac{1}{8}+...=1$
+    
+    because of $n\not=\infty,\mathbb{P}(\tau=n)=\frac{1}{n^2}\not=0$.\\
+    Doob's(b)(c)can also be proved by 3.2(b)
+    
+    t=1 , if $S_t\not=1 \Rightarrow X_1=-1 , S_t=-1$
+    
+    t=2 , if $S_t\not=1 \Rightarrow X_1=-1 , S_t=-3$
+    
+    t=3 , if $S_t\not=1 \Rightarrow X_1=-1 , S_t=-7$
+    
+    ...
+    
+    It can be concluded that |$S_t$| and |$S_{t-1}$| can not be bounded, so $\mathbb{E}[|X_{t+1}|\mathcal{F}]\ \text{and}\ |4X_{t\wedge\tau}|$ can not be bounded neither.
+    
+    \end{enumerate}
+
+
+\noindent\textbf{3.4} If $X_t\ge0$ is dropped, $\mathbb{E}[X_\tau|\{\tau\le n\}] \ge \mathbb{E}[\varepsilon|\{\tau\le n\}]$ not always true.

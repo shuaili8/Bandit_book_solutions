@@ -1,0 +1,17 @@
+\chapter*{Chapter 4 Stochastic Bandits}
+\label{sec:second}
+
+\noindent\textbf{4.1}
+By definition
+\begin{align}
+R_n(\pi,v) &=n\mu^*(v)-\mathbb{E}[\sum^n_{t=1}X_t]\notag\\
+&=\sum^n_{t=1}\mu^*(v)-\sum^n_{t=1}\mathbb{E}[X_t]\notag\\
+&=\sum^n_{t=1}[\mu^*-\mu_{A_t}]\notag
+\end{align}
+\begin{enumerate}[(a)]
+    \item $\mu^*=\max\mu_a\ge\mu_{A_t} \Rightarrow R_n(\pi,v)=\sum^n_{t=1}[\mu^*-\mu_{A_t}]\ge0$.
+
+    \item If $\pi$ choose $A_t \in \arg\max_a\mu_a$ for all $t\in[n]$ $\Rightarrow \sum^n_{t=1}[\mu^*-\mu_{A_t}]=0$.
+
+\item If $R_n(\pi,v)=0$ for some policy $\pi$ ,then $A_t \in \arg\max_a\mu_a \Rightarrow \mathbb{P}(\mu_{A_t}=\mu^*)=1$.
+\end{enumerate}

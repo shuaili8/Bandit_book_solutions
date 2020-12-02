@@ -3,18 +3,18 @@
 
 \noindent\textbf{11.2} Let $\pi$ be a deterministic policy, and we define $x_{ti}=0$ if $A_t=i$ otherwise $x_{ti}=1$. The deterministic policy collects zero rewards all time,
 \begin{equation}
-    \max _{i \in[k]} \sum_{t=1}^{n} x_{t i} \geq \frac{1}{k} \sum_{t=1}^{n} \sum_{i=1}^{k} x_{t i}=\frac{n(k-1)}{k}
+    \max _{i \in[k]} \sum_{t=1}^{n} x_{t i} \geq \frac{1}{k} \sum_{t=1}^{n} \sum_{i=1}^{k} x_{t i}=\frac{n(k-1)}{k} \notag
 \end{equation}
 
 \noindent\textbf{11.5} Let $P$ be a probability vector with nonzero components and let $A\sim P$. Suppose $\hat{X}$ is a function such that for all $x\in \mathbb{R}^k$,
 \begin{equation}
-    \mathbb{E}\left[\hat{X}\left(A, x_{A}\right)\right]=\sum_{i=1}^{k} P_{i} \hat{X}\left(i, x_{i}\right)=x_{1}
+    \mathbb{E}\left[\hat{X}\left(A, x_{A}\right)\right]=\sum_{i=1}^{k} P_{i} \hat{X}\left(i, x_{i}\right)=x_{1}\notag
 \end{equation}
 Show that there exists an $a\in \mathbb{R}^k$ such that $<a,P>=0$ and for all $i$ and $z$ in their respective domains, $\hat{X}(i, z)=a_{i}+\frac{\mathbb{I}\{i=1\} z}{P_{1}}$
 \begin{proof}
     Let $x, x'$ be arbitrary but agree on the first component $x_1=x_1'$. Let $f(x)=\sum_{i=1}^{k} P_{i} \hat{X}\left(i, x_{i}\right)$ Note that,
     \begin{equation}
-        0=f(x)-f(x')=\sum_{i=j}^{k} P_{j} \hat{X}\left(j, x_{j}\right)
+        0=f(x)-f(x')=\sum_{i=j}^{k} P_{j} \hat{X}\left(j, x_{j}\right)\notag
     \end{equation}
     for all $j>1$. Since $x, x'$ are arbitrary, $\hat{X}(j, )=const$. Let $a_j$ equal to $\hat{X}(j, )$.
     \par Further, let $a_1=\hat{X}(1, 0)$ and then given any $x_1\in \mathbb{R}$, $\hat{X}\left(1, x_{1}\right)=a_{1}+x_{1} / P_{1}$.
@@ -24,20 +24,20 @@ Show that there exists an $a\in \mathbb{R}^k$ such that $<a,P>=0$ and for all $i
 \noindent\textbf{11.7} First, note that if $G=-\log (-\log (U))$ then $\mathbb{P}(G \leq g)=e^{-\exp (-g)}$.
 \begin{equation}
     \begin{aligned}
-        \mathbb{P}\left(\log a_{i}+G_{i} \geq \max _{j \in[k]} \log a_{j}+G_{j}\right) &=\mathbb{E}\left[\prod_{j \neq i} \mathbb{P}\left(\log a_{j}+G_{j} \leq \log a_{i}+G_{i} \mid G_{i}\right)\right] \\
-        &=\mathbb{E}\left[\prod_{j \neq i} \exp \left(-\frac{a_{j}}{a_{i}} \exp \left(-G_{i}\right)\right)\right] \\
-        &=\mathbb{E}\left[U_{i}^{\sum_{j \neq i} \frac{a_{j}}{a_{i}}}\right] \\
-        &=\frac{1}{1+\sum_{j \neq i} \frac{a_{j}}{a_{i}}} \\
-        &=\frac{a_{i}}{\sum_{j=1}^{k} a_{j}}
+        \mathbb{P}\left(\log a_{i}+G_{i} \geq \max _{j \in[k]} \log a_{j}+G_{j}\right) &=\mathbb{E}\left[\prod_{j \neq i} \mathbb{P}\left(\log a_{j}+G_{j} \leq \log a_{i}+G_{i} \mid G_{i}\right)\right] \notag\\
+        &=\mathbb{E}\left[\prod_{j \neq i} \exp \left(-\frac{a_{j}}{a_{i}} \exp \left(-G_{i}\right)\right)\right] \notag\\
+        &=\mathbb{E}\left[U_{i}^{\sum_{j \neq i} \frac{a_{j}}{a_{i}}}\right] \notag\\
+        &=\frac{1}{1+\sum_{j \neq i} \frac{a_{j}}{a_{i}}} \notag\\
+        &=\frac{a_{i}}{\sum_{j=1}^{k} a_{j}}\notag
         \end{aligned}
 \end{equation}
 
 \noindent\textbf{11.8} Let $Z_ti$ be a standard Gambel. The follow-theperturbed-leader algorithm chooses
 \begin{equation}
-    A_{t}=\operatorname{argmax}_{i \in[k]}\left(Z_{t i}-\eta \sum_{s=1}^{t-1} \hat{Y}_{s i}\right)
+    A_{t}=\operatorname{argmax}_{i \in[k]}\left(Z_{t i}-\eta \sum_{s=1}^{t-1} \hat{Y}_{s i}\right)\notag
 \end{equation}
 is the same as EXP3. Given (11.7)
 \begin{equation}
-    \mathbb{P}\left(\log \left(a_{i}\right)+G_{i}=\max _{j \in[k]}\left(\log \left(a_{j}\right)+G_{j}\right)\right)=\frac{a_{i}}{\sum_{j=1}^{k} a_{j}}
+    \mathbb{P}\left(\log \left(a_{i}\right)+G_{i}=\max _{j \in[k]}\left(\log \left(a_{j}\right)+G_{j}\right)\right)=\frac{a_{i}}{\sum_{j=1}^{k} a_{j}}\notag
 \end{equation}
 Just simply take $a_i$ as $-\eta \sum_{s=1}^{t-1} \hat{Y}_{s i}$, then the form is identical.
