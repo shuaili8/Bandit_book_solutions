@@ -15,3 +15,46 @@ R_n(\pi,v) &=n\mu^*(v)-\mathbb{E}[\sum^n_{t=1}X_t]\notag\\
 
 \item If $R_n(\pi,v)=0$ for some policy $\pi$ ,then $A_t \in \arg\max_a\mu_a \Rightarrow \mathbb{P}(\mu_{A_t}=\mu^*)=1$.
 \end{enumerate}
+
+\noindent\textbf{4.3}
+Denote $h_t = a_1, x_1, \ldots, a_t, x_t$.
+\begin{enumerate}[(a)]
+    \item According to the definition of conditional probability and marginal distribution, we have
+    \begin{equation*}
+    \begin{aligned}
+        p_{v\pi}(a_n \mid h_{n - 1}) &= \frac{p_{v\pi}(h_{n-1}, a_n)}{p_{v\pi}(h_{n-1})}\\
+        &= \frac{\int_\mathbb{R}p_{v\pi}(h_n) d x_n}{p_{v\pi}(h_{n-1})}\\
+        &= \frac{\int_\mathbb{R}\prod_{t=1}^{n} \pi\left(a_{t} \mid h_{t-1}\right) p_{a_{t}}\left(x_{t}\right) d x_n}{p_{v\pi}(h_{n-1})}\\
+        &= \frac{\prod_{t=1}^{n-1} \pi\left(a_{t} \mid h_{t-1}\right) p_{a_{t}}\left(x_{t}\right)}{p_{v\pi}(h_{n-1})} \int_\mathbb{R} \pi\left(a_{n} \mid h_{n-1}\right) p_{a_{n}}\left(x_{n}\right) d x_n\\
+        &= \pi\left(a_{n} \mid h_{n-1}\right) \int_\mathbb{R} p_{a_{n}}\left(x_{n}\right) d x_n\\
+        &= \pi\left(a_{n} \mid h_{n-1}\right)
+    \end{aligned}
+    \end{equation*}
+
+    \item According to the definition of conditional probability and marginal distribution, we have
+    \begin{equation*}
+    \begin{aligned}
+        p_{v\pi}(x_n \mid h_{n - 1}, a_n) &= \frac{p_{v\pi}(h_n)}{p_{v\pi}(h_{n-1}, a_n)}\\
+        &= \frac{p_{v\pi}(h_n)}{\int_\mathbb{R} p_{v\pi}(h_{n}) d x_n}\\
+        &= \frac{p_{v\pi}(h_n)}{\int_\mathbb{R} \left[\prod_{t=1}^{n} \pi\left(a_{t} \mid h_{t-1}\right) p_{a_{t}}\left(x_{t}\right)\right] d x_n}\\
+        &= \frac{p_{v\pi}(h_n)}{\prod_{t=1}^{n-1} \pi\left(a_{t} \mid h_{t-1}\right) p_{a_{t}}\left(x_{t}\right)} \frac{1}{\int_\mathbb{R} \pi\left(a_{n} \mid h_{n-1}\right) p_{a_{n}}\left(x_{n}\right) d x_n}\\
+        &= \pi\left(a_{n} \mid h_{n-1}\right) p_{a_{n}}\left(x_{n}\right) \frac{1}{\pi\left(a_{n} \mid h_{n-1}\right)}\\
+        &= p_{a_{n}}\left(x_{n}\right)
+    \end{aligned}
+    \end{equation*}
+\end{enumerate}
+
+\noindent\textbf{4.4}
+Denote $h_t = a_1, x_1, \ldots, a_t, x_t$.
+The policy that mixes the policies can be defined as
+$$\pi_{t}^{\circ}\left(a_{t} \mid h_{t-1}\right)=\frac{\sum_{\pi \in \Pi} p(\pi) \prod_{s=1}^{t} \pi_{s}\left(a_{s} \mid h_{s-1}\right)}{\sum_{\pi \in \Pi} p(\pi) \prod_{s=1}^{t-1} \pi_{s}\left(a_{s} \mid h_{s-1}\right)}$$.
+
+By the definition of the canonical probability space and the product of probability kernels,
+\begin{equation*}
+    \begin{aligned}
+    \mathbb{P}_{v \pi^{\circ}}(B) &= \sum_{a_{1}=1}^{k} \int_{\mathbb{R}} \cdots \sum_{a_{n}=1}^{k} \int_{\mathbb{R}} \mathbb{I}_{B}\left(h_{n}\right) v_{a_{n}}\left(d x_{n}\right) \pi_{n}^{\circ}\left(a_{n} \mid h_{n-1}\right) \cdots v_{a_{1}}\left(d x_{1}\right) \pi_{1}^{\circ}\left(a_{1}\right)\\
+    &= \sum_{\pi \in \Pi} p(\pi) \sum_{a_{1}=1}^{k} \int_{\mathbb{R}} \cdots \sum_{a_{n}=1}^{k} \int_{\mathbb{R}} \mathbb{I}_{B}\left(h_{n}\right) v_{a_{n}}\left(d x_{n}\right) \pi_{n}\left(a_{n} \mid h_{n-1}\right) \cdots v_{a_{1}}\left(d x_{1}\right) \pi_{1}\left(a_{1}\right)\\
+    &= \sum_{\pi \in \Pi} p(\pi) \mathbb{P}_{v \pi}(B),
+    \end{aligned}
+\end{equation*}
+where the second equality follows by substituting the definition of $\pi_{n}^{\circ}$ and induction.
