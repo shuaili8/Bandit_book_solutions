@@ -1,0 +1,162 @@
+\chapter*{Chapter 5 Concentration of Measure}
+\label{sec:5}
+
+\noindent\textbf{5.1}
+
+
+
+\begin{equation}
+V(\hat{\mu })=E((\hat{\mu }-\mu)^2)
+=E((\frac{1}{n}\sum_{t=1}^{n}{X_t}-\mu)^2)
+=E(\frac{1}{n^2}\sum_{t=1}^{n}{(X_t - \mu)^2})
+=\frac{1}{n^2}\sum_{t=1}^{n}{E(X_t - \mu)^2}
+=\frac{1}{n^2}\sum_{t=1}^{n}{\sigma^2}
+=\frac{\sigma^2}{n}
+\end{equation}
+
+\noindent\textbf{5.4}
+
+
+
+(a)
+\begin{equation}
+P(|X|\geq \varepsilon) = P(X\geq\varepsilon)I\{X\geq 0\}+P(X\leq -\varepsilon)I\{X< 0\}
+=\int_{\varepsilon}^{\infty} \frac{x}{2} exp\{ \frac{-x^2}{2}\} dx + \int_{-\infty}^{\varepsilon} \frac{-x}{2} exp\{ \frac{-x^2}{2}\} dx
+\end{equation}
+
+Calculate the above formula and get the result ,
+
+$P(|X|\geq \varepsilon) =\frac{1}{2} exp\{ \frac{-\varepsilon^2}{2}\} + \frac{1}{2} exp\{ \frac{-\varepsilon^2}{2}\}$
+
+$=exp\{ \frac{-\varepsilon^2}{2}\}$
+
+
+(b)
+
+Let's start with a lemma:
+
+If X is $\sigma-$subgaussian,then $P(|X|>t) \leq exp\{ -b \varepsilon^2\}$ , where $b=exp\{ -\sigma^2\}$
+
+The proof of lemma is omitted.
+
+It can be seen from the first question , $P(|X|\geq \varepsilon) = exp\{ \frac{-\varepsilon^2}{2}\}$
+
+The comparison of the two formulas shows that , $0<b\leq 1/2$ . That is, $\sigma\geq \sqrt{ln2}$
+
+By topic condition , $\sigma = \sqrt{2-\varepsilon}$
+
+Hence , $\varepsilon \leq 2-ln2$ , this is in contradiction with the arbitrariness of $\varepsilon$
+
+
+
+
+\noindent\textbf{5.7}
+
+
+(a)If X is $\sigma-$subgaussian , then $E(X)=0$,$E(X^2)\leq\sigma^2$
+
+proof:
+
+\begin{equation}
+E(e^{\lambda X}) = \sum_{n=0}^{\infty}\frac{\lambda^n E(X^n)}{n!}=1+\lambda E(X)+\frac{\lambda^2 E(X^2)}{2}+O(\lambda^2)
+\end{equation}
+
+By definition ,
+
+\begin{equation}
+E(e^{\lambda X})\leq e^{\frac{\lambda^2 \sigma^2}{2}}=1+\frac{\lambda^2 \sigma^2}{2}+O(\lambda^2)
+\end{equation}
+
+By comparing the above two formulas and discussing the case that a approaches to 0 from above and below 0, we get the conclusion that ,
+
+$E(X)=0$,$E(X^2)\leq\sigma^2$
+
+(b)
+
+If X is $\sigma-$subgaussian , then $E(X)=0$,$E(X^2)\leq\sigma^2$ .
+
+$E(e^{c\lambda x}) = 1+\lambda E(cx)+\frac{\lambda^2 E(c^2 x^2)}{2}+O(\lambda^2)$
+
+$\leq 1+c\lambda E(x)+\frac{\lambda^2 c^2}{2} E(x^2)+O(\lambda^2)$
+
+$\leq 1+\frac{\lambda^2 c^2 \sigma^2}{2}+O(\lambda^2)$
+
+$\leq e^{\frac{\lambda^2 c^2 \sigma^2}{2}}$
+
+Hence , cX is $|c|\sigma-$subgaussian .
+
+(c)
+
+If $X_1$ is $\sigma_1-$subgaussian , $X_2$ is $\sigma_2-$subgaussian
+
+then $E(X_1)=0$,$E(X_1^2)\leq\sigma_1^2$ ,$E(X_2)=0$,$E(X_2^2)\leq\sigma_2^2$
+
+$E(e^{\lambda (x_1+x_2)}) = 1+\lambda E(x_1+x_2)+\frac{\lambda^2 E((x_1+x_2)^2)}{2}+O(\lambda^2)$
+
+$= 1+\frac{\lambda^2}{2} Var(x_1+x_2)+O(\lambda^2)$
+
+$= 1+\frac{\lambda^2}{2} (var(x_1)+var(x_2)+2cov(x_1,x_2))+O(\lambda^2)$
+
+Because $x_1$, $x_2$ are independent ,
+
+$= 1+\frac{\lambda^2}{2} (E(x_1^2) + E(x_2^2))(\lambda^2)$
+
+$\leq 1+\frac{\lambda^2}{2} (\sigma_1^2 + \sigma_2^2)+O(\lambda^2)$
+
+$\leq e^{\frac{\lambda^2 (\sigma_1^2 + \sigma_2^2)}{2}}$
+
+Hence , $X_1+X_2$ is $\sqrt{\sigma_1^2 + \sigma_2^2}-$subgaussian .
+
+
+
+
+\noindent\textbf{5.11}
+
+
+
+
+(a)
+\begin{equation}
+E(e^{\lambda X}) = 1+\lambda E(X)+\frac{\lambda^2 E(X^2)}{2}+O(\lambda^2) =1+\frac{\lambda^2 E(X^2)}{2}+O(\lambda^2)
+\end{equation}
+
+If the conclusion is true, then the above formula satisfies
+
+$\leq 1+\frac{\lambda^2}{2}(\frac{(b-a)^2}{4})+O(\lambda^2)$
+
+So just prove:
+
+$E(x^2)\leq (\frac{b-a}{2})^2$
+
+$E(x^2)=var(x)=E(x-\bar{x})^2$
+
+However,$(x-\bar{x})^2\leq(\frac{b-a}{2})^2$ . The conclusion is proved.
+
+(b)
+
+The proof of Hoeffding's Inequality:
+
+Let $X_i = Z_i - E(Z_i)$ , $\bar{X} = \frac{1}{m}\sum_{i=1}^{m}X_i$
+
+By Markov inequality , for all $\lambda >0$ , $\varepsilon > 0$,
+
+$P(\bar{X}\geq\varepsilon) = P(e^{\lambda \bar{X}} \geq e^{\lambda\varepsilon}) \leq \frac{E(e^{\lambda \bar{X}})}{e^{\lambda\varepsilon}}$
+
+$Z_1$,$\cdots$,$Z_m$ iid.r.v.
+
+So,$E(e^{\lambda \bar{X}}) = \prod_{i=1}^{m} E(e^{\frac{\lambda X_i}{m}})$
+
+By Hoeffding's lamma,
+
+$ E(e^{\frac{\lambda X_i}{m}}) \leq e^{\frac{\lambda^2(b-a)^2}{8m^2}}$
+
+So , $P(\bar{X}\geq\varepsilon) \leq e^{-\lambda\varepsilon}\prod_{i=1}^{m} E(e^{\frac{\lambda X_i}{m}})$
+
+$\leq e^{-\lambda\varepsilon}e^{\frac{\lambda^2(b-a)^2}{8m}}$
+
+$\leq e^{-\lambda\varepsilon+\frac{\lambda^2(b-a)^2}{8m}}$
+
+Let $\lambda = \frac{4m\varepsilon}{(b-a)^2}$ , then $P(\bar{X}\geq \varepsilon) \leq e^{\frac{-2m\varepsilon^2}{(b-a)^2}}$
+
+Similarly, we can prove the other side of the inequality.
+
