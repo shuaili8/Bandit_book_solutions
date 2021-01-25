@@ -14,6 +14,44 @@ V(\hat{\mu })=E((\hat{\mu }-\mu)^2)
 =\frac{\sigma^2}{n}
 \end{equation}
 
+
+
+% \noindent\textbf{5.2}
+% From the definition of expectation:
+% $$
+% {\displaystyle \operatorname {E} (X)=\int _{-\infty }^{\infty }xf(x)\,dx}{\displaystyle \operatorname {E} (X)=\int _{-\infty }^{\infty }xf(x)\,dx}$$
+% \newline
+
+% \noindent
+% However, X is a non-negative random variable thus,
+% $$
+% {\displaystyle \operatorname {E} (X)=\int _{-\infty }^{\infty }xf(x)\,dx=\int _{0}^{\infty }xf(x)\,dx}{\displaystyle \operatorname {E} (X)=\int _{-\infty }^{\infty }xf(x)\,dx=\int _{0}^{\infty }xf(x)\,dx}$$
+% \newline
+
+% \noindent
+% From this we can derive,
+% \begin{align*}
+%     {\displaystyle \operatorname {E} (X)&=\int _{0}^{a}xf(x)\,dx+\int _{a}^{\infty }xf(x)\,dx\geq \int _{a}^{\infty }xf(x)\,dx\geq \int _{a}^{\infty }af(x)\,dx\\
+%     &=a\int _{a}^{\infty }f(x)\,dx=a\operatorname {Pr} (X\geq a)}{\displaystyle \operatorname {E} (X)=\int _{0}^{a}xf(x)\,dx+\int _{a}^{\infty }xf(x)\,dx\\
+%     &\geq \int _{a}^{\infty }xf(x)\,dx\geq \int _{a}^{\infty }af(x)\,dx\\
+%  &=a\int _{a}^{\infty }f(x)\,dx=a\operatorname {Pr} (X\geq a)}
+% \end{align*}
+
+% From here, dividing through by a allows us to see that
+% $$
+% {\displaystyle \Pr(X\geq a)\leq \operatorname {E} (X)/a}{\displaystyle \Pr(X\geq a)\leq \operatorname {E} (X)/a}
+% $$
+
+
+
+
+
+
+
+
+
+
+
 \noindent\textbf{5.4}
 
 
@@ -160,3 +198,26 @@ Let $\lambda = \frac{4m\varepsilon}{(b-a)^2}$ , then $P(\bar{X}\geq \varepsilon)
 
 Similarly, we can prove the other side of the inequality.
 
+
+\noindent \textbf{5.16}
+By assumption $Pr(X_t\leq x)\leq x$, which means that for$\lambda <1$,
+\begin{align}
+\mathbb{E}\left[exp(\lambda log(\frac{1}{x_t}))\right] = \int_0^\infty P(exp(\lambda log(\frac{1}{x_t}))\geq x)dx = 1 +\int_1^\infty P(X_t \leq x^{-\frac{1}{\lambda}})dx
+\end{align}
+Applying the Cramer-Chernoff method,
+$$P\left(\sum_{t=1}^n log(\frac{1}{X_t}) \geq \epsilon\right) = P\left(exp(\lambda \sum_{t=1}^n log(\frac{1}{X_t})) \geq exp(\lambda \epsilon) \right) \leq \left(\frac{1}{1-\lambda}\right)^n exp (-\lambda \epsilon)$$
+choosing $\lambda  = \frac{\epsilon-n}{\epsilon}$ completes the claim.
+
+
+
+\noindent \textbf{5.18(a)}
+Let $\lambda >0$. Then,
+$$exp(\lambda \mathbb{E}[Z]) \leq \mathbb{E}[exp(\lambda Z)] \leq \sum_{t=1}^n \mathbb{E}[exp(\lambda X_t)] \leq n exp(\frac{\lambda^2 \sigma^2}{2})$$
+\noindent
+Rearranging shows that,
+$$\mathbb{E}(Z) \leq \frac{log(n)}{\lambda} + \frac{\lambda \sigma^2}{2}$$
+\newline
+
+\noindent
+Choosing $\lambda = \frac{1}{\sigma} \sqrt{2log(n)}$ shows  that $
+\mathbb{E}(Z) \leq \sqrt{2\sigma^2 log(n)}$

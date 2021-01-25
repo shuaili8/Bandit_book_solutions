@@ -1,0 +1,19 @@
+\chapter*{Chapter 18}
+\label{sec:18}
+
+\noindent\textbf{18.1}
+
+
+(a) By Jensen’s inequality,
+
+\begin{align*}
+    \sum_{c\in\mathcal{C}} \sqrt{\sum_{t=1}^n \mathcal{I}\{c_t = c\}} &= \|C\| \sum_{c\in\mathcal{C}} \frac{1}{\|C\|} \sqrt{\sum_{t=1}^n\mathcal{I}\{c_t = c\}}\\
+    &\leq \|C\| \sqrt{\sum_{c\in\mathcal{C}} \frac{1}{\|C\|} \sum_{t=1}^n\mathcal{I}\{c_t = c\}}\\
+    &= \sqrt{\|C\|n}
+\end{align*}
+
+(b)
+When each context occurs $\frac{n}{\|C\|}$ times we have
+\begin{equation*}
+    \sum_{c\in \mathcal{C}} \sqrt{\sum_{t=1}^n \mathcal{I}\{c_t = c\}} =  \sqrt{n\|C\|}
+\end{equation*}
