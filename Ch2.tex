@@ -41,10 +41,10 @@ $\mathcal{F}/\mathcal{H}$-measurable.
 \noindent\textbf{2.2} 
 Let $X_1,\dots,X_n$ be random variables on $(\Omega, \mathcal{F})$. Prove that $X=( X_1 ,\dots,X_n )$ is a random vector.
 \begin{proof}
-    Since $X_i$ is a random variable ($\forall i=1,2,...,n$), it holds that $X_i$ is $\cF/\cB(\cR)$-measurable, which means that $\forall B \in \cB(\cR)$, $X_i^{-1}(B) \in \cF$. 
-    We first prove that $X$ is $\cF/(\cB(\cR) \times \cB(\cR)\times\cdots \cB(\cR) )$-measurable. $\forall A=A_1\times A_2 \times \cdots \times A_n  \in \cB(\cR) \times \cB(\cR)\times\cdots \cB(\cR)$, $X^{-1}(A) =X_1^{-1}(A_1) \cap X_2^{-1}(A_2) \cap \cdots \cap X_n^{-1}(A_n) \in \cF$, which holds since $X_i^{-1}(A_i) \in \cF, \forall i =1,2,...,n$ and $\cF$ is a $\sigma$-algebra. Thus we conclude that $X$ is $\cF/(\cB(\cR) \times \cB(\cR)\times\cdots \cB(\cR) )$-measurable.
+    Since $X_i$ is a random variable ($\forall i=1,2,...,n$), it holds that $X_i$ is $\cF/\cB(\RR)$-measurable, which means that $\forall B \in \cB(\RR)$, $X_i^{-1}(B) \in \cF$. 
+    We first prove that $X$ is $\cF/(\cB(\RR) \times \cB(\RR)\times\cdots \cB(\RR) )$-measurable (totally $n$ $\cB(\RR)$s). $\forall A=A_1\times A_2 \times \cdots \times A_n  \in \cB(\RR) \times \cB(\RR)\times\cdots \cB(\RR)$, $X^{-1}(A) =X_1^{-1}(A_1) \cap X_2^{-1}(A_2) \cap \cdots \cap X_n^{-1}(A_n) \in \cF$, which holds since $X_i^{-1}(A_i) \in \cF, \forall i =1,2,...,n$ and $\cF$ is a $\sigma$-algebra. Thus we conclude that $X$ is $\cF/(\cB(\RR) \times \cB(\RR)\times\cdots \cB(\RR) )$-measurable.
 
-    By definition $\cB(\cR^n) = \sigma (\cB(\cR) \times \cB(\cR)\times\cdots \cB(\cR))$ (totally $n$ $\cB(\cR)$). And according to the property in 2.5(b), we can get that $X$ is $\mathcal{F}/\mathcal{B}(\mathbb{R}^n)$-measurable, thus it is a random vector.\\
+    By definition $\cB(\RR^n) = \sigma (\cB(\RR) \times \cB(\RR)\times\cdots \cB(\RR))$ (totally $n$ $\cB(\RR)$s). And according to the property in 2.5(b), we can get that $X$ is $\mathcal{F}/\mathcal{B}(\RR^n)$-measurable, thus it is a random vector.\\
     % We claim that $X=(X_1,X_2,...,X_n)$ is $\mathcal{F}/\mathcal{B}(\mathbb{R}^n)$ measurable. Define $a=(a_1,a_2,...,a_n)$ $b=(b_1,b_2,...,b_n)$ with $a,b\in \mathbb{R}^n$ where $a<b$. Since $X_1,X_2,...,X_n$ is $\mathcal{F}/\mathcal{B}(\mathbb{R})$ measurable, therefore $\exists A_1=X^{-1}_1((a_1,b_1)),A_2=X^{-1}_2((a_2,b_2)),...,A_n=X^{-1}_n((a_n,b_n))\in \mathcal{F}$. Let $A=A_1\cap A_2 \cap...\cap A_n=\bigcap\limits^{n}_{i=1}A_i$. It follows that $X^{-1}((a,b))=\bigcap\limits^{n}_{i=1}((a,b))=A\in \mathcal{F}$. Therefore $X$ is $\mathcal{F}/\mathcal{B}(\mathbb{R}^n)$ measurable and $X$ is random vector. \\
 \end{proof}
 
