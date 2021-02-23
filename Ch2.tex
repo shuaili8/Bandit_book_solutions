@@ -26,36 +26,62 @@
 %     \end{enumerate}
 % \end{theorem}
 
-\noindent\textbf{2.1} Since $g$ is $\mathcal{G}/\mathcal{H}$-measurable, therefore $\forall C \in \mathcal{H}$,\ $ \exists  B=g^{-1}(C)\in \mathcal{G} $ . Similarly, since $f$ is $\mathcal{F}/\mathcal{G}$-measurable, $\forall B \in \mathcal{G}$,\ $ \exists  A=f^{-1}(B)\in \mathcal{F} $ . Thus $\forall C \in \mathcal{H}$, \ $ \exists  A=f^{-1}(g^{-1}(C))=(g\circ f)^{-1}(C)\in \mathcal{F} $ and the proof is complete. \\
+\noindent\textbf{2.1} (\textsc{Composing random elements}) Show that if $f$ is $\mathcal{F}/\mathcal{G}$-measurable and $g$ 
+is $\mathcal{G}/\mathcal{H}$-measurable for sigma algebras $\mathcal{F}$,$\mathcal{G}$ and $\mathcal{H}$ over appropriate spaces, then
+their composition, $g \circ f$ (defined the usual way: $( g \circ f )(\omega) = g(f(\omega)), \omega \in \Omega)$, is
+$\mathcal{F}/\mathcal{H}$-measurable.
+
+\begin{proof}
+    Since $g$ is $\mathcal{G}/\mathcal{H}$-measurable, therefore $\forall C \in \mathcal{H}$,\ $ \exists  B=g^{-1}(C)\in \mathcal{G} $ . Similarly, since $f$ is $\mathcal{F}/\mathcal{G}$-measurable, $\forall B \in \mathcal{G}$,\ $ \exists  A=f^{-1}(B)\in \mathcal{F} $ . Thus $\forall C \in \mathcal{H}$, \ $ \exists  A=f^{-1}(g^{-1}(C))=(g\circ f)^{-1}(C)\in \mathcal{F} $ and the proof is complete. \\
+
+\end{proof}
 
 % \subsubsection{}
 
-\noindent\textbf{2.2} We claim that $X=(X_1,X_2,...,X_n)$ is $\mathcal{F}/\mathcal{B}(\mathbb{R}^n)$ measurable. Define $a=(a_1,a_2,...,a_n)$ $b=(b_1,b_2,...,b_n)$ with $a,b\in \mathbb{R}^n$ where $a<b$. Since $X_1,X_2,...,X_n$ is $\mathcal{F}/\mathcal{B}(\mathbb{R})$ measurable, therefore $\exists A_1=X^{-1}_1((a_1,b_1)),A_2=X^{-1}_2((a_2,b_2)),...,A_n=X^{-1}_n((a_n,b_n))\in \mathcal{F}$. Let $A=A_1\cap A_2 \cap...\cap A_n=\bigcap\limits^{n}_{i=1}A_i$. It follows that $X^{-1}((a,b))=\bigcap\limits^{n}_{i=1}((a,b))=A\in \mathcal{F}$. Therefore $X$ is $\mathcal{F}/\mathcal{B}(\mathbb{R}^n)$ measurable and $X$ is random vector. \\
+\noindent\textbf{2.2} 
+Let $X_1,\dots,X_n$ be random variables on $(\Omega, \mathcal{F})$. Prove that $( X_1 ,\dots,X_n )$ is a
+random vector.
+\begin{proof}
+    We claim that $X=(X_1,X_2,...,X_n)$ is $\mathcal{F}/\mathcal{B}(\mathbb{R}^n)$ measurable. Define $a=(a_1,a_2,...,a_n)$ $b=(b_1,b_2,...,b_n)$ with $a,b\in \mathbb{R}^n$ where $a<b$. Since $X_1,X_2,...,X_n$ is $\mathcal{F}/\mathcal{B}(\mathbb{R})$ measurable, therefore $\exists A_1=X^{-1}_1((a_1,b_1)),A_2=X^{-1}_2((a_2,b_2)),...,A_n=X^{-1}_n((a_n,b_n))\in \mathcal{F}$. Let $A=A_1\cap A_2 \cap...\cap A_n=\bigcap\limits^{n}_{i=1}A_i$. It follows that $X^{-1}((a,b))=\bigcap\limits^{n}_{i=1}((a,b))=A\in \mathcal{F}$. Therefore $X$ is $\mathcal{F}/\mathcal{B}(\mathbb{R}^n)$ measurable and $X$ is random vector. \\
+
+\end{proof}
 
 % \subsubsection{}
 
 \noindent\textbf{2.3}
-\begin{enumerate}
-\item[(i)] We need to show that $\Sigma_X$ is closed under countable union. Let $U_i=X^{-1}(A_i),A_i\in \Sigma, i\in \mathbb{N}$. It follows that $\bigcup\limits^{\infty}_{i=1}U_i=\bigcup\limits^{\infty}_{i=1}X^{-1}(A_i)=X^{-1}(\bigcup\limits^{\infty}_{i=1}A_i)$. Since $\bigcup\limits^{\infty}_{i=1}A_i\in \Sigma$($\Sigma$ is sigma algebra), $\bigcup\limits^{\infty}_{i=1}U_i\in \Sigma_X$.
-\item[(ii)] We need to show that $\Sigma_X$ is closed under set subtraction $-$. $\forall U_1,U_2\in \Sigma_X$,$U_1-U_2=X^{-1}(A_1)-X^{-1}(A_2)=X^{-1}(A_1-A_2)$. Since $A_1-A_2\in \Sigma$($Sigma$ is sigma algebra),$U_1-U_2\in \Sigma_X$.
-\item[(iii)] We need to show that $\Sigma_X$ is closed to $\mathcal{U}$ itself. Since $\mathcal{U}=X^{-1}(\mathcal{V})$ and $\mathcal{V}\in \Sigma$, it follows that $\mathcal{U}\in \Sigma_X$.
-\end{enumerate}
+(\textsc{Random variable induced $\sigma$-algebra}) Let $\mathcal{U}$ be an arbitrary set and
+$( \mathcal{V}, \Sigma)$ a measurable space and $X : \mathcal{U} \rightarrow \mathcal{V}$ an arbitrary function. Show that
+$\Sigma_X = \{X ^{-1} (A) : A \in \Sigma\}$ is a $\sigma$-algebra over $\mathcal{U}$.
+
+\begin{proof}
+    \begin{enumerate}
+        \item[(i)] We need to show that $\Sigma_X$ is closed under countable union. Let $U_i=X^{-1}(A_i),A_i\in \Sigma, i\in \mathbb{N}$. It follows that $\bigcup\limits^{\infty}_{i=1}U_i=\bigcup\limits^{\infty}_{i=1}X^{-1}(A_i)=X^{-1}(\bigcup\limits^{\infty}_{i=1}A_i)$. Since $\bigcup\limits^{\infty}_{i=1}A_i\in \Sigma$, $\bigcup\limits^{\infty}_{i=1}U_i\in \Sigma_X$.
+        \item[(ii)] We need to show that $\Sigma_X$ is closed under set subtraction $-$. $\forall U_1,U_2\in \Sigma_X$,$U_1-U_2=X^{-1}(A_1)-X^{-1}(A_2)=X^{-1}(A_1-A_2)$. Since $A_1-A_2\in \Sigma$, $U_1-U_2\in \Sigma_X$.
+        \item[(iii)] We need to show that $\Sigma_X$ is closed to $\mathcal{U}$ itself. Since $\mathcal{U}=X^{-1}(\mathcal{V})$ and $\mathcal{V}\in \Sigma$, it follows that $\mathcal{U}\in \Sigma_X$.
+        \end{enumerate}
+\end{proof}
+
 
 
 \noindent\textbf{2.4}
-\begin{enumerate}
-\item[(a)] \begin{enumerate}
-        \item[(i)] We need to show that $\mathcal{F}|_A$ is closed under countable union. Let $X_1=A\cap B_1,X_2=A\cap B_2,...$ and $X^{\prime}=\bigcup\limits^{\infty}_{i=1}X_i$ and $B^{\prime}=\bigcup\limits^{\infty}_{i=1}$ where $B_1,B_2,...\in \mathcal{F}$. Since $\mathcal{F}$ is sigma algebra, $B^{\prime}\in \mathcal{F}$. Furthermore, since $X^{\prime}=\bigcup^{\infty}_{i=1}X_i=\bigcup^{\infty}_{i=1}A\bigcap B_i=A\bigcap\left(\bigcup\limits^{\infty}_{i=1} \right)=A\bigcap B^{\prime}$, we can see that $X^{\prime}\in \mathcal{F}|_A$.
-        \item[(ii)] We need to show that $\mathcal{F}|_A$ is closed under set subtraction $-$. $\forall X_1,X_2\in \mathcal{F}|_A$, $X_1-X_2=(A\bigcap B_1)-(A\bigcap B_2)=A\bigcap(B_1-B_2)$. Since $B_1-B_2\in \mathcal{F}$($F$ is sigma algebra), it follows that $X_1-X_2\in \mathcal{F}|_A$.
-        \item[(iii)] We need to show that $\Sigma_X$ is closed to $A$ itself. Since $\varnothing \in \mathcal{F}$, we have $\varnothing=A\bigcap\varnothing\in \mathcal{F}|_A$ and $A=\varnothing^{C}\in \mathcal{F}|_A$.
-      \end{enumerate}
-\item[(b)] Let $P=\{ A\bigcap B:B\in \mathcal{F} \}, Q=\{ B: B\subset A, B\in \mathcal{F} \}$.
-        \begin{enumerate}
-            \item[(i)] We claim that $P\subset Q$. Let $X=A\bigcap B, B\in \mathcal{F}$. Since $A\in \mathcal{F}$, $X=A\bigcap B\in \mathcal{F}$. Furthermore, $X\in Q=\{B:B\subset A, B\in \mathcal{F} \}$.
-            \item[(ii)] We claim that $Q\subset P$. $\forall X\in Q$, we have $X\subset A$ and $X\in \mathcal{F}$, which means that $X=X\bigcap A$ and $X\in \mathcal{F}$. It follows that $X\in P$.
-            \item[(iii)] Take both (i)(ii) into consideration, we can see that $P=Q$.
+Let $(\Omega,\mathcal{F})$ be a measurable space and $A \subseteq \Omega$ and $\mathcal{F}_{|A} = \{A \cap B: B \in \mathcal{F}\}$.
+
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] \begin{enumerate}
+                \item[(i)] We need to show that $\mathcal{F}|_A$ is closed under countable union. Let $X_1=A\cap B_1,X_2=A\cap B_2,...$ and $X^{\prime}=\bigcup\limits^{\infty}_{i=1}X_i$ and $B^{\prime}=\bigcup\limits^{\infty}_{i=1}B_i$ where $B_1,B_2,...\in \mathcal{F}$. Since $\mathcal{F}$ is sigma algebra, $B^{\prime}\in \mathcal{F}$. Furthermore, since $X^{\prime}=\bigcup^{\infty}_{i=1}X_i=\bigcup^{\infty}_{i=1}A\bigcap B_i=A\bigcap\left(\bigcup\limits^{\infty}_{i=1}B_i \right)=A\bigcap B^{\prime}$, we can see that $X^{\prime}\in \mathcal{F}|_A$.
+                \item[(ii)] We need to show that $\mathcal{F}|_A$ is closed under set subtraction $-$. $\forall X_1,X_2\in \mathcal{F}|_A$, $X_1-X_2=(A\bigcap B_1)-(A\bigcap B_2)=A\bigcap(B_1-B_2)$. Since $B_1-B_2\in \mathcal{F}$, it follows that $X_1-X_2\in \mathcal{F}|_A$.
+                \item[(iii)] We need to show that $\Sigma_X$ is closed to $A$ itself. Since $\varnothing \in \mathcal{F}$, we have $\varnothing=A\bigcap\varnothing\in \mathcal{F}|_A$ and $A=\varnothing^{C}\in \mathcal{F}|_A$.
+              \end{enumerate}
+        \item[(b)] Let $P=\{ A\bigcap B:B\in \mathcal{F} \}, Q=\{ B: B\subset A, B\in \mathcal{F} \}$.
+                \begin{enumerate}
+                    \item[(i)] We claim that $P\subset Q$. Let $X=A\bigcap B, B\in \mathcal{F}$. Since $A\in \mathcal{F}$, $X=A\bigcap B\in \mathcal{F}$. Furthermore, $X\in Q=\{B:B\subset A, B\in \mathcal{F} \}$.
+                    \item[(ii)] We claim that $Q\subset P$. $\forall X\in Q$, we have $X\subset A$ and $X\in \mathcal{F}$, which means that $X=X\bigcap A$ and $X\in \mathcal{F}$. It follows that $X\in P$.
+                    \item[(iii)] Take both (i)(ii) into consideration, we can see that $P=Q$.
+                \end{enumerate}
         \end{enumerate}
-\end{enumerate}
+\end{proof}
+
 
 \noindent\textbf{2.5}
 \begin{enumerate}
