@@ -86,6 +86,17 @@ Let $(\Omega,\mathcal{F})$ be a measurable space and $A \subseteq \Omega$ and $\
 
 
 \noindent\textbf{2.5}
+Let $\mathcal{G}\subseteq 2^{\Omega}$ be a non-empty collection of sets and define $\sigma(\mathcal{G})$ as the smallest
+$\sigma$-algebra that contains $\mathcal{G}$. By `smallest' we mean that $\mathcal{F}\in 2^{\Omega}$ is smaller than
+$\mathcal{F}^{\prime}\in 2^{\Omega}$ if $\mathcal{F}\subset \mathcal{F}^{\prime}$.
+\begin{enumerate}
+    \item[(a)] Show that $\sigma(\mathcal{G})$ exists and contains exactly those sets $A$ that are in every
+    $\sigma$-algebra that contains $\mathcal{G}$.
+    \item[(b)] Suppose $(\Omega^{\prime},\mathcal{F})$ is a measurable space and $X:\Omega^{\prime}\rightarrow \Omega$ be $\mathcal{F}/\mathcal{G}$-measurable. Show that X is also $\mathcal{F}/\sigma(\mathcal{F})$-measurable. (We often use this result to simplify the job of checking whether a random variable satisfies some measurability property).
+    \item[(c)] Prove that if $A\in \mathcal{F}$ where $\mathcal{F}$ is a $\sigma$-algebra, then $\mathbb{I}\{A\}$ is $\mathcal{F}$-measurable.
+\end{enumerate}
+
+\begin{proof}
 \begin{enumerate}
     \item[(a)] Clearly $\sigma(\mathcal{G})$ should be the intersection of all $\sigma$-algebras that contain $\mathcal{G}$. Formally speaking, let $\mathcal{K} = \{\mathcal{F} | \mathcal{F} \mbox{ is a }\sigma\mbox{-algebra and contains } \mathcal{G}\}$. Then $\bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$ contains exactly those sets that are in every $\sigma$-algebra that contains $\mathcal{G}$. Given its existence, we only need to prove that $\bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$ is the smallest $\sigma$-algebra that contains $\mathcal{G}$.
 
@@ -103,6 +114,7 @@ Let $(\Omega,\mathcal{F})$ be a measurable space and $A \subseteq \Omega$ and $\
 
     If $\{0,1\} \in B$, $\mathbb{I}\{A\}^{-1}(B)=\Omega \in \mathcal{F}$. If $\{0\} \in B$, $\mathbb{I}\{A\}^{-1}(B)=A^c \in \mathcal{F}$. If $\{1\} \in B$, $\mathbb{I}\{A\}^{-1}(B)=A \in \mathcal{F}$. If $\{0,1\} \cap B = \emptyset$, $\mathbb{I}\{A\}^{-1}(B)=\emptyset \in \mathcal{F}$.
 \end{enumerate}
+\end{proof}
 
 \noindent\textbf{2.6}
 As the hint suggests, $Y$ is not $\sigma(X)$-measurable under such conditions since $Y^{-1}((0, 1))=(0, 1) \notin \sigma(X)$, where $\sigma(X) = \{{X}^{-1}(A): A \in \mathcal{G}\} = \{\emptyset, \mathbb{R}\}$.\\
