@@ -228,8 +228,16 @@ we have $0=P(A)(1-P(A))\Rightarrow P(A)\in\{0,1\}$
 
 \item[(d)]$P(A \bigcap A) = P(A)P(A)$,$P(A)=0,1$
 
-\item[(e)]$\Omega=(1,1),(1,0),(0,1),(0,0)$
+\item[(e)]$\Omega=\{(1,1),(1,0),(0,1),(0,0)\}. A,B \subseteq \Omega$ denote the events.
+  
+First of all, if either $A$ or $B$ is trival, then $A$ and $B$ are independent to each other. 
 
+Then, we only need to enumerate $A,B\notin {\Omega, \emptyset}$ satisfied that $P(A\bigcap B) = P(A)P(B)$. 
+Since $P(A\bigcap B) = \frac{|A\bigcap B|}{|\Omega|} = \frac{|A \bigcap B|}{4}$ and $P(A)P(B) = \frac{|A||B|}{16}$, we can conclude that $|A| = 2$, $|B| = 2$ and $|A\bigcap B| = 1$ is the only situation satisfying the condition. 
+
+Thus, besides trival $A$ or $B$, all $A, B$ satisfying $|A| = 2$, $|B| = 2$ and $|A\bigcap B| = 1$ are the solution. 
+
+\iffalse
 Just verify that each case is independent :$P(A=1,B=1)=\frac{1}{4}=\frac{1}{2} *\frac{1}{2}=P(A)P(B)$
 
 $P(A=1,B=0)=\frac{1}{4}=\frac{1}{2} *\frac{1}{2}=P(A)P(B)$
@@ -237,6 +245,7 @@ $P(A=1,B=0)=\frac{1}{4}=\frac{1}{2} *\frac{1}{2}=P(A)P(B)$
 $P(A=0,B=1)=\frac{1}{4}=\frac{1}{2} *\frac{1}{2}=P(A)P(B)$
 
 $P(A=0,B=0)=\frac{1}{4}=\frac{1}{2} *\frac{1}{2}=P(A)P(B)$
+\fi
 
 \item[(f)]$P(X_1 \leq 2)=2/3$
 
@@ -254,7 +263,9 @@ Sufficiency :$|A\bigcap B|*n = |A||B|\Rightarrow \frac{|A|}{n}\frac{|B|}{n}=\fra
 
 $\Rightarrow P(A \bigcap B)=P(A)P(B)$
 
-\item[(h)]$|A\bigcap B|*n = |A||B|$,$\Rightarrow n\leq |A|\leq n \Rightarrow A\neq\phi or \Omega$
+\item[(h)] If $A,B$ are two non-trival events independent to each other, $|A\bigcap B|*n = |A||B|\Rightarrow n|\  |A||B| \Rightarrow n|\ |A| \ \text{or}\  n |\ |B| \Rightarrow |A| = n\ \text{or}\ |B| = n$, contradictory to non-trival assumption.
+   
+\item[(i)] Let $\Omega = \{1,2,3,4\},\ A = \{1,2\},\ B = \{1,3\},\ C = \{1,4\}$. $A,\ B,\ C$ are pairwise independent but $P(A\bigcap B \bigcap C) = \frac{1}{4} \neq P(A) P(B)P(C) = \frac{1}{8}$.
 
 \item[(j)]Let's take a counter example: roll a die and set the A event to$\{1,2,3\}$,B event is set to$\{1,2,4\}$,C event is set to$\{1,4,5,6\}$
 
