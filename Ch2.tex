@@ -92,30 +92,33 @@ $\mathcal{F}^{\prime}\in 2^{\Omega}$ if $\mathcal{F}\subset \mathcal{F}^{\prime}
 \begin{enumerate}
     \item[(a)] Show that $\sigma(\mathcal{G})$ exists and contains exactly those sets $A$ that are in every
     $\sigma$-algebra that contains $\mathcal{G}$.
-    \item[(b)] Suppose $(\Omega^{\prime},\mathcal{F})$ is a measurable space and $X:\Omega^{\prime}\rightarrow \Omega$ be $\mathcal{F}/\mathcal{G}$-measurable. Show that X is also $\mathcal{F}/\sigma(\mathcal{F})$-measurable. (We often use this result to simplify the job of checking whether a random variable satisfies some measurability property).
+    \item[(b)] Suppose $(\Omega^{\prime},\mathcal{F})$ is a measurable space and $X:\Omega^{\prime}\rightarrow \Omega$ be $\mathcal{F}/\mathcal{G}$-measurable. Show that X is also $\mathcal{F}/\sigma(\mathcal{G})$-measurable. (We often use this result to simplify the job of checking whether a random variable satisfies some measurability property).
     \item[(c)] Prove that if $A\in \mathcal{F}$ where $\mathcal{F}$ is a $\sigma$-algebra, then $\mathbb{I}\{A\}$ is $\mathcal{F}$-measurable.
 \end{enumerate}
 
 \begin{proof}
 \begin{enumerate}
-    \item[(a)] Clearly $\sigma(\mathcal{G})$ should be the intersection of all $\sigma$-algebras that contain $\mathcal{G}$. Formally speaking, let $\mathcal{K} = \{\mathcal{F} | \mathcal{F} \mbox{ is a }\sigma\mbox{-algebra and contains } \mathcal{G}\}$. Then $\bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$ contains exactly those sets that are in every $\sigma$-algebra that contains $\mathcal{G}$. Given its existence, we only need to prove that $\bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$ is the smallest $\sigma$-algebra that contains $\mathcal{G}$.
+    \item[(a)] Let $\mathcal{K} = \{\mathcal{F} | \mathcal{F} \mbox{ is a }\sigma\mbox{-algebra and contains } \mathcal{G}\}$, It holds obviously that $\mathcal{K}$ is not an empty set since it contains $2^{\cG}$.
 
-    First we show $\bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$ is a $\sigma$-algebra. Since $\mathcal{F}$ is a $\sigma$-algebra and therefore $\Omega \in \mathcal{F}$ for all $\mathcal{F} \in \mathcal{K}$, it follows that $\Omega \in \bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$. Next, for any $A \in \bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$, $A^c \in \mathcal{F}$ for all $\mathcal{F} \in \mathcal{K}$. Since they are all $\sigma$-algebras, $A^c \in \mathcal{F}$ for all $\mathcal{F} \in \mathcal{K}$. Hence $A^c \in \bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$. Finally, for any $\{A_i\}_i \subset \bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$, $\{A_i\}_i \subset \mathcal{F}$ for all $\mathcal{F} \in \mathcal{K}$. Since they are all $\sigma$-algebras, $\bigcup_i A_i \in \mathcal{F}$ for all $\mathcal{F} \in \mathcal{K}$. Hence $\bigcup_i A_i \in \bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$.
+    Then $\bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$ contains exactly those sets that are in every $\sigma$-algebra that contains $\mathcal{G}$. Given its existence, we only need to prove that $\bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$ is the smallest $\sigma$-algebra that contains $\mathcal{G}$.
 
-    It is quite obvious that $\bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$ is the smallest one as $\bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F} \subseteq \mathcal{F}'$ for all $\mathcal{F}' \in \mathcal{K}$.
+    First we show $\bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$ is a $\sigma$-algebra. Since $\mathcal{F}$ is a $\sigma$-algebra and therefore $\Omega \in \mathcal{F}$ for all $\mathcal{F} \in \mathcal{K}$, it follows that $\Omega \in \bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$. Next, for any $A \in \bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$, $A^c \in \mathcal{F}$ for all $\mathcal{F} \in \mathcal{K}$. Since they are all $\sigma$-algebras, $A^c \in \mathcal{F}$ for all $\mathcal{F} \in \mathcal{K}$. Hence $A^c \in \bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$. Finally, for any $\{A_i\}_i \subset \bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$, $\{A_i\}_i \subset \mathcal{F}$ for all $\mathcal{F} \in \mathcal{K}$. Since they are all $\sigma$-algebras, $\bigcup_i A_i \in \mathcal{F}$ for all $\mathcal{F} \in \mathcal{K}$. Hence $\bigcup_i A_i \in \bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$. 
+
+    Next we want to prove $\bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$ is the smallest $\sigma$-algebra that contains $\cG$. It is quite obvious that $\bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F} \subseteq \mathcal{F}'$ for all $\mathcal{F}' \in \mathcal{K}$. 
+
+    Above all, we have $\sigma(\cG)=\bigcap_{\mathcal{F} \in \mathcal{K}}\mathcal{F}$.
 
     \item[(b)] Define $\mathcal{H}=\left\{A: X^{-1}(A) \in \mathcal{F}\right\}$.
-    We want to prove that $\sigma(\mathcal{G}) \subseteq \mathcal{H}$.
+    To show $X$ is $\cF/\sigma(\cG)$-measurable, it is sufficient to prove $\sigma(\mathcal{G}) \subseteq \mathcal{H}$.
 
-    First we show that $\mathcal{H}$ is $\sigma$-algebra.
-    $\Omega \in \mathcal{H}$ for sure.
-    If $A \in \mathcal{H}$, we have $X^{-1}(A) \in \mathcal{F}$.
-    Since $\mathcal{F}$ is $\sigma$-algebra, $A^c \in \mathcal{F}$, which results in $X^{-1}(A^c) = X^{-1}(A)^c \in \mathcal{H}$.
-    Finally, for $A_i$ such that $X^{-1}(A_i) \in \mathcal{F}$, we have $X^{-1}(\cup_i A_i) = \cup_i X^{-1}(A_i) \in \mathcal{F}$.
+    First we prove that $\mathcal{H}$ is a $\sigma$-algebra.
+    It holds that $\Omega \in \mathcal{H}$ since $X^{-1}(\Omega) = \Omega' \in \cF$.
+    For any $A \in \mathcal{H}$, we have $X^{-1}(A) \in \mathcal{F}$, thus $X^{-1}(A^c) = X^{-1}(A)^c \in \mathcal{F}$, which holds since $\cF$ is a $\sigma$-algebra. Thus $A^c \in \mathcal{H}$. For any $A_i \in \cF$, $i=1,2,...$, $X^{-1}(A_i) \in \mathcal{F}$, $X^{-1}(\cup_i A_i) = \cup_i X^{-1}(A_i) \in \mathcal{F}$. We can then conclude $\cup_i A_i \in \cH$ and $\cH$ is a $\sigma$-algebra.
 
-    We can notice $\mathcal{G} \subseteq \mathcal{H}$.
-    Therefore, $\mathcal{H}$ is $\sigma$-algebra that contains $\mathcal{G}$.
-    By applying the result from (a), we can have $\sigma(\mathcal{G}) \subseteq \mathcal{H}$, which completes the proof.
+
+    Also, since $X$ is $\cF/\cG$-measurable, we have $\mathcal{G} \subseteq \mathcal{H}$.
+    Thus $\mathcal{H}$ is $\sigma$-algebra that contains $\mathcal{G}$.
+    By applying the result of (a), we have $\sigma(\mathcal{G}) \subseteq \mathcal{H}$, which completes the proof.
 
     \item[(c)] The idea is to show $\forall B \in \mathfrak{B}(\mathbb{R})$, $\mathbb{I}\{A\}^{-1}(B) \in \mathcal{F}$.
 
