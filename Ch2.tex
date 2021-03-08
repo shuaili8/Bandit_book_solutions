@@ -165,19 +165,12 @@ $\Omega=\{1, . . . , 6\}^2$, $\mathcal{F} = 2^{\Omega}$ and $\mathbb{P}(A) = |A|
 
 \begin{proof}
 \begin{enumerate}
-    \item[(a)]There are 36 possible events:
+    \item[(a)]
+    The event $\set{X_1 < 2} = \set{1}\times \set{1,2,3,4,5,6}$, $\set{X_2 \text{ is even }} = \set{1,2,3,4,5,6} \times \set{2,4,6}$,\\  $\set{X_1 < 2, X_2 \text{ is even }} = \set{(1,2),(1,4),(1,6)}$.
 
-1.$X_1 < 2$,$X_2=$even:
-$$X_1=1,X_2=2$$
-$$X_1=1,X_2=4$$
-$$X_1=1,X_2=6$$
-So,P($X_1 < 2$,$X_2=$even)$=\frac{3}{36} = \frac{1}{12}$
+    Thus $\PP{X_1 < 2} = \frac{6}{36} = \frac{1}{6}$, $\PP{X_2 \text{ is even }} = \frac{18}{36} = \frac{1}{2}$, $\PP{X_1 < 2, X_2 \text{ is even }} = \frac{3}{36} = \frac{1}{12}$, which satisfies $\PP{X_1 < 2, X_2 \text{ is even }} = \PP{X_1 < 2}\times \PP{X_2 \text{ is even }}$. These two events are independent of each other.
 
-and $P(X_1 < 2)=\frac(1)(6)$,P($X_2=$even)$=\frac{1}{2} $
-
-So,P($X_1 < 2$,$X_2=$even)$=P(X_1 < 2)*$P($X_2=$even).According to the definition of independent event, two events are independent.
-
-\item[(b)]Prove$P(A\bigcap B)=P(A)P(B)$
+\item[(b)] $\sigma(X_1) = \set{X_1^{-1}(A'),A'\subseteq [6]} = \set{A'\times [6]:A' \subseteq [6]}$,  $\sigma(X_2) = \set{X_2^{-1}(B'),B'\subseteq [6]} = \set{[6]\times B':B' \subseteq [6]}$. Thus $\forall A \in \sigma(X_1), B \in \sigma(X_2)$, $\PP{A} = \frac{\abs{A'}\times 6}{36} = \frac{\abs{A'}}{6}$, $\PP{B} = \frac{6\times \abs{B'}}{36} = \frac{\abs{B'}}{6}$ and $\PP{A \cap B} = \frac{\abs{A'}\times \abs{B'}}{36} =\PP{A} \times \PP{B}$.
 \end{enumerate}
 \end{proof}
 
