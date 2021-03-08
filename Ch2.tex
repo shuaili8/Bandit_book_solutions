@@ -142,7 +142,10 @@ In this case, $\sigma(X) = \{{X}^{-1}(A): A \in \mathcal{G}\} = \{\emptyset, \ma
 \noindent\textbf{2.7}
 Let $(\Omega,\mathcal{F},\mathbb{P})$ be a probability space, $B\in\mathcal{F}$ be such that $\mathbb{P}(B) > 0$. Prove that $A \mapsto \mathbb{P}(A|B)$ is a probability measure over $(\Omega,\mathcal{F})$.
 \begin{proof}
-    First we have $\mathbb{P}(\Omega \mid B) = \frac{\mathbb{P}(\Omega \cap B)}{\mathbb{P}(B)} = \frac{\mathbb{P}(B)}{\mathbb{P}(B)} = 1$. Then, for all $A \in \mathcal{F}$, $\mathbb{P}(A \mid B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)} \geq 0$. Next, for all $A \in \mathcal{F}$, $\mathbb{P}(A^c \mid B) = \frac{\mathbb{P}(A^c \cap B)}{\mathbb{P}(B)} = \frac{\mathbb{P}((\Omega - A) \cap B)}{\mathbb{P}(B)} = \frac{\mathbb{P}(B) - \mathbb{P}(A \cap B)}{\mathbb{P}(B)} = 1 - \mathbb{P}(A \mid B)$. Finally, for all countable collections of disjoint sets $\{A_i\}_i$ with $A_i \in \mathcal{F}$ for all $i$, we have $\mathbb{P}\left(\bigcup_{i} A_{i} \mid B\right) = \frac{\mathbb{P}((\bigcup_{i} A_{i}) \cap B)}{\mathbb{P}(B)} = \frac{\mathbb{P}(\bigcup_{i} (A_{i} \cap B))}{\mathbb{P}(B)} = \sum_{i} \frac{\mathbb{P}(A_{i} \cap B)}{\mathbb{P}(B)} = \sum_{i} \mathbb{P}(A_i \mid B)$. \\
+    First we have $\mathbb{P}(\Omega \mid B) = \frac{\mathbb{P}(\Omega \cap B)}{\mathbb{P}(B)} = \frac{\mathbb{P}(B)}{\mathbb{P}(B)} = 1$. 
+    Then, for any $A \in \mathcal{F}$, $\mathbb{P}(A \mid B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)} \geq 0$. 
+    Next, for any $A \in \mathcal{F}$, $\mathbb{P}(A^c \mid B) = \frac{\mathbb{P}(A^c \cap B)}{\mathbb{P}(B)} = \frac{\mathbb{P}((\Omega - A) \cap B)}{\mathbb{P}(B)} = \frac{\mathbb{P}(B) - \mathbb{P}(A \cap B)}{\mathbb{P}(B)} = 1 - \mathbb{P}(A \mid B)$. 
+    Finally, for all countable collections of disjoint sets $\{A_i\}_i$ with $A_i \in \mathcal{F}$ for all $i$, we have $\mathbb{P}\left(\bigcup_{i} A_{i} \mid B\right) = \frac{\mathbb{P}((\bigcup_{i} A_{i}) \cap B)}{\mathbb{P}(B)} = \frac{\mathbb{P}(\bigcup_{i} (A_{i} \cap B))}{\mathbb{P}(B)} = \sum_{i} \frac{\mathbb{P}(A_{i} \cap B)}{\mathbb{P}(B)} = \sum_{i} \mathbb{P}(A_i \mid B)$. \\
 \end{proof}
 
 \noindent\textbf{2.8}
