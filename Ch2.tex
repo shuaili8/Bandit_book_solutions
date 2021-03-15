@@ -338,26 +338,29 @@ $\Leftrightarrow I\{ w\in A_i\}$ mutual i
 
 \end{proof}
 
-\noindent\textbf{2.12} X integrable  $|X|$ integrable
-
+\noindent\textbf{2.12} Our goal in this exercise is to show that $X$ is integrable if and only if $|X|$ is integrable. This is broken down into multiple steps. The first issue is to deal with the measurability of $|X|$. While a direct calculation can also show this, it may be worthwhile to follow a more general path:
 \begin{enumerate}
-    \item[(a)]For any $A\in B(R)\Rightarrow $A is open,
-
-so,$f^{-1}(A)$is open,so $f^{-1}(A)\in B(R)$
-
-\item[(b)]X is known to be a random variable ,$f(x)=|x|$ continuous.
-
-r.v. X is $\textbf{F}/\textbf{B}(R)$-measurable
-
-$\Rightarrow |X|$ is $\textbf{B}(R)/\textbf{B}(R)$-measurable
-
-$\Rightarrow |X|$ is $\textbf{F}/\textbf{B}(R)$-measurable
-
-$\Rightarrow |X|$ is r.v.
-
-From (a)(b),X integrable $\Leftrightarrow$ $| X |$ integrable.
+    \item[(a)] Any $f : \RR \to \RR$ continuous function is Borel measurable.
+    \item[(b)] Conclude that for any random variable $X$, $|X|$ is also a random variable.
+    \item[(c)] Prove that for any random variable $X$, $X$ is integrable if and only if $|X|$ is integrable. (The statement makes sense since $|X|$ is a random variable whenever $X$ is).
 \end{enumerate}
 
+\begin{proof}
+\begin{enumerate}
+    \item[(a)] Let $\cG=\set{(a,b): a<b \text{ with } a,b\in \RR}$, then $\cB(\RR) = \sigma(\cG)$. According to Exercise 2.5(b), to show that $f$ is $\cB(\RR)/\cB(\RR)$-measurable, we just need to show $f$ is $\cB(\RR)/\cG$-measurable. Recall the definition of continuous function, $\forall x_0 \in \RR, \varepsilon>0, \exists \delta>0$ such that when $x \in (x_0-\delta,x_0+\delta)$, there is $f(x)\in (f(x_0)-\varepsilon,f(x_0)+\varepsilon)$. Thus $\forall (a,b)\in \cG, y_0 \in (a,b)$, $y \in (y_0 - \varepsilon, y_0+\varepsilon)$: $f^{-1}(y) \in (f^{-1}(y_0)-\delta,f^{-1}(y_0)+\delta)$, which means $f^{-1}(a,b) = \cup (a',b') \in \cB(\RR)$. We have then shown that $f$ is $\cB(\RR)/\cB(\RR)$-measurable.
+
+    \item[(b)] By definition, $X$ is a random variable means that $X$ is $\cF/\cB(\RR)$-measurable. According to Exercise 2.12 (a), $|X|$ is continous, thus it is $\cB(\RR)/\cB(\RR)$-measurable. Further apply the result of Exercise 2.1, let $f(X)=|X|$, then $f$ is $\cF/\cB(\RR)$-measurable, thus $|X|$ is also a random variable. 
+
+    \item[(c)] Define $X^{+}(\omega) = X(\omega) \bOne{X(\omega)>0}$, $X^{-}(\omega) = -X(\omega) \bOne{X(\omega)<0}$. If $X$ is integrable, $\int_{\Omega} X d\mathbb{P} = \int_{\Omega} X^{+} d\mathbb{P} - \int_{\Omega} X^{-} d\mathbb{P} $, which means $X^{+}$ and $X^{-}$ are integrable, and by definition $\int_{\Omega} |X| d\mathbb{P} = \int_{\Omega} X^{+} d\mathbb{P} + \int_{\Omega} X^{-} d\mathbb{P} $ is also integrable, vice versa.
+
+\end{enumerate}
+\end{proof}
+
+
+\noindent\textbf{2.13} (Infinite-valued integrals) Can we consistently extend the definition of integrals so that for non-negative random variables, the integral is always defined (it may be infinite)? Defend your view by either constructing an example (if you are arguing against) or by proving that your definition is consistent with the requirements we have for integrals.
+\begin{proof} 
+We can extend the definition by letting at least one of $\int_{\Omega} X^{+} d\mathbb{P}$ and $\int_{\Omega} X^{-} d\mathbb{P}$ be finite.
+\end{proof}
 
 
 \noindent\textbf{2.14}
