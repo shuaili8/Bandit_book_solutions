@@ -277,62 +277,38 @@ $\Rightarrow P(A \bigcap B)=P(A)P(B)$
 \begin{proof}
 
 \begin{enumerate}
-    \item[(a)]X:$\Omega\rightarrow x$
+    \item[(a)] To prove $X$ is independent of another random variable $Y$,
+    we can equivalently show that $\sigma(X)$ and $\sigma(Y)$ are independent.
+    And notice $\sigma(X) = \{\emptyset, \Omega\}$ for constant random element $X$.
+    Therefore, for all $A \in \sigma(X)$ and $B \in \sigma(Y)$ it trivially holds that $\mathbb{P}(A \cap B) = \mathbb{P}(A) \mathbb{P}(B)$.
 
-Because X, Y are independent equivalent to$\sigma(X)$,$\sigma(Y)$ are independent;
+    \item[(b)] Given that $\mathbb{P}(X = x) = 1$, we can infer the generated sigma-algebra $\sigma(X) = \{\emptyset, \Omega, G_1, G_2, \cdots\}$,
+    where $\mathbb{P}(G_1) = \mathbb{P}(G_2) = \cdots = 0$.
+    Therefore, for any $A \in \sigma(X)$, we have $\mathbb{P}(A) = 0$ or $\mathbb{P}(A) = 1$.
+    By the result of 2.10(b), $X$ is independent of any other random variable.
 
-For any A$\in \sigma(Y)$,
-$$P(\phi \bigcap A)=P(\phi)=0=P(\phi)P(A)$$
-$$P(\Omega \bigcap A)=P(A)=P(\Omega)P(A)$$
+    \item[(c)] Notice that $\sigma(X) = \{\emptyset, \Omega, A, A^c\}$, $\sigma(Y) = \{\emptyset, \Omega, B, B^c\}$.
+    \begin{enumerate}
+        \item[(i)] `only if': Given that $A$, $B$ are independent, we have $\mathbb{P}(A \cap B) = \mathbb{P}(A) \mathbb{P}(B)$.
+        Consequently $\mathbb{P}(A \cap B^c) = \mathbb{P}(A) - \mathbb{P}(A \cap B) = \mathbb{P}(A) - \mathbb{P}(A) \mathbb{P}(B) = \mathbb{P}(A) \mathbb{P}(B^c)$,
+        which implies that $A$ and $B^c$ are also independent.
+        Given that $\emptyset$ and $\Omega$ are trivially independent of any other event, we have $A$ and $B$ are independent for all $A \in \sigma(X)$ and $B \in \sigma(Y)$.
+        \item[(ii)] `if': If $X$ and $Y$ are independent, $A \in \sigma(X)$ and $B \in \sigma(Y)$ are trivially independent.
+    \end{enumerate}
 
-\item[(b)]We know that $P(X=x)=1$
-$$P(X=x|Y)=\frac{P((X=x)\bigcap Y)}{P(Y)}=1=P(X=x)$$
-$$P(X\neq x|Y)=1-P(X=x|Y)=0=P(X\neq x)$$
+    \item[(d)] Notice that $\sigma(X) = \{\emptyset, \Omega, A, A^c\}$, $\sigma(Y) = \{\emptyset, \Omega, B, B^c\}$.
+    \begin{enumerate}
+        \item[(i)] Pairwise independence: The result can be generalized as we go through all pair of events.
+        \item[(ii)] Mutual independence: `if' case is again trivial. For `only if' case, suppose that $(A_i)_i$ are mutually independent.
+        The mutual independence suggests that for any finite subset $K \subset \mathbb{N}$ we have$\mathbb{P}\left(\bigcap_{i \in K} A_{i}\right)=\prod_{i \in K} \mathbb{P}\left(A_{i}\right)$.
 
-\item[(c)]Notice the relation:$P(A)=P(X(A)=1)$
+        Similar to the previous part, for any disjoint finite sets $J, K$ we have
+        $$\mathbb{P}\left(\bigcap_{i \in K} A_{i} \cap \bigcap_{i \in J} A_{i}^{c}\right)=\prod_{i \in K} \mathbb{P}\left(A_{i}\right) \prod_{i \in J} \mathbb{P}\left(A_{i}^{c}\right).$$
 
-$P(B)=P(X(B)=1)$
-
-$P(A\bigcap B)=P(X(A\bigcap B)=1)$
-
-The first two formulas follow the definition. Let's prove the third equation:
-
-$P(X(A\bigcap B)=P(X(A)+X(B)-X(A\bigcup B) = 1)$
-
-Let's discuss$X(A),X(B),X(A\bigcup B)$:
-
-\begin{tabular}{|c|c|c|c|}
-  \hline
-  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
-  X(A) & X(B) & X(A$\bigcup$ B) & $X(A)+X(B)-X(A\bigcup B)$ \\
-  1 & 1 & 1 & 1 \\
-  1 & 0 & 1 & 0 \\
-  0 & 1 & 1 & 0 \\
-  0 & 0 & 0 & 0 \\
-  \hline
-\end{tabular}
-
-We can see that,$P(X(A\bigcap B)=P(X(A)+X(B)-X(A\bigcup B) = 1)$, this is only one case of the first row of the table.
-
-that is$P(X(A\bigcap B)=1)=P(X(A)=1,X(B)=1)=P(A\bigcap B)$
-
-that is$P(X(A\bigcap B)=1)=P(A\bigcap B)$
-
-So,$P(A\bigcap B)=P(A)P(B)$ is equivalent to $P(X(A\bigcap B)=1)=P(X(A)=1)P(X(B)=1)$
-
-\item[(d)]$A_i$  pairwise i $\Leftrightarrow$ $I\{ A_i \}$  pairwise i
-
-mutual i $\Leftrightarrow P(\bigcap_i A_i) = \prod_i P(A_i)$
-
-$\Leftrightarrow P(\bigcap_{i\in K^I}A_i \bigcap \bigcap_{i\in K^I}A_i^c)$
-
-$=\prod_{i\in K^I} P(A_i)\prod_{i\in K^I} P(A_i^c)$
-
-$\Leftrightarrow \{\phi,\Omega,A_i,A_i^c\}$ mutual independent
-
-$\Leftrightarrow  \sigma(I\{ w\in A_i\})$mutual i
-
-$\Leftrightarrow I\{ w\in A_i\}$ mutual i
+        This leads to the conclusion that for any finite set $K \subset \mathbb{N}$ and $\left(V_{i}\right)_{i \in K}$ with $V_{i} \in \sigma\left(X_{i}\right)=\left\{\Omega, \emptyset, A_{i}, A_{i}^{c}\right\}$,
+        we have $$\mathbb{P}\left(\bigcap_{i \in K} V_{i}\right)=\prod_{i \in K} \mathbb{P}\left(V_{i}\right),$$
+        which implies that $(X_i)_i$ are mutually independent.
+    \end{enumerate}
 
 \end{enumerate}
 
