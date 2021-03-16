@@ -338,8 +338,31 @@ $\Rightarrow P(A \bigcap B)=P(A)P(B)$
 We can extend the definition by letting at least one of $\int_{\Omega} X^{+} d\mathbb{P}$ and $\int_{\Omega} X^{-} d\mathbb{P}$ be finite.
 \end{proof}
 
+\noindent\textbf{2.14} Prove Proposition 2.6 (Let $(X_i)_i$ be a (possibly infinite) sequence of random variables on the same probability space and assume that $\mathbb{E}[X_i]$ exists for all $i$ and furthermore that $X = \sum_i X_i$ and $\mathbb{E}[X]$ also exists. Then $\mathbb{E}[X] = \sum_i\mathbb{E}[X_i]$) 
+\begin{proof}
+    We only consider the infinite condition, as when the sum is finite, we can use the property of integration to draw the conclusion. 
+    We should add a condition first, which is 
+    \begin{equation}
+        \label{condition}
+        \sum_i E|X_i|\leq \infty
+    \end{equation}
+    First, we need to prove 
+    \begin{equation}
+        \label{condition2}
+        \mathbb{E} [\sum_i |X_i|] = \sum_i\mathbb{E}[|X_i|]
+    \end{equation}
+    Consider $Y_n = \sum_{i = 1}^n|X_i|$. As ${Y_n}_{n=1}^\infty$ is an ascent sequence and $Y_n\ \forall n$ is integrable. According to the monotone convergence theorem, we have 
+    \begin{equation}
+        \mathbb{E}[\lim_{n\to \infty} Y_n] = \lim_{n\to \infty} \mathbb{E}[Y_n] 
+    \end{equation}
+    which is equivalent to (\ref{condition2}).
 
-\noindent\textbf{2.14}
+    Then we consider $Z_n = \sum_{i=1}^n X_i$, as $|Z_n|\leq \sum_{i=1}^n |X_i|\leq \sum_{i = 1}^\infty |X_i|$. According to (\ref{condition}), $\sum_{i = 1}^\infty |X_i|$ is integrable. Then, using dominated convergence theorem, we have 
+    \begin{equation}
+        \mathbb{E}[\lim_{n\to \infty} Z_n] = \lim_{n\to \infty} \mathbb{E}[Z_n] \ \Longleftrightarrow\ \mathbb{E}[X] = \sum_i\mathbb{E}[X_i]
+    \end{equation}
+\end{proof}
+\iffalse
 \begin{enumerate}
 \item[(a)] Assume $\forall i, X_i$ is simple function.
     \begin{align}
@@ -367,6 +390,7 @@ We can extend the definition by letting at least one of $\int_{\Omega} X^{+} d\m
         &=\sum^n_{i=1}\mathbb{E}[X_i]\notag
     \end{align}
 \end{enumerate}
+\fi
 
 \noindent\textbf{2.15}
 \begin{enumerate}
