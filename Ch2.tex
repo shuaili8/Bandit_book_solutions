@@ -296,7 +296,7 @@ $\Rightarrow P(A \bigcap B)=P(A)P(B)$
         \item[(ii)] `if': If $X$ and $Y$ are independent, $A \in \sigma(X)$ and $B \in \sigma(Y)$ are trivially independent.
     \end{enumerate}
 
-    \item[(d)] Notice that $\sigma(X) = \{\emptyset, \Omega, A, A^c\}$, $\sigma(Y) = \{\emptyset, \Omega, B, B^c\}$.
+    \item[(d)] Notice that $\sigma(X_i) = \{\emptyset, \Omega, A_i, A_i^c\}$.
     \begin{enumerate}
         \item[(i)] Pairwise independence: The result can be generalized as we go through all pair of events.
         \item[(ii)] Mutual independence: `if' case is again trivial. For `only if' case, suppose that $(A_i)_i$ are mutually independent.
@@ -344,14 +344,14 @@ We can extend the definition by letting at least one of $\int_{\Omega} X^{+} d\m
     We should add a condition first, which is 
     \begin{equation}
         \label{condition}
-        \sum_i E|X_i|\leq \infty
+        \sum_i E|X_i|< \infty
     \end{equation}
     First, we need to prove 
     \begin{equation}
         \label{condition2}
         \mathbb{E} [\sum_i |X_i|] = \sum_i\mathbb{E}[|X_i|]
     \end{equation}
-    Consider $Y_n = \sum_{i = 1}^n|X_i|$. As ${Y_n}_{n=1}^\infty$ is an ascent sequence and $Y_n\ \forall n$ is integrable. According to the monotone convergence theorem, we have 
+    Consider $Y_n = \sum_{i = 1}^n|X_i|$. As $\{Y_n\}_{n=1}^\infty$ is an ascent sequence and $Y_n\ \forall n$ is integrable. According to the monotone convergence theorem, we have 
     \begin{equation}
         \mathbb{E}[\lim_{n\to \infty} Y_n] = \lim_{n\to \infty} \mathbb{E}[Y_n] 
     \end{equation}
