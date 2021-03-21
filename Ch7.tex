@@ -1,0 +1,75 @@
+%!TEX root =  main.tex
+\chapter*{Chapter 7}
+\label{sec:7}
+
+\noindent\textbf{7.1}
+
+    \begin{enumerate}[(a)]
+    \item
+    \begin{align*}
+    P &=(\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(1/\delta)}{T}})\\
+    &=\sum^{\infty}_{n=1}E[\{T=n\}\|\{\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(1/\delta)}{T}}\}]\\
+    &=\sum^{\infty}_{n=1}E[\|\{T=n\}\delta]\\
+    &=\delta\sum^{\infty}_{n=1}P(T=n)\\
+    &=\delta
+    \end{align*}
+
+    \item
+    $\hat{\mu}-\mu=\frac{1}{n}\sum^{\infty}_{t=1}(X_t-\mu)\ge\sqrt{\dfrac{2-\log(1/\delta)}{T}}$
+
+    T=min(n)
+
+    $E_t=\|\{T=t\}$ is $\mathcal{F}_t$-measurable
+
+    \item
+    \begin{align*}
+    P(\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(T(T+1)/\delta}{T}}) &\le P(\bigcup^{\infty}_{n=1}\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(n(n+1)/\delta}{n}})\\
+    &\le \sum^{\infty}_{n=1}P(\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(n(n+1)/\delta}{n}})\\
+    &\le \sum^{\infty}_{n=1} \dfrac{\delta}{n(n+1)}\\
+    &\le \delta
+    \end{align*}
+
+
+
+\noindent\textbf{7.3}
+    $E[Ti(n)]\le\dfrac{-8ln\delta}{\bigtriangleup_i}+\delta n(n=1)$
+
+
+    $R_n=E[\overline{R_n}]\le\sum^{k}_{i=2}\dfrac{-8ln\delta}{\bigtriangleup_i}+\bigtriangleup_i\delta n(n+1)$
+
+
+    Choosing
+    $\delta=\dfrac{\sum^{k}_{i=2}\frac{8}{\bigtriangleup_i}}{\sum^{k}_{i=2}\bigtriangleup_i   n(n+1)}$
+    \begin{align*}
+    R_n &\le\sum^{k}_{i=2}\frac{8}{\bigtriangleup_i}+\sum^{k}_{i=2}\frac{8}{\bigtriangleup_i}ln\frac{\sum^{k}_{i=2}\bigtriangleup_i n(n+1)}{\sum^{k}_{i=2}\frac{8}{\bigtriangleup_i}}\\
+    &:=h(n,k)
+    \end{align*}
+    $g(n,k,\delta)=\dfrac{\sqrt{h(n,k)}}{\delta};f(n,k)=\sqrt{h(n,k)}$
+    \begin{align*}
+    P(\overline{R_n}\ge g(n,k,\delta)) &\le\dfrac{R_n}{g(n,k,\delta)}\\
+    &\le\dfrac{h(n,k)}{g(n,k,\delta)}\\
+    &=\dfrac{h(n,k)}{\sqrt{h(n,k)}}\delta\\
+    &=\sqrt{h(n,k)}\delta\\
+    &=f(n,k)\delta
+    \end{align*}
+
+
+\noindent\textbf{7.6}
+    \item
+    \begin{align*}
+    \hat{\delta}^2 &=\frac{1}{n}\sum^{n}_{t=1}(\hat{\mu}-X_t)^2\\
+    &=\frac{1}{n}\sum^{n}_{t=1}[(\hat{\mu}-\mu)+(\mu-X_t)]^2\\
+    &=\frac{1}{n}\sum^{n}_{t=1}(\hat{\mu}-\mu)^2+\frac{1}{n}\sum^{n}_{t=1}(\mu-X-t)^2+\frac{2}{n}\sum^{n}_{t=1}(\hat{\mu}-\mu)(\mu-X_t)
+    \end{align*}
+    $\because\hat{\mu}-\mu=\frac{1}{n}\sum^{n}_{t=1}X_t-\mu=\frac{1}{n}\sum^{n}_{t=1}(X_t-\mu)$
+    \begin{align*}
+    \therefore\frac{2}{n}\sum^{n}_{t=1}(\hat{\mu}-\mu)(\mu-X-t) &=\frac{2}{n}\sum^{n}_{t=1}[\frac{1}{n}\sum^{n}_{t=1}(X_t-\mu)](\mu-X_t)\\
+    &=-2[\frac{1}{n}\sum^{n}_{t=1}(X_t-\mu)]^2\\
+    &=-2[\hat{\mu}-\mu]^2
+    \end{align*}
+    \begin{align*}
+    \hat{\delta}^2 &=(\hat{\mu}-\mu)^2+\frac{1}{n}\sum^{n}_{t=1}(\mu-X_t)^2-2(\hat{\mu}-\mu)^2\\
+    &=\frac{1}{n}\sum^{n}_{t=1}(\mu-X_t)^2-(\hat{\mu}-\mu)^2
+    \end{align*}
+    
+    

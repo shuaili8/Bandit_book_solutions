@@ -1,0 +1,23 @@
+%!TEX root =  main.tex
+\chapter*{Chapter 8}
+\label{sec:8}
+
+\noindent\textbf{8.1}
+
+    \begin{align*}
+    \sum^{n}_{s=1}exp(-\frac{s\varepsilon^2}{2}) &=exp(-\frac{\varepsilon^2}{2})+...+exp(-\frac{n\varepsilon^2}{2})\\
+    &=\dfrac{exp(-\frac{\varepsilon^2}{2})[exp(-\frac{n\varepsilon^2}{2})-1]}{exp(-\frac{\varepsilon^2}{2})-1}\\
+    &=\dfrac{exp(-\frac{\varepsilon^2}{2})[1-exp(-\frac{n\varepsilon^2}{2})]}{1-exp(-\frac{\varepsilon^2}{2})}\\
+    &\le\dfrac{exp(-\frac{\varepsilon^2}{2})}{1-exp(-\frac{\varepsilon^2}{2})}\\
+    &\le\frac{2}{\varepsilon^2}
+    \end{align*}
+    $\because f(t)=1+tlog^2(t)$
+    $\therefore \frac{1}{f(t)}=\frac{1}{1+tlog^2(t)}\le\frac{1}{tlog^2(t)}$
+    \begin{align*}
+    \sum^{n}_{t=1}\frac{1}{f(t)} &\le\sum^{20}_{t=1}+\int^{\infty}_{20}\frac{dt}{f(t)}\\
+    &\le\sum^{20}_{t=1}+\int^{\infty}_{20}\frac{dt}{tlog^(t)}\\
+    &=\sum^{20}_{t=1}+\frac{1}{log(20)}\\
+    &\le\frac{5}{2}
+    \end{align*}
+    \end{enumerate}
+
