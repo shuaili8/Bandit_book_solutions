@@ -392,82 +392,98 @@ We can extend the definition by letting at least one of $\int_{\Omega} X^{+} d\m
 \end{enumerate}
 \fi
 
-\noindent\textbf{2.15}
-\begin{enumerate}
-\item[(a)] Assume $ X$ is simple function.
-    \begin{align}
-        \mathbb{E}[cX]&=\mathbb{E}\left[{c\sum^{n}_{i=1}\alpha_i\mathbb{I}_{A_i}\{\omega\}}\right] \notag \\
-        &=\int_{\Omega}c\sum^n_{i=1}\alpha_i\mathbb{I}_{A_i}\{\omega \}d\mathbb{P}(\omega)\notag\\
-        &=c\int_{\Omega}\sum^n_{i=1}\alpha_i\mathbb{I}_{A_i}\{\omega \}d\mathbb{P}(\omega)\notag\\
-        &=c\mathbb{E}[X]\notag
-    \end{align}
-\item[(b)] Assume $X$ is non-negative random variable.
-    \begin{align}
-        \mathbb{E}[cX]&=\sup\left\{\int_{\Omega}hd\mathbb{P}: h\ \text{is simple and}\ 0\leq h\leq cX \right\}\notag\\
-        &=c\sup\left\{\int_{\Omega}h^{\prime}d\mathbb{P}: h^{\prime}\ \text{is simple and}\ 0\leq h^{\prime}\leq X \right\}\notag\\
-        &=c\mathbb{E}[X]\notag
-    \end{align}
-\item[(c)] Assume $X$ is arbitrary random variable.
-\begin{enumerate}
-    \item[(i)] $c\ge 0$
-        \begin{align}
-            \mathbb{E}[cX]&=\mathbb{E}[(cX)^+]-\mathbb{E}[(cX)^-]\notag\\
-            &=\mathbb{E}[c(X)^+]-\mathbb{E}[c(X)^-]\notag\\
-            &=c\mathbb{E}[(X)^+]-c\mathbb{E}[(X)^-]\notag\\
-            &=c\mathbb{E}[X]\notag
-        \end{align}
-    \item[(ii)] $c<0 $ \\ By definition, we have
-        \begin{align}
-            (cX)^+&=cX\mathbb{I}\{cX>0 \}\notag\\
-            &=cX\mathbb{I}\{x<0 \}\ (\text{since c<0})\notag\\
-            &=(-c)(-X)\mathbb{I}\{X<0 \}\notag\\
-            &=(-c)(X)^-\notag
-        \end{align}
-        Along the similar line, we have
-        \begin{align}
-            (cX)^-&=-cX\mathbb{I}\{cX<0 \}\notag\\
-            &=-cX\mathbb{I}\{X>0 \}\notag\\
-            &=-c(X)^+\notag
-        \end{align}
-        Now we can see that
-        \begin{align}
-            \mathbb{E}[cX]&=\mathbb{E}[(cX)^+]-\mathbb{E}[(cX)^-]\notag\\
-            &=\mathbb{E}[(-c)(X)^-]-\mathbb{E}[-c(X)^+]\notag\\
-            &=-c\mathbb{E}[(X)^-]+c\mathbb{E}[(X)^+]\notag\\
-            &=c\mathbb{E}[X]\notag
-        \end{align}
-\end{enumerate}
-\end{enumerate}
+\noindent\textbf{2.15} Prove that if $c \in \mathbb{R}$ is a constant, then $\mathbb{E}[c X]=c \mathbb{E}[X]$ (as long as $X$ is integrable).
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] Firstly, assume $X$ is a simple function and $X(\omega) = \sum_{i=1}^n \alpha_i \mathbb{I}\{\omega \in A_i\}$.
+        Then, we have $cX(\omega) = \sum_{i=1}^n c \alpha_i \mathbb{I}\{\omega \in A_i\}$ and
+        \begin{equation*}
+            \begin{aligned}
+                \mathbb{E}[cX]
+                &= \sum_{i=1}^n c \alpha_i \mathbb{P}(A_i)\\
+                &= c \sum_{i=1}^n \alpha_i \mathbb{P}(A_i)\\
+                &= c \mathbb{E}[X].
+            \end{aligned}
+        \end{equation*}
+        \item[(b)] Assume $X \geq 0$ and $c \geq 0$. In this case, 
+        \begin{equation*}
+            \begin{aligned}
+                \mathbb{E}[cX]
+                &= \sup \{\mathbb{E}[h]: h \text{ is simple and } h \leq cX\}\\
+                &= \sup \{\mathbb{E}[ch]: h \text{ is simple and } h \leq X\}\\
+                &= \sup \{c\mathbb{E}[h]: h \text{ is simple and } h \leq X\}\\
+                &= c\sup \{\mathbb{E}[h]: h \text{ is simple and } h \leq X\}\\
+                &= c \mathbb{E}[X].
+            \end{aligned}
+        \end{equation*}
 
-\noindent\textbf{2.16}
-\begin{enumerate}
-\item[(a)] Assume $X=\sum^n_{i=1}\alpha_i\mathbb{I}_{A_i}\{\omega \},Y=\sum^m_{j=1}\beta_j\mathbb{I}_{B_j}\{\omega \}$ are simple functions.
-    \begin{align}
-        \mathbb{E}[XY]&=\mathbb{E}[\sum^n_{i=1}\sum^m_{j=1}\alpha_i\beta_j\mathbb{I}_{A_i}\{\omega \}\mathbb{I}_{B_j}\{\omega \}]\notag\\
-        &=\int_{\Omega}\sum^n_{i=1}\sum^m_{j=1}\alpha_i\beta_j\mathbb{I}_{A_i}\{\omega \}\mathbb{I}_{B_j}\{\omega \}d\mathbb{P}(\omega)\notag\\
-        &=\sum^n_{i=1}\sum^m_{j=1}\alpha_i\beta_j\mathbb{P}(A_i\bigcap B_j)\notag\\
-        &=\sum^n_{i=1}\sum^m_{j=1}\alpha_i\beta_j\mathbb{P}(A_i)\mathbb{P}(B_j)\ (\text{by the definition of independence})\notag\\
-        &=\left(\sum^n_{i=1}\alpha_i\mathbb{P}(A_i) \right)\left(\sum^m_{j=1}\beta_j\mathbb{P}(B_i)  \right)\notag\\
-        &=\mathbb{E}[X]\mathbb{E}[Y]\notag
-    \end{align}
-\item[(b)] Assume $X,Y$ are non-negative random variables.
-    \begin{align}
-        \mathbb{E}[XY]&=\sup\left\{\mathbb{E}[h]:h\ \text{h is simple and}\ 0\leq h\leq XY\right\}\notag\\
-        &=\sup\left\{\mathbb{E}[h_1h_2]:h_1,h_2\ \text{are simple and}\ 0\leq h_1\leq X,0\leq h_2\leq Y \right\}\notag\\
-        &=\sup\left\{\mathbb{E}[h_1]\mathbb{E}[h_2]:h_1,h_2\ \text{are simple and}\ 0\leq h_1\leq X,0\leq h_2\leq Y \right\}\notag\\
-        &=\sup\left\{\mathbb{E}[h_1]:h_1\ \text{is simple and}\ 0\leq h_1\leq X \right\}\cdot
-        \sup\left\{\mathbb{E}[h_2]:h_2\ \text{is simple and}\ 0\leq h_2\leq Y \right\}\notag\\
-        &=\mathbb{E}[X]\mathbb{E}[Y]\notag
-    \end{align}
-\item[(c)] Assume $X,Y$ are arbitrary random variables.
-    \begin{align}
-        \mathbb{E}[XY]&=\mathbb{E}[(X^+-X^-)(Y^+-Y^-)]\notag\\
-        &=\mathbb{E}[X^+Y^+-X^+Y^--X^-Y^++X^-Y^-]\notag\\
-        &=\mathbb{E}[X^+]\mathbb{E}[Y^+]-\mathbb{E}[X^+]\mathbb{E}[Y^-]-\mathbb{E}[X^-]\mathbb{E}[Y^+]+\mathbb{E}[X^-]\mathbb{E}[Y^-]\notag\\
-        &=(\mathbb{E}[X^+]-\mathbb{E}[X^-])(\mathbb{E}[Y^+]-\mathbb{E}[Y^-])\notag\\
-        &=\mathbb{E}[X]\mathbb{E}[Y]\notag
-    \end{align}
-\end{enumerate}
+        \item[(c)] Assume $X$ is arbitrary and $c \geq 0$.
+        By factorizing $X = X^+ + X^-$ we can deduce that 
+        \begin{equation*}
+            \begin{aligned}
+                \mathbb{E}[cX]
+                &= \mathbb{E}[cX^+] - \mathbb{E}[cX^-]\\
+                &= c\mathbb{E}[X^+] - c\mathbb{E}[X^-]\\
+                &= c\mathbb{E}[X^+ - X^-]\\
+                &= c\mathbb{E}[X].
+            \end{aligned}
+        \end{equation*}
+        
+        \item[(d)] For $c < 0$ we may repeat the above procedures by only noticing that $(cX)^+ = -cX^-$ and $(cX)^- = -cX^+$.
+    \end{enumerate}
+\end{proof}
+
+\noindent\textbf{2.16} Prove Proposition 2.7.
+
+\noindent\textsc{Hint}\quad Follow the `inductive' definition of Lebesgue integrals, starting with simple functions, then non-negative functions and finally arbitrary independent random variables.
+
+\begin{proof}
+    If $X$ and $Y$ are independent, $\mathbb{P}(A \cap B) = \mathbb{P}(A) \mathbb{P}(B)$ for any $A \in \sigma(X)$ and $B \in \sigma(Y)$.
+    \begin{enumerate}
+        \item[(a)] Assume $X$ and $Y$ are both simple.
+        Furthermore, we can construct $X(\omega) = \sum_{i=1}^m \alpha_i \mathbb{I}\{\omega \in A_i\}$ and $Y(\omega) = \sum_{j=1}^n \beta_j \mathbb{I}\{\omega \in B_j\}$ where $(A_i)_i$ and $(B_j)_j$ are disjoint.\
+        In such a case, we have
+        \begin{equation*}
+            \begin{aligned}
+                \mathbb{E}[XY]
+                &= \mathbb{E}[\sum_{i=1}^m \alpha_i \mathbb{I}\{A_i\} \sum_{j=1}^n \beta_j \mathbb{I}\{B_j\}]\\
+                &= \mathbb{E}[\sum_{i=1}^m \sum_{j=1}^n \alpha_i \beta_j \mathbb{I}\{A_i\} \mathbb{I}\{B_j\}]\\
+                &= \mathbb{E}[\sum_{i=1}^m \sum_{j=1}^n \alpha_i \beta_j \mathbb{I}\{A_i \cap B_j\}]\\
+                &= \sum_{i=1}^m \sum_{j=1}^n \alpha_i \beta_j \mathbb{P}\{A_i \cap B_j\}\\
+                &= \sum_{i=1}^m \sum_{j=1}^n \alpha_i \beta_j \mathbb{P}\{A_i\} \mathbb{P}\{B_j\}\\
+                &= \sum_{i=1}^m \alpha_i \mathbb{P}\{A_i\} \sum_{j=1}^n \beta_j \mathbb{P}\{B_j\}\\
+                &= \mathbb{E}[X] \mathbb{E}[Y],
+            \end{aligned}
+        \end{equation*}
+        where the fifth equation follows from $A_i \in \sigma(X)$ and $B_j \in \sigma(Y)$, provided that $(A_i)_i$ and $(B_j)_j$ are disjoint respectively.
+        \item[(b)] Assume $X$ and $Y$ are non-negative.
+        Then, we can construct two monotone increasing sequences of simple functions $(g_i)_i$ and $(h_i)_i$ for $X$ and $Y$ respectively, where $\lim_{i \rightarrow \infty} g_i = X$ and $\lim_{i \rightarrow \infty} h_i = Y$ and $\mathbb{E}[g_i h_i] = \mathbb{E}[g_i] \mathbb{E}[h_i]$ following the same procedure in (a).
+        Such sequences of simple functions can be constructed by making piecewise functions finer.
+        Finally, by applying the monotone convergence theorem we have
+        \begin{equation*}
+            \begin{aligned}
+                \mathbb{E}[XY]
+                &= \mathbb{E}[\lim_{i \rightarrow \infty} g_i h_i]\\
+                &= \lim_{i \rightarrow \infty} \mathbb{E}[g_i h_i]\\
+                &= \lim_{i \rightarrow \infty} \mathbb{E}[g_i] \mathbb{E}[h_i]\\
+                &= \mathbb{E}[\lim_{i \rightarrow \infty} g_i] \mathbb{E}[\lim_{i \rightarrow \infty} h_i]\\
+                &= \mathbb{E}[X] \mathbb{E}[Y].
+            \end{aligned}
+        \end{equation*}
+
+        \item[(c)] For arbitrary $X$ and $Y$, we separate them into $X = X^+ - X^-$ and $Y = Y^+ - Y^-$, deducing that
+        \begin{equation*}
+            \begin{aligned}
+                \mathbb{E}[XY]
+                &= \mathbb{E}[(X^+ - X^-)(Y^+ - Y^-)]\\
+                &= \mathbb{E}[X^+ Y^+] + \mathbb{E}[X^+ Y^-] + \mathbb{E}[X^- Y^+] + \mathbb{E}[X^- Y^-]\\
+                &= \mathbb{E}[X^+]\mathbb{E}[Y^+] + \mathbb{E}[X^+]\mathbb{E}[Y^-] + \mathbb{E}[X^-]\mathbb{E}[Y^+] + \mathbb{E}[X^-]\mathbb{E}[Y^-]\\
+                &= \mathbb{E}[X^+ - X^-] \mathbb{E}[Y^+ - Y^-]\\
+                &= \mathbb{E}[X] \mathbb{E}[Y].
+            \end{aligned}
+        \end{equation*} 
+    \end{enumerate}
+\end{proof}
 
 \noindent\textbf{2.17}
 Before proving Ex.2.17, we need to make minor changes to the definition of conditional expectation and give a small lemma.
