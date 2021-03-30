@@ -41,75 +41,70 @@
     \end{enumerate}
 
 \noindent\textbf{3.2}
-\begin{enumerate}[(a)]
-    \item $S_t=\sum^t_{s=1}X_s2^{s-1}$
-    
-    $X_t$ is a F-adapted martingale.
-    
-    (1)$\mathbb{E}[X_t|\mathcal{F}_{t-1}]=X_{t-1}$.
-    
-    (2)$X_t$ is integrable $\Rightarrow S_t$ is integrable. 
-    
-    \begin{align}
-    \mathbb{E}[S_t|\mathcal{F}_{t-1}] &=\mathbb{E}[S_{t-1}+X_t2^{t-1}|\mathcal{F}_{t-1}]\notag\\
-    &=S_{t-1}+\mathbb{E}[X_t2^{t-1}|\mathcal{F}_{t-1}]\notag\\
-    &=S_{t-1}+2^t\times(1)\times\frac{1}{2}+2^t\times(-1)\times\frac{1}{2}\notag\\
-    &=S_{t-1}\notag
-    \end{align}
-    
-    $\Rightarrow (S_t)^\infty_{t=1}$
-    
-    \item t=1 , if $S_t\not=1 \Rightarrow X_1=-1 , S_t$=-1
-    
-    t=2 , if $S_t\not=1 \Rightarrow X_1=-1 , S_t$=-3
-    
-    t=3 , if $S_t\not=1 \Rightarrow X_1=-1 , S_t$=-7
-    
-    ...
-    
-    If avoid $S_t$=1 , the $X_s$ sequence must be $-1$.
-    
-    $\tau=\min\{t:S_t=1\}=\min\{t:X_T=1\}$
-    
-    $\Rightarrow \mathbb{P}(\tau<n) = 1-\mathbb{P}(\tau\ge n) = 1-\frac{1}{2^n}$
-    
-    $\Rightarrow \mathbb{P}(\tau < \infty) = 1-\lim\limits_{n \to \infty} \mathbb{P}(\tau\ge n) = 1-\frac{1}{2^n} = 1-\lim\limits_{n \to \infty}\frac{1}{2^n}$ 
-    
-    \item If t=$\tau$ , then $S_t$=1 , so $S_\tau\equiv1$
-    
-    $\Rightarrow \mathbb{E}[S_\tau]=1$
-    
-    \item Doob's(a)can be proved by 3.2(b)
-    
-    $\tau=1 \Rightarrow X_1=1 \Rightarrow \mathbb{P}(\tau=1)=\frac{1}{2}$
-    
-    $\tau=2 \Rightarrow X_1=-1 X_2=1 \Rightarrow \mathbb{P}(\tau=1)=\frac{1}{4}$
-    
-    $\tau=3 \Rightarrow X_1=-1 X_2=-1 X_3=1 \Rightarrow \mathbb{P}(\tau=1)=\frac{1}{8}$
-     	
-    ...
-    
-    $\mathbb{P}(\tau<\infty)=\mathbb{P}(\tau=1)+\mathbb{P}(\tau=2)+\mathbb{P}(\tau=3)+...
-    =\frac{1}{2}+\frac{1}{4}+\frac{1}{8}+...=1$
-    
-    because of $n\not=\infty,\mathbb{P}(\tau=n)=\frac{1}{n^2}\not=0$.\\
-    Doob's(b)(c)can also be proved by 3.2(b)
-    
-    t=1 , if $S_t\not=1 \Rightarrow X_1=-1 , S_t=-1$
-    
-    t=2 , if $S_t\not=1 \Rightarrow X_1=-1 , S_t=-3$
-    
-    t=3 , if $S_t\not=1 \Rightarrow X_1=-1 , S_t=-7$
-    
-    ...
-    
-    It can be concluded that |$S_t$| and |$S_{t-1}$| can not be bounded, so $\mathbb{E}[|X_{t+1}|\mathcal{F}]\ \text{and}\ |4X_{t\wedge\tau}|$ can not be bounded neither.
-    
+(\textsc{Martingales and optional stopping}) Let $\left(X_{t}\right)_{t=1}^{\infty}$ be an infinite sequence of independent
+Rademacher random variables and $S_{t}=\sum_{s=1}^{t} X_{s} 2^{s-1}$.
+\begin{enumerate}
+    \item[(a)] Show that $\left(S_{t}\right)_{t=0}^{\infty}$ is a martingale.
+    \item[(b)] Let $\tau=\min \left\{t: S_{t}=1\right\}$ and show that $\mathbb{P}(\tau<\infty)=1$. 
+    \item[(c)] What is $\mathbb{E}\left[S_{\tau}\right]$?
+    \item[(d)] Explain why this does not contradict Doob's optional stopping theorem. 
+\end{enumerate}
+
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] First of all, we can observe that $S_t$ is $\mathcal{F}_{t}$-measurable given that it is actually a function of random variables $X_1, \cdots, X_t$ on $(\Omega, \mathcal{F}, \mathbb{P})$.
+        
+        Next, we have
+        \begin{equation*}
+            \begin{aligned}
+                \mathbb{E}\left[S_{t} \mid \mathcal{F}_{t-1}\right] 
+                &= \mathbb{E}\left[S_{t-1} + X_t 2^{t-1}\mid \mathcal{F}_{t-1}\right]\\
+                &= \mathbb{E}\left[S_{t-1} \mid \mathcal{F}_{t-1}\right] + \mathbb{E}\left[X_t 2^{t-1} \mid \mathcal{F}_{t-1}\right]\\
+                &= S_{t-1} + \mathbb{E}\left[X_t 2^{t-1} \mid \mathcal{F}_{t-1}\right]\\
+                &= S_{t-1} + \frac{1}{2} 2^{t-1} + \frac{1}{2} (-2^{t-1})\\
+                &= S_{t-1}.
+            \end{aligned}
+        \end{equation*}
+
+        Finally, as a weighted sum of finite random varialbes, $S_t$ is surely integrable.
+
+        \item[(b)] Notice that 
+        \begin{equation*}
+            \begin{aligned}
+                \mathbb{P}(\tau = n) 
+                &= \mathbb{P}(\tau \neq 1) \mathbb{P}(\tau \neq 2 \mid \tau \neq 1) \cdots \mathbb{P}(\tau = n \mid \tau \notin \{1, \cdots n - 1\})\\
+                &= \mathbb{P}(X_1 = -1) \mathbb{P}(X_2 = -1 \mid X_1 = -1) \cdots \mathbb{P}(X_n = 1 \mid X_1 = \cdots = X_{n-1} = -1)\\
+                &= \frac{1}{2^n},
+            \end{aligned}
+        \end{equation*}
+        which implies $\mathbb{P}(\tau = \infty) = \lim_{n \rightarrow \infty} \mathbb{P}(\tau = n) = 0$ and hence $\mathbb{P}(\tau < \infty) = 1 - \mathbb{P}(\tau = \infty) = 1$.
+
+        \item[(c)] It is obvious that $\mathbb{E}(S_\tau) = 1$ according to our stopping rule.
+        \item[(d)] The result of (c) does not contradict Doob's optional stopping theorem because the conditions are not satisfied.
+        Firstly, $\mathbb{P}(\tau > n) = \frac{1}{2^n} > 0$ for any $n \in \mathbb{N}$, which breaks the first condition.
+        Next, $|S_{t+1} - S_{t}| = 2^t$ and $|S_{t \wedge \tau}| = |\sum_{s=1}^{t \wedge \tau} X_s 2^{s-1}$ can neither not be bounded, which breaks the second and third condition.
     \end{enumerate}
+\end{proof}
 
 \noindent\textbf{3.3}
+(\textsc{Martingales and optional stopping (ii)}) Give an example of a martingale $\left(S_{n}\right)_{n=0}^{\infty}$ and
+stopping time $\tau$ such that $$\lim _{n \rightarrow \infty} \mathbb{E}\left[S_{\tau \wedge n}\right] \neq \mathbb{E}\left[S_{\tau}\right].$$
+\begin{proof}
+    Notice that $(S_{\tau \wedge n})_n^\infty$ is also a martingale (which is usually called stopped martingale).
+    This can be shown by formulating $S_{\tau \wedge n} = S_{\tau \wedge (n-1)} + \mathbb{I}\left\{\tau \leq n\right\} (S_n - S_{n-1})$ and checking
+    \begin{equation*}
+        \begin{aligned}
+            \mathbb{E}[S_{\tau \wedge n} | \mathcal{F}_{n-1}]
+            &= \mathbb{E}[S_{\tau \wedge (n-1)} + \mathbb{I}\left\{\tau \leq n\right\} (S_n - S_{n-1}) | \mathcal{F}_{n-1}]\\
+            &= \mathbb{E}[S_{\tau \wedge (n-1)} | \mathcal{F}_{n-1}] + \mathbb{E}[\mathbb{I}\left\{\tau \leq n\right\} (S_n - S_{n-1}) | \mathcal{F}_{n-1}]\\
+            &= S_{\tau \wedge (n-1)} + \mathbb{I}\left\{\tau \leq n\right\}(S_{n-1} - S_{n-1})\\
+            &= S_{\tau \wedge (n-1)}.
+        \end{aligned}
+    \end{equation*}
 
-
+    Therefore, we have $\mathbb{E}(S_{\tau \wedge n}) = \mathbb{E}(S_{\tau \wedge 0}) = \mathbb{E}(S_{0})$.
+    Now it suffices to give the same example as in 3.2 that $\lim _{n \rightarrow \infty} \mathbb{E}\left[S_{\tau \wedge n}\right] = \mathbb{E}(S_{0}) \neq \mathbb{E}\left[S_{\tau}\right]$.
+\end{proof}
 
 
 \noindent\textbf{3.4} If $X_t\ge0$ is dropped, $\mathbb{E}[X_\tau|\{\tau\le n\}] \ge \mathbb{E}[\varepsilon|\{\tau\le n\}]$ not always true.
