@@ -528,7 +528,78 @@ Hence, we have
 \end{equation}
 where the second equality is given by Fubini–Tonell theorem.\\
 
-\noindent\textbf{2.20} We prove the following properties all by contradiction (for the sake of rigor).
+
+\noindent\textbf{2.20} Prove Theorem \ref{thm2.12}
+\begin{theorem}
+    \label{thm2.12}
+    Let $(\Omega,\mathcal{F},\mathbb{P})$ be a probability space, $\mathcal{G},\mathcal{G}_1,\mathcal{G}_2 \subset \mathcal{F}$ be sub-$\sigma$-algebras of $\mathcal{F}$ and $X,Y$ integrable random variables on $(\Omega,\mathcal{F},\mathbb{P})$. The following hold true:
+    \begin{enumerate}
+        \item[1] If $X \geq 0$, then $E[X|\mathcal{G}] \geq 0$ almost surely.
+        \item[2] $E[1|\mathcal{G}]=1$ almost surely. 
+        \item[3] $E[X+Y|\mathcal{G}] = E[X|\mathcal{G}]+E[Y|\mathcal{G}]$ almost surely. 
+        \item[4] $E[XY|\mathcal{G}] = YE[X|\mathcal{G}]$ almost surely if $E[XY]$ exists and $Y$ is $\mathcal{G}$-measurable.
+        \item[5] If $\mathcal{G}_1\subset\mathcal{G}_2$, then $E[X|\mathcal{G}_1] = E[E[X|\mathcal{G}_2]|\mathcal{G}_1]$
+        \item[6] If $\sigma(X)$ is independent of $\mathcal{G}_2$ given $\mathcal{G}_1$, then $E[X|\sigma(\mathcal{G}_1\bigcup \mathcal{G}_2)] = E[X|\mathcal{G}_1]$ almost surely. 
+        \item[7] If $\mathcal{G} = \{\emptyset,\Omega\}$ is the trival $\sigma$-algebra, then $E[X|\mathcal{G}] = E[X]$ almost surely.   
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item[1] If $P(E[X|\mathcal{G}] \geq 0) = p <1$, choose $H = \{\omega|E[X|\mathcal{G}](\omega) < 0\}\in \mathcal{G}$. Based on the definition of conditional expectation,
+        \begin{equation}
+            0\leq \int_H X dP = \int_H E[X|\mathcal{G}] dP <0
+        \end{equation} 
+        which causes contradiction. 
+        \item[2] For all $H \in \mathcal{G}$, 
+        \begin{equation}
+            P(H)=\int_H 1 dP = \int_H E[1|\mathcal{G}]dP
+        \end{equation} 
+        which means $E[1|\mathcal{G}] = 1$ a.s..
+        \item[3] Based on the linearity, for all $H \in \mathcal{G}$
+        \begin{equation}
+            \begin{aligned}
+                \int_H E[X+Y|\mathcal{G}] dP &= \int_H X+Y dP\\
+                & = \int_H X dP + \int_H Y dP\\
+                & = \int_H E[X|\mathcal{G}] dP + \int_H E[Y|\mathcal{G}] dP\\
+                & = \int_H E[X|\mathcal{G}] + E[Y|\mathcal{G}] dP
+            \end{aligned}
+        \end{equation} 
+        \item[4] When $Y$ is a simple function, $Y = \sum_{i=1}^n \alpha_i I\{A_i\}$($A_i \in \mathcal{G}$ since $Y$ is $\mathcal{G}$-measurable), for all $H \in \mathcal{G}$, 
+        \begin{equation}
+            \begin{aligned}
+                \int_H E[XY|\mathcal{G}] dP &= \int_H XY dP \\
+                & = \int_H \sum_{i=1}^n \alpha_i I\{A_i\} X dP \\
+                & = \sum_{i=1}^n \alpha_i \int_{H\bigcap A_i} X dP\\
+                & = \sum_{i=1}^n \alpha_i \int_{H\bigcap A_i} E[X|\mathcal{G}] dP\\
+                & = \int_H YE[X|\mathcal{G}] dP 
+            \end{aligned}
+        \end{equation} 
+        When $Y$ is a non-negative random variable, $Y = \sup S = \sup\{h\geq 0: h\text{ is simple and } h\leq Y\}$, let $X = X^+ - X^-$, where $X^+ = \max{0,X}$. For all $H \in \mathcal{G}$, 
+        \begin{equation}
+            \begin{aligned}
+                \int_H E[XY|\mathcal{G}] dP &= \int_H (X^+-X^-)Y dP \\
+                & = \int_H X^+Y dP - \int_H X^-Y dP\\
+                & = \sup_{h\in S} \int_H h X^+ dP -\sup_{h\in S} \int_H h X^- dP\ \text{(Dominated convergence Thm)}\\
+                & = \int_H YE[X|\mathcal{G}] dP
+            \end{aligned}
+        \end{equation}
+        When $Y$ is general random variable, $Y = Y^+ - Y^-$, using the linearity of integration, we can prove the statement. 
+        \item[5] For any $H \in \mathcal{G}_1\subset \mathcal{G}_2$, 
+        \begin{equation}
+            \int_H E[X|\mathcal{G}_1]dP = \int_H X dP = \int_H E[X|\mathcal{G}_2] dP = \int_H E[E[X|\mathcal{G}_2]|\mathcal{G}_1] dP
+        \end{equation} 
+        \item[6]
+        \item[7] $E[X]$ is a constant, which is measurable on $\mathcal{G}$. We only need to prove that 
+        \begin{equation}
+            \begin{cases}
+                \int_\emptyset E[X|\mathcal{G}] dP = \int_\emptyset E[X] dP = 0\\
+                \int_\Omega E[X|\mathcal{G}] dP = \int_\Omega E[X] dP = E[X]
+            \end{cases}
+        \end{equation}    
+    \end{enumerate}
+\end{proof}
+\iffalse
+We prove the following properties all by contradiction (for the sake of rigor).
 \begin{enumerate}
     \item[(1)] Let $G = \{\omega: \mathbb{E}[X \mid \mathcal{G}](\omega) < 0 \}$.
     Then $G \in \mathcal{G}$ since $\mathbb{E}[X \mid \mathcal{G}]$ is $\mathcal{G}$-measurable by definition.
@@ -711,3 +782,4 @@ where the second equality is given by Fubini–Tonell theorem.\\
     \end{enumerate}
     Therefore, $P(G) = 0$ and hence $\mathbb{E}[X \mid \mathcal{G}] = \mathbb{E}[X]$ a.s.
 \end{enumerate}
+\fi
