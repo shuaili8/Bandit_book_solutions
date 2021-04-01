@@ -113,7 +113,24 @@ stopping time $\tau$ such that $$\lim _{n \rightarrow \infty} \mathbb{E}\left[S_
 
 
 \noindent\textbf{3.5}
-
+Let $(\Omega, \mathcal{F})$ and $(\chi,\mathcal{G})$ be measurable spaces, $X: \chi \to \mathbb{R}$ be a random variable and $K: \Omega\times \mathcal{G} \to [0,1]$ a prbability kernel from $(\Omega, \mathcal{F})$ to $(\chi,\mathcal{G})$. Define function $U:\Omega \to \mathbb{R}$ by $U(\omega) = \int_\chi X(x) K(\omega,dx)$ and assume that $U(\omega)$ exists for all $\omega$. Prove that $U$ is measurable. 
+\begin{proof}
+    When $X(x)$ is simple function, $X(x) = \sum_{i = 1}^n \alpha_i I\{A_i\}$,
+    \begin{equation}
+        \begin{aligned}
+            U(\omega) &= \int_\chi \sum_{i = 1}^n \alpha_i I\{A_i\} K(w,dx)\\
+            &= \sum_{i = 1}^n \alpha_i K(w,A_i\bigcap\chi)\ \text{is measuable}
+        \end{aligned}
+    \end{equation}
+    When $X(x)$ is non-negative function, $X(x) = \sup \{h: h \text{ is simple and } 0\leq h \leq X\}$, 
+    \begin{equation}
+        \begin{aligned}
+            U(\omega) &= \int_\chi \sup h(x) K(w,dx)\\
+            & = \sup \int_\chi h(x) K(w,dx) \ \text{is measurable (due to dominated convergence thm)} 
+        \end{aligned}
+    \end{equation}
+    When $X(x)$ is general function, $X = X^+ - X^-$, use the linearity of integration, we can still prove that U is measurable. 
+\end{proof}
 
 
 
