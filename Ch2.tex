@@ -485,11 +485,14 @@ We can extend the definition by letting at least one of $\int_{\Omega} X^{+} d\m
     \end{enumerate}
 \end{proof}
 
-\noindent\textbf{2.17}
-Before proving Ex.2.17, we need to make minor changes to the definition of conditional expectation and give a small lemma.
+\noindent\textbf{2.17} Suppose that $\cG_1 \subseteq \cG_2$ and prove that $\EE{X \mid \cG_1}=\EE{ \EE{X\mid \cG_1} \mid \cG_2 }$ almost surely. 
+
+\begin{proof} 
+The implication of this problem is to show that if $X$ is $\cG$-mearuable, then $\EE{X\mid \cG} = X$. Recall the definition of the conditional expectation. 
+
+
 \begin{definition}
-    Assume $(\Omega,\mathcal{F},\mathbb{P})$
-is a probability space. $\mathcal{G}\subset \mathcal{F}$ is a sub-$\sigma$-algebra of $\mathcal{F}$. $X:\Omega\rightarrow \mathbb{R}$ is a random variable. The
+    Assume $(\Omega,\mathcal{F},\mathbb{P})$ is a probability space. $\mathcal{G}\subset \mathcal{F}$ is a sub-$\sigma$-algebra of $\mathcal{F}$. $X:\Omega\rightarrow \mathbb{R}$ is a random variable. The
 conditional expectation of $X$ given $\mathcal{G}$ is denoted by any random variable $Y$ which satisfies the following 2 properties:
 \begin{itemize}
     \item $Y$ is $\mathcal{G}$-measurable
@@ -501,16 +504,23 @@ conditional expectation of $X$ given $\mathcal{G}$ is denoted by any random vari
 Formally, we denoted $Y$ by notation $\mathbb{E}[X|\mathcal{G}]$.
 \end{definition}
 
-% {\sc Lemma 1.}\ If $X$ is $\mathcal{G}$-measurable, then $\mathbb{E}[X|\mathcal{G}]=X$ holds a.s.
-\begin{lemma}
-    If $X$ is $\mathcal{G}$-measurable, then $\mathbb{E}[X|\mathcal{G}]=X$ holds a.s.
-\end{lemma}
-\begin{proof}
-    Since $X$ is $\mathcal{G}$-measurable, property1 holds. And property2 holds trivially.
+Since $X$ is $\mathcal{G}$-measurable, property1 holds. And property2 holds trivially. Thus we can conclude the implication, and then the result of this problem holds trivially as $\EE{X\mid \cG_1}$ is $\cG_1$-mearuable and thus $\cG_2$-mearuable. 
 \end{proof}
-\noindent We can now handily prove Ex.2.17. Since $\mathbb{E}[X|\mathcal{G}_1]$ is $\mathcal{G}_1$-measurable and $\mathcal{G}_1\subset \mathcal{G}_2$, we can see that
-$\mathbb{E}[X|\mathcal{G}_1]$ is $\mathcal{G}_2$-measurable. By Lemma 1, $\mathbb{E}[\mathbb{E}[X|\mathcal{G}_1]|\mathcal{G}_2]=\mathbb{E}[X|\mathcal{G}_1]$ holds almost
-surely.\\
+
+
+
+% % {\sc Lemma 1.}\ If $X$ is $\mathcal{G}$-measurable, then $\mathbb{E}[X|\mathcal{G}]=X$ holds a.s.
+% \begin{lemma}
+%     If $X$ is $\mathcal{G}$-measurable, then $\mathbb{E}[X|\mathcal{G}]=X$ holds a.s.
+% \end{lemma}
+% \begin{proof}
+%     Since $X$ is $\mathcal{G}$-measurable, property1 holds. And property2 holds trivially.
+% \end{proof}
+% \noindent We can now handily prove Ex.2.17. Since $\mathbb{E}[X|\mathcal{G}_1]$ is $\mathcal{G}_1$-measurable and $\mathcal{G}_1\subset \mathcal{G}_2$, we can see that
+% $\mathbb{E}[X|\mathcal{G}_1]$ is $\mathcal{G}_2$-measurable. By Lemma 1, $\mathbb{E}[\mathbb{E}[X|\mathcal{G}_1]|\mathcal{G}_2]=\mathbb{E}[X|\mathcal{G}_1]$ holds almost
+% surely.\\
+
+
 
 \noindent\textbf{2.18} Suppose $X = Y$ with $\mathbb{V}[X] \neq 0$.
 Then, we have $\mathbb{E}[X Y] = \mathbb{E}[X^2] = \mathbb{V}[X] + \mathbb{E}[X]^2 \neq \mathbb{E}[X]^2 = \mathbb{E}[X]\mathbb{E}[Y]$.\\
