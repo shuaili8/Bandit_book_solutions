@@ -3,7 +3,34 @@
 \chapter*{Chapter 3 Stochastic Processes and Markov Chains}
 \label{sec:second}
 
-\noindent\textbf{3.1}
+\noindent\textbf{3.1} Fill in the details of Theorem 3.1:
+
+
+\begin{enumerate}
+   \item[(a)] Prove that $F_t \in \set{0,1}$ is a Bernoulli random variable for all $t \ge 1$.
+   \item[(b)] In what follows, equip $\cS$ with $\mathbb{P}=\lambda$, the uniform probability measure. Show that for any $t \ge 1$, $F_t$ is uniformly distributed: $\PP{F_t= 1 } = \PP{F_t = 0} = 1/2$. 
+   \item[(c)] Show that $(F_t)_{t=1}^{\infty}$ are independent.
+   \item[(d)] Show that $(X_{m,t})_{t=1}^\infty$ is an independent sequence of Bernoulli random variables that are uniformly distributed.
+   \item[(e)] Show that $X_t = \sum_{t=1}^\infty X_{m,t}2^{-t}$ is uniformly distributed on $[0,1]$
+   \item[(f)] Show that $(X_t)_{t=1}^\infty$ are independent.
+\end{enumerate}
+
+\begin{proof}
+    \begin{enumerate}
+   \item[(a)] It can be shown that $F_t$ has the following form: 
+   $$F_t(x) = \bOne{x\in U_t}, U_t = \set{1} \cup \bigcup_{0 \le s\le 2^{t-1}}\left[\frac{2s-1}{2^t}, \frac{2s}{2^t}\right)$$. \\
+   Since $U_t \in \cB([0,1])$, thus we can show $F_t$ is $\cB([0,1])$-mearuable. And $F_t \in \set{0,1}$, thus it is Bernoulli random variable. 
+   \item[(b)] $\PP{F_t = 1} = \PP{U_t} = \sum_{s=0}^{2^{t-1}}\frac{1}{2^t} =\frac{2^{t-1}}{2^t} =\frac{1}{2}$. And $\PP{F_t = 0} = 1-\PP{F_t = 1}=\frac{1}{2}$.
+   \item[(c)] 
+   \item[(d)] 
+   \item[(e)] 
+   \item[(f)] 
+\end{enumerate}
+\end{proof}
+
+
+
+
 \begin{enumerate}[(a)]
     \item On$([0,1],\mathcal{B},\lambda)$,for any $x\in[0,1]$
     
