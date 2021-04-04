@@ -531,17 +531,27 @@ Since $X$ is $\mathcal{G}$-measurable, property1 holds. And property2 holds triv
 
 
 
-\noindent\textbf{2.19} As the hint suggests, $X(\omega)=\int_{[0, \infty)} \mathbb{I}\{[0, X(\omega)]\}(x) dx$.
+\noindent\textbf{2.19} Prove Proposition 2.8. 
+
+\noindent \textbf{Proposition 2.8.} If $X\ge 0$ is a non-negative random variable, then
+$$\EE{X} = \int_{0}^{\infty}\PP{X>x} dx\,.$$
+
+\noindent \textit{Hint} Argue that $X(\omega) = \bOne{[0,X(\omega)]}(x)dx$ and exchange the integrals. Use the Fubini-Tonelli theorem to justify the exchange of integrals.
+
+\begin{proof}
+As the hint suggests, $X(\omega)=\int_{[0, \infty)} \mathbb{I}\{[0, X(\omega)]\}(x) dx$.
 Hence, we have
 \begin{equation}
     \begin{split}
-        \mathbb{E}[X(\omega)]
-        &= \mathbb{E}[\int_{[0, \infty)} \mathbb{I}\{[0, X(\omega)]\}(x) dx]\\
-        &= \int_{[0, \infty)} \mathbb{E}[\mathbb{I}\{[0, X(\omega)]\}(x)] dx\\
+        \EE{X(\omega)}
+        &= \EE{\int_{[0, \infty)} \mathbb{I}\{[0, X(\omega)]\}(x) dx}\\
+        &= \int_{[0, \infty)} \EE{\mathbb{I}\{[0, X(\omega)]\}(x)} dx\\
         &= \int_{[0, \infty)} P(X(\omega) > x) dx
     \end{split}
 \end{equation}
 where the second equality is given by Fubini–Tonell theorem.\\
+
+\end{proof}
 
 
 \noindent\textbf{2.20} Prove Theorem \ref{thm2.12}
