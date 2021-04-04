@@ -522,8 +522,13 @@ Since $X$ is $\mathcal{G}$-measurable, property1 holds. And property2 holds triv
 
 
 
-\noindent\textbf{2.18} Suppose $X = Y$ with $\mathbb{V}[X] \neq 0$.
-Then, we have $\mathbb{E}[X Y] = \mathbb{E}[X^2] = \mathbb{V}[X] + \mathbb{E}[X]^2 \neq \mathbb{E}[X]^2 = \mathbb{E}[X]\mathbb{E}[Y]$.\\
+\noindent\textbf{2.18} Demonstrate using an example that in general, for dependent random variables, $\EE{XY} = \EE{X}\EE{Y}$ does not hold.
+
+\begin{proof}
+    Let $Y=X$, and $X$ takes value $1$ with probability $1/2$, takes value $-1$ with the other probability $1/2$. In this case, $ \EE{X} = \EE{Y} = 1\times \frac{1}{2} + (-1)\times \frac{1}{2}= 0$ but $\EE{XY} = 1\times \frac{1}{2} + 1\times \frac{1}{2}= 1$. 
+\end{proof}
+
+
 
 
 \noindent\textbf{2.19} As the hint suggests, $X(\omega)=\int_{[0, \infty)} \mathbb{I}\{[0, X(\omega)]\}(x) dx$.
