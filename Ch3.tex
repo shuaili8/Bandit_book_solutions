@@ -1,3 +1,5 @@
+%!TEX root =  main.tex
+
 \chapter*{Chapter 3 Stochastic Processes and Markov Chains}
 \label{sec:second}
 
@@ -134,7 +136,15 @@ Let $(\Omega, \mathcal{F})$ and $(\chi,\mathcal{G})$ be measurable spaces, $X: \
 
 
 
-\noindent\textbf{3.6}
+\noindent\textbf{3.6}(Limits of increasing stopping times are stopping times) Let $(\tau_n)_{\infty}$ be an almost surely increasing sequence of $\FF$-stopping times on probability space $(\Omega,\cF,\mathbb{P})$ with filtration $\FF = (\cF_n)_{n=1}^{\infty}$, which means that $\tau_n(\omega) \le \tau_{n+1}(\omega)$ for all $n\ge 1$ almost surely. Prove that $\tau(\omega)=\lim_{n\to \infty}\tau_n(\omega)$ is a $\FF$-stopping time. 
+
+\begin{proof}
+    To show $\tau$ is a stopping time, we want to show that $\forall t, \bOne{\tau \le t} \in \cF_t$. 
+    \begin{align*}
+        \bOne{\tau \le t} = \bOne{\lim_{n\to \infty}\tau_n \le t} = \bOne{\sup_n \tau_n \le t}   = \cap_n \bOne{\tau_n \le t} 
+    \end{align*}
+    Since $\forall n, \tau_n$ is a stopping time, then $\bOne{\tau_n\le t} \in \cF_t,\forall t$. And $\forall t, \cF_t$ is a $\sigma$-algebra. Thus $\forall t, \bOne{\tau \le t} = \cap_n \bOne{\tau_n \le t}  \in \cF_t$. 
+\end{proof}
 
 
 \noindent\textbf{3.7}
