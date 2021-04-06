@@ -21,10 +21,23 @@
    $$F_t(x) = \bOne{x\in U_t}, U_t = \set{1} \cup \bigcup_{0 \le s\le 2^{t-1}}\left[\frac{2s-1}{2^t}, \frac{2s}{2^t}\right)$$. \\
    Since $U_t \in \cB([0,1])$, thus we can show $F_t$ is $\cB([0,1])$-mearuable. And $F_t \in \set{0,1}$, thus it is Bernoulli random variable. 
    \item[(b)] $\PP{F_t = 1} = \PP{U_t} = \sum_{s=0}^{2^{t-1}}\frac{1}{2^t} =\frac{2^{t-1}}{2^t} =\frac{1}{2}$. And $\PP{F_t = 0} = 1-\PP{F_t = 1}=\frac{1}{2}$.
-   \item[(c)] 
-   \item[(d)] 
+   \item[(c)] Given an index set $K \subseteq \NN+$ we need to show that $\set{F_k,k\in K}$ are independent. Or equivalently, that
+   \begin{align*}
+      \PP{\bigcap_{k \in K}} = \prod_{k \in K} \PP{U_k} = 2^{-|K|}\,.
+   \end{align*}
+   Let $k=\max K$. Then 
+   \begin{align*}
+      \lambda \bracket{U_k \cap \cup_{j \in K \setminus \set{k}} U_j } = \frac{1}{2} \lambda \bracket{\cup_{j \in K \setminus \set{k}} U_j}\,.
+   \end{align*}
+   Then by induction we can get the desired result. 
+   \item[(d)] It follows directly from the definition of independence that any subsequence of an independent sequence is also an independent sequence. Thus from (b) we can get
+   \begin{align*}
+      \PP{X_{m,t} = 0 } = \PP{X_{m,t} = 1 } =\frac{1}{2}\,.
+   \end{align*}
    \item[(e)] 
-   \item[(f)] 
+By definition, $X_t = \sum_{t=1}^{\infty}$ is a weighted sum of an independent sequence of uniform Bernoully random variables. Thus $X_t$ has the same property as random variable $Y = \sum_{t=1}^\infty F_t 2^{-t}$, and $Y(x) = x, \PP{Y \le x} = x$ thus we can also conclude $X_t$ is uniformly distributed. 
+
+   \item[(f)] The disjoint subsets of independent random variables are also independent. 
 \end{enumerate}
 \end{proof}
 
