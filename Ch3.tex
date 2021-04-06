@@ -174,4 +174,14 @@ Let $(\Omega, \mathcal{F})$ and $(\chi,\mathcal{G})$ be measurable spaces, $X: \
 \end{proof}
 
 
-\noindent\textbf{3.7}
+\noindent\textbf{3.7} (Properties of stopping times) Let $\FF = (\cF_t)_{t \in \NN}$ be a filtration, and $\tau,\tau_1,\tau_2$ be stopping times with respect to $\FF$. Show the following:
+
+
+\begin{enumerate}
+   \item[(a)] $\cF_\tau$ is a $\sigma$-algebra
+   \item[(b)] If $\tau =k$ for some $k\ge 1$, then $\cF_\tau = \cF_k$.
+   \item[(c)] If $\tau_1 \le \tau_2$, then $\cF_{\tau_1} \subseteq \cF_{\tau_2}$.
+   \item[(d)] $\tau$ is $\cF_\tau$-measurable.
+   \item[(e)] If $(X_t)$ is $\FF$-adapted, then $X_\tau$ is $\cF_\tau$-measurable.
+   \item[(f)] $\cF_\tau$ is the smallest $\sigma$-algebra such that all $\FF$-adapted sequences $(X_t)$ satisfy $X_\tau$ is $\cF_\tau$-measurable.
+\end{enumerate}
