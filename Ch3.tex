@@ -198,3 +198,30 @@ Let $(\Omega, \mathcal{F})$ and $(\chi,\mathcal{G})$ be measurable spaces, $X: \
    \item[(e)] If $(X_t)$ is $\FF$-adapted, then $X_\tau$ is $\cF_\tau$-measurable.
    \item[(f)] $\cF_\tau$ is the smallest $\sigma$-algebra such that all $\FF$-adapted sequences $(X_t)$ satisfy $X_\tau$ is $\cF_\tau$-measurable.
 \end{enumerate}
+
+\begin{proof}
+
+\begin{enumerate}
+   \item[(a)] In this problem, we need to prove that $\cF_\tau = \set{A \in \cF_{\infty}: A\cap \set{\tau \le t} \in \cF_t, \forall t}$. According to the definition of $\sigma$-algebra, here we just need to show each requirement is satisfied. First, the whole set is $\set{\tau\le t}$, it is obvious that $\set{\tau\le t} \cap \set{\tau\le t} \in \cF_t,\forall t$. Second, $\forall A \in \cF_\tau, A^c\cap \set{\tau \le t} = \set{\tau \le t} - A\cap \set{\tau \le t}$, since both $\set{\tau \le t}$ and $A\cap \set{\tau \le t}$ are in $\cF_t,\forall t$, thus $A^c \in \cF_t, \forall t$ holds. Last, $\forall A_i \in \cF_\tau, i=1,2,..., \bracket{\bigcup_i A_i} \cap \set{\tau \le t} = \bigcup_i \bracket{ A_i \cap \set{\tau \le t}}$, since $\cF_t$ is a $\sigma$-algebra and $ A_i \cap \set{\tau \le t} \in \cF_t, \forall t$, we can conclude $\bracket{\bigcup_i A_i} \cap \set{\tau \le t} \in \cF_t, \forall t$. Above all, we have shown that $\cF_{\tau}$ is a $\sigma$-algebra on the set $\set{\tau \le t}$. 
+   \item[(b)] We first prove $\cF_\tau \subseteq \cF_k$, which means $\forall A \in \cF_\tau, A \in \cF_k$. According to the definition, $\forall A \in \cF_\tau, A \cap \set{\tau \le k}\in \cF_k$, and $\set{\tau \le k}$ holds a.s. as $\tau=k$. Thus $A = A \cap \set{\tau \le k} \in \cF_k$. 
+
+    We then prove $\cF_k \subseteq \cF_\tau$, that is $\forall B \in \cF_k, B \in \cF_\tau$. When $t \ge k$, $B \cap \set{\tau \le t} = B$, and since $B \in \cF_k \subseteq \cF_t$, we could have $B \cap \set{\tau \le t} \in \cF_t$. And for $t<k$, $B \cap \set{\tau \le t} = \emptyset \in \cF_t$. Thus we could conclude that $B \in \cF_\tau$. 
+
+   \item[(c)] We want to prove $\forall A \in \cF_{\tau_1}$, it holds that $A \in \cF_{\tau_2}$. Recall that 
+   \begin{align*}
+      \cF_{\tau_1} = \set{A \in \cF_{\infty}: A\cap \set{\tau_1 \le t} \in \cF_t, \forall t}\,,\\
+      \cF_{\tau_2} = \set{A \in \cF_{\infty}: A\cap \set{\tau_2 \le t} \in \cF_t, \forall t}\,.
+   \end{align*}
+   Since $\tau_1 \le \tau_2$, $\set{\tau_2 \le t} \subseteq \set{\tau_1\le t},\forall t$. According to the definition, we have $\forall A \in \cF_{\tau_1}$, $A \cap \set{\tau_1 \le t} \in \cF_t, \forall t$. Then $A \cap \set{\tau_2 \le t} = A\cap \set{\tau_1 \le t} - \bracket{\set{\tau_1 \le t} - \set{\tau_2 \le t}}$. And all of $A\cap \set{\tau_1 \le t}$, $\set{\tau_1 \le t}$, $\set{\tau_2 \le t}$ are in $\cF_t,\forall t$, we then have $A \cap \set{\tau_2 \le t} \in \cF_t,\forall t$. Thus there is $A \in \cF_{\tau_2}$ and further $\cF_{\tau_1} \subseteq \cF_{\tau_2}$. 
+
+
+
+
+   \item[(d)] 
+   \item[(e)] 
+   \item[(f)]
+\end{enumerate}
+
+
+\end{proof}
+
