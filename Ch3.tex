@@ -225,3 +225,49 @@ Let $(\Omega, \mathcal{F})$ and $(\chi,\mathcal{G})$ be measurable spaces, $X: \
 
 \end{proof}
 
+
+
+
+
+
+\noindent\textbf{3.8} Prove Theorem 3.10.\\
+\textbf{Theorem 3.10}
+  Let $(X_t)_{t=0}^n$ be a submartingale with $X_t\ge 0$ almost surely for all $t$. Then for any $\varepsilon>0$,
+  \begin{align*}
+      \PP{\max_{t\in\set{0,1,...,n}}X_t \ge \varepsilon} \le \frac{\EE{X_n}}{\varepsilon}\,.
+  \end{align*}
+
+\begin{proof}
+  Define event $A=\set{\max_{t\in\set{0,1,...,n}} X_t<\varepsilon }$, $\forall t=0,..,n, A_t=\set{\forall i<t: X_i<\varepsilon , X_t \ge \varepsilon}$. Note that event $A$ and $A_t,\forall t$ are exclusive. 
+
+  According to the property of submartingale and $X_t\ge 0, \forall t$, we have
+  \begin{align*}
+    X_t \bOne{A_t} \le \EE{X_n \mid \cF_{t}}  \bOne{A_t} = \EE{X_n \bOne{A_t}\mid \cF_{t}}  \,,
+  \end{align*}
+  further according to the tower rule, we have
+  \begin{align*}
+   \EE{X_t \bOne{A_t}} \le \EE{\EE{X_n \bOne{A_t}\mid \cF_{t}}}  = \EE{X_n \bOne{A_t}} \,.
+  \end{align*}
+  Above all, there is
+  \begin{align}
+     \EE{X_n} &= \EE{X_n\bOne{A}}+\sum_{t=0}^n\EE{X_n\bOne{A_t}} \notag \\
+      &\ge \sum_{t=0}^n\EE{X_n\bOne{A_t}}\notag\\
+      &\ge \sum_{t=0}^n\EE{X_t\bOne{A_t}}\notag\\
+      &\ge \varepsilon\cdot \sum_{t=0}^n\EE{\bOne{A_t}}\notag\\
+      &= \varepsilon\cdot \sum_{t=0}^n \PP{A_t} \notag\\
+      &= \varepsilon \cdot\PP{\bigcup_{t=0}^n A_t}\notag\\
+      &= \varepsilon\cdot \PP{\max_{t\in\set{0,1,...,n}}X_t \ge \varepsilon}\notag
+  \end{align}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
