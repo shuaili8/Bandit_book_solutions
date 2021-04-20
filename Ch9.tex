@@ -1,0 +1,21 @@
+\chapter*{Chapter 9 The Upper Confidence Bound Algorithm: Minimax Optimality}
+\label{sec:ninth}
+
+\noindent\textbf{9.1} (\textsc{Submartingale property}) Let $X_{1}, X_{2}, \ldots, X_{n}$ be adapted to filtration $\mathbb{F}=\left(\mathcal{F}_{t}\right)_{t}$ with $\mathbb{E}\left[X_{t} \mid \mathcal{F}_{t-1}\right]=0$ almost surely.
+Prove that $M_{t}=\exp \left(\lambda \sum_{s=1}^{t} X_{s}\right)$ is a $\mathbb{F}$-submartingale for any $\lambda \in \mathbb{R}$.
+
+\begin{proof}
+    Notice that $M_t = \exp(\lambda \sum_{s=1}^t X_s) = \exp(\lambda \sum_{s=1}^{t-1} X_s)\exp(\lambda X_t) = \exp(\lambda X_t) M_{t-1}$.
+    Therefore we have
+    \begin{equation*}
+        \begin{aligned}
+            \mathbb{E}\left[M_{t} \mid \mathcal{F}_{t-1}\right]
+            &= \mathbb{E}\left[\exp(\lambda X_t) M_{t-1} \mid \mathcal{F}_{t-1}\right]\\
+            &= M_{t-1} \mathbb{E}\left[\exp(\lambda X_t) \mid \mathcal{F}_{t-1}\right]\\
+            &\geq M_{t-1} \exp(\lambda \mathbb{E}\left[X_{t} \mid \mathcal{F}_{t-1}\right])\\
+            &= M_{t-1},
+        \end{aligned}
+    \end{equation*}
+    where the inequality follows from Jenson's inequality.
+\end{proof}
+

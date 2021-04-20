@@ -1,0 +1,102 @@
+\chapter*{Chapter 10 The Upper Confidence Bound Algorithm: Bernoulli Noise}
+\label{sec:tenth}
+
+\noindent\textbf{10.1} (\textsc{Pinsker’s inequality}) Prove Lemma 10.2(b).
+
+\noindent\textsc{Hint}\quad Consider the function $g(x)=d(p, p+x)-2 x^{2}$ over the $[-p, 1-p]$ interval.
+By taking derivatives, show that $g \geq 0$.
+
+\begin{proof}
+    As the hint suggested, we validate the non-negativity of $g(x)$ over $[-p, 1-p]$.
+    \begin{equation*}
+        \begin{aligned}
+            g^\prime(x)
+            &= -\frac{p}{p+x} + \frac{1-p}{1-p-x} - 4x\\
+            &= \frac{x}{(1-p-x)(p+x)} - 4x\\
+            &\geq 0,
+        \end{aligned}
+    \end{equation*}
+    which leads to $g(q-p) = d(p, q) - 2(p-q)^2 \geq 0$ and finally $d(p, q) \geq 2(p-q)^2$.
+\end{proof}
+
+\noindent\textbf{10.2} (\textsc{Asymptotic optimality}) Prove the asymptotic claim in Theorem 10.6.
+
+\noindent\textsc{Hint}\quad Choose $\varepsilon_{1}, \varepsilon_{1}$ to decrease slowly with $n$ and use the first part of the theorem.
+
+\begin{proof}
+    If we choose $\varepsilon_{1}, \varepsilon_{1}$ to decrease slowly with $n$ such that
+    
+    \begin{enumerate}
+        \item $\lim_{n \to \infty} \varepsilon_{1} = \lim_{n \to \infty} \varepsilon_{1} = 0$;
+        \item $\lim_{n \to \infty} \varepsilon_{1}^2 \log n = \lim_{n \to \infty} \varepsilon_{2}^2 \log n = \infty$.
+    \end{enumerate}
+
+    If so, we can derive that
+    \begin{equation*}
+        \begin{aligned}
+            \limsup _{n \to \infty} \frac{R_{n}}{\log (n)}
+            &\leq \lim _{n \to \infty} \sum_{i: \Delta_i > 0} \frac{\Delta_i}{d(\mu, \mu^*)} \frac{\log(1+n\log^2 n)}{\log n}\\
+            &\leq \lim _{n \to \infty} \sum_{i: \Delta_i > 0} \frac{\Delta_i}{d(\mu, \mu^*)} \frac{\log(\log^2 n+n\log^2 n)}{\log n}\\
+            &= \lim _{n \to \infty} \sum_{i: \Delta_i > 0} \frac{\Delta_i}{d(\mu, \mu^*)} \frac{\log(n+1) + 2\log(\log n)}{\log n}\\
+            &= \sum_{i: \Delta_i > 0} \frac{\Delta_i}{d(\mu, \mu^*)},
+        \end{aligned}
+    \end{equation*}
+    which leads to the asymptotic claim in Theorem 10.6.
+\end{proof}
+
+\noindent\textbf{10.2} (\textsc{Concentration for bounded random variables}) Let $\mathbb{F}=\left(\mathcal{F}_{t}\right)_{t}$ be a filtration,
+$\left(X_{t}\right)_{t}$ be $[0,1]$-valued, $\mathbb{F}$-adapted sequence,
+such that $\mathbb{E}\left[X_{t} \mid \mathcal{F}_{t-1}\right]=\mu_{t}$ for some $\mu_{1}, \ldots, \mu_{n} \in[0,1]$ non-random numbers.
+Define $\mu=\frac{1}{n} \sum_{t=1}^{n} \mu_{t}$, $\hat{\mu}=\frac{1}{n} \sum_{t=1}^{n} X_{t}$.
+Prove that the conclusion of Lemma 10.3 still holds.
+
+\noindent\textsc{Hint}\quad Read Note 2 at the end of this chapter.
+Let $g(\cdot, \mu)$ be the cumulant-generating function of the $\mu$-parameter Bernoulli distribution.
+For $X \sim \mathcal{B}(\mu)$, $\lambda \in \mathbb{R}$, $g(\lambda, \mu)=\log \mathbb{E}[\exp (\lambda X)]$.
+Show that $g(\lambda, \cdot)$ is concave.
+Next, use this and the tower rule to show that $\mathbb{E}[\exp (\lambda n(\hat{\mu}-\mu))] \leq g(\lambda, \mu)^{n}$.
+
+\begin{proof}
+    We first follow the same procedure
+    \begin{equation*}
+        \begin{aligned}
+            \mathbb{P}(\hat{\mu} \geq \mu+\varepsilon)
+            &= \mathbb{P}(\hat{\mu} - \mu \geq \varepsilon)\\
+            &= \mathbb{P}(\exp(\lambda \sum_{t=1}^n (X_t - \mu)) \geq \exp(\lambda n \varepsilon))\\
+            &\leq \frac{\mathbb{E}[\exp(\lambda \sum_{t=1}^n (X_t - \mu))]}{\exp(\lambda n \varepsilon)},
+        \end{aligned}
+    \end{equation*}
+    where the inequality follows from Markov's inequality.
+
+    Then, we verify that $g(\lambda, \cdot)$ is concave.
+    Note $g(\lambda, \mu) = \log(\mu \exp(\lambda) + (1 - \mu)) - \lambda \mu$,
+    which leads to $\frac{d^2}{d \mu^2} g(\lambda, \mu) = \frac{-(\exp(\lambda) - 1)^2}{(\mu \exp(\lambda) + 1 - \mu)^2} \leq 0$.
+
+    Next, let $S_p = \sum_{t=1}^p (X_t - \mu_t)$. We have
+    \begin{equation*}
+        \begin{aligned}
+            \mathbb{E}[\exp(\lambda S_p)]
+            &= \mathbb{E}[\mathbb{E}[\exp(\lambda S_p) | \mathcal{F}_{p-1}]]\\
+            &= \mathbb{E}[\mathbb{E}[\exp(\lambda S_{p-1}) \exp(\lambda(X_p - \mu_p)) | \mathcal{F}_{p-1}]]\\
+            &= \mathbb{E}[\exp(\lambda S_{p-1}) \mathbb{E}[\exp(\lambda(X_p - \mu_p)) | \mathcal{F}_{p-1}]]\\
+            &= \mathbb{E}[\exp(\lambda S_{p-1}) \mathbb{E}[\frac{\exp(\lambda X_p)}{\exp(\lambda \mu_p)} | \mathcal{F}_{p-1}]]\\
+            &\leq \mathbb{E}[\exp(\lambda S_{p-1}) \mathbb{E}[\frac{X_p (\exp(\lambda) - 1) + 1}{\exp(\lambda \mu_p)} | \mathcal{F}_{p-1}]]\\
+            &= \mathbb{E}[\exp(\lambda S_{p-1}) \frac{\mu_p(\exp(\lambda) - 1) + 1}{\exp(\lambda \mu_p)}]\\
+            &= \mathbb{E}[\exp(\lambda S_{p-1})] \exp(g(\lambda, \mu_p)),
+        \end{aligned}
+    \end{equation*}
+    where the inequality follows from noticing that $f(x) = \exp(\lambda x) - x(\exp(\lambda) - 1) - 1 \leq 0$ on $[0, 1]$, as suggested in Note 2.
+
+    The above conclusion leads to $\mathbb{E}[\exp(\lambda S_{n})] \leq \exp(\sum_{t=1}^n g(\lambda, \mu_t)) \leq \exp(n g(\lambda, \mu))$.
+    Hence, we have
+    \begin{equation*}
+        \begin{aligned}
+            \mathbb{P}(\hat{\mu} \geq \mu+\varepsilon)
+            &\leq \frac{\mathbb{E}[\exp(\lambda \sum_{t=1}^n (X_t - \mu))]}{\exp(\lambda n \varepsilon)}\\
+            &\leq \frac{\exp(n g(\lambda, \mu))}{\exp(\lambda n \varepsilon)}\\
+            &= (\frac{\exp(g(\lambda, \mu))}{\exp(\lambda \varepsilon)})^2\\
+            &= (\mu \exp(\lambda(1 - \mu - \varepsilon)) + (1 - \mu) \exp(-\lambda(\mu + \varepsilon)))^n,
+        \end{aligned}
+    \end{equation*}
+    which can be followed by the same procedures as in the proof of Lemma 10.3.
+\end{proof}
