@@ -17,6 +17,33 @@ R_n(\pi,v) &=n\mu^*(v)-\mathbb{E}[\sum^n_{t=1}X_t]\notag\\
 \item If $R_n(\pi,v)=0$ for some policy $\pi$ ,then $A_t \in \arg\max_a\mu_a \Rightarrow \mathbb{P}(\mu_{A_t}=\mu^*)=1$.
 \end{enumerate}
 
+
+
+\noindent\textbf{4.2}(Uniqueness of law) Prove Proposition 4.8. 
+\begin{proposition}
+Suppose that $\bP$ and $\bQ$ are probability measures on an arbitrary measurable space $(\Omega,\cF)$ and $A_1,X_1,...,A_n,X_n$ are random variables on $\Omega$, where $A_t\in [k]$ and $X_t\in\RR$. If both $\bP$ and $\bQ$ satisfy (a) and (b), then the law of the outcome under $\bP$ is the same as under $\bQ$: 
+$$\bP_{A_1,X_1,...,A_n,X_n}=\bQ_{A_1,X_1,...,A_n,X_n}\,.$$
+Recall the condition:
+\begin{enumerate}
+    \item[(a)] the conditional distribution of action $A_t$ given $A_1,X_1,...,A_{t-1},X_{t-1}$ is $\pi_t(\cdot \mid A_1,X_1,...,A_{t-1},X_{t-1})$ almost surely.
+    \item[(b)] the conditional distribution of reward $X_t$ given $A_1,X_1,...,A_{t}$ is $P_{A_t}$ almost surely.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    \begin{align*}
+        \bP_{A_1,X_1,...,A_n,X_n} &= \bP(A_1) \bP(X_1\mid A_1)\ldots \bP(A_n \mid A_1,X_1,...,A_{n-1},X_{n-1}) \bP(X_n \mid A_1,X_1,...,A_{n-1},X_{n-1},A_n) \\
+        &= \pi_1(A_1) P_{A_1}\ldots \pi_n(A_n\mid A_1,X_1,...,A_{n-1},X_{n-1} ) P_{A_n}\\
+        &= \bQ(A_1) \bQ(X_1\mid A_1)\ldots \bQ(A_n \mid A_1,X_1,...,A_{n-1},X_{n-1}) \bQ(X_n \mid A_1,X_1,...,A_{n-1},X_{n-1},A_n)\\
+        &= \bQ_{A_1,X_1,...,A_n,X_n} \,.
+    \end{align*}
+\end{proof}
+    
+
+
+
+
+
 \noindent\textbf{4.3}
 Denote $h_t = a_1, x_1, \ldots, a_t, x_t$.
 \begin{enumerate}[(a)]
