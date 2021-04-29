@@ -219,6 +219,24 @@ Let $(\Omega, \mathcal{F})$ and $(\chi,\mathcal{G})$ be measurable spaces, $X: \
 
    \item[(d)] 
    \item[(e)] 
+   We first clearly present the definition of $X_\tau = X_{\tau(\omega)}(\omega)$. If $\tau(\omega)=t$ for some $t$, then $X_{\tau(\omega)}(\omega) = X_t(\omega)$. If $\tau(\omega)=\infty$, then $X_{\tau(\omega)}(\omega) = \lim_{t \to \infty} X_t(\omega)$. To prove $X_\tau$ is $\cF_{\tau}$-measurable, we want to prove for any constant $a\in \RR$, $X_{\tau}^{-1}((-\infty, a)) = \set{\omega: X_{\tau}(\omega)<a} \in \cF_{\tau}$, where $\cF_{\tau} = \set{A\in \cF_{\infty}: A\cap \set{\tau \le t} \in \cF_t, \forall t}$. We first prove $\set{\omega: X_{\tau}(\omega)<a} \in \cF_{\infty}$, it can be written as 
+   \begin{align*}
+    \set{\omega: X_{\tau}(\omega)<a} = \set{\omega: \bigcup_{t\in \NN}\set{\tau(\omega)=t}\cap\set{X_t(\omega)<a} \bigcup \set{\tau(\omega)=\infty}\cap \set{\lim_{t\to \infty}X_t(\omega)<a }  }
+   \end{align*}
+   Since $\forall t$, $\set{\tau(\omega)=t}\cap\set{X_t(\omega)<a} \in \cF_{t}$, thus  $\bigcup_{t\in \NN}\set{\tau(\omega)=t}\cap\set{X_t(\omega)<a} \in \cF_{\infty}$. And $\set{\tau(\omega)=\infty} = \bigcap_{t \in \NN}\set{\tau(\omega)>t} \in \cF_{\infty}$. For the last part, 
+  \begin{align*}
+    \set{\lim_{t\to \infty}X_t(\omega)<a }  = \cap_{n>0}\cup_{N \in \NN} \cap_{t,s > N} \set{\abs{X_t(\omega)-X_s(\omega)}\le \frac{1}{2^n} } \bigcap \cup_{N\in \NN}\cap_{t>N}\set{X_t(\omega) < a}\,,
+   \end{align*}
+   where the first part represents the existence of the limitation and the second part represents the limitation is less than $a$. It is obvious that $\set{\abs{X_t(\omega)-X_s(\omega)}\le \frac{1}{2^n} } \in \cF_{\max\set{t,s}}$, and thus $\cup_{N \in \NN} \cap_{t,s > N} \set{\abs{X_t(\omega)-X_s(\omega)}\le \frac{1}{2^n} } \in \cF_{\infty}$. Similarly the second part $\cup_{N\in \NN}\cap_{t>N}\set{X_t(\omega) < a} \in \cF_{\infty}$. Above all, we have proved $\set{\omega: X_{\tau}(\omega)<a} \in \cF_{\infty}$. Next we will show $\forall t, \set{ X_{\tau}(\omega)<a} \cap \set{\tau(\omega) \le t} \in \cF_t $. 
+   \begin{align}
+      \set{\omega: X_{\tau}(\omega)<a} \cap \set{\tau(\omega) \le t}  = \bigcup_{s\le t} \set{\tau(\omega)=s}\cap\set{X_{s}(\omega)<a}
+   \end{align}
+   As $\set{\tau(\omega)=s}\cap\set{X_{s}(\omega)<a} \in \cF_{s}$, we have $\bigcup_{s\le t} \set{\tau(\omega)=s}\cap\set{X_{s}(\omega)<a} \in \cF_t, \forall t$. 
+
+   Above all, we have proved for any constant $a\in \RR$, $X_{\tau}^{-1}((-\infty, a)) = \set{\omega: X_{\tau}(\omega)<a} \in \cF_{\tau}$
+
+
+
    \item[(f)]
 \end{enumerate}
 
