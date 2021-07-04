@@ -53,39 +53,69 @@ V(\hat{\mu })=E((\hat{\mu }-\mu)^2)
 
 
 
-\noindent\textbf{5.4}
+\noindent\textbf{5.4} Let $X$ be a random variable on $\RR$ with density with respect to the Lebesgue measure of $p(x)= \abs{x}\exp\bracket{-x^2/2}/2$. Show the following:
+\begin{enumerate}
+	\item[(a)] $\PP{\abs{X}\ge \varepsilon} = \exp(-\varepsilon^2/2)$
+	\item[(b)] $X$ is not $\sqrt{2-\varepsilon}$-subgaussian for any $\varepsilon>0$.
+\end{enumerate}
+
+\begin{proof}
+\begin{enumerate}
+	\item[(a)] 
+	\begin{align*}
+		\PP{\abs{X}\ge \varepsilon} &=\int^{-\varepsilon}_{-\infty} 
+		\frac{\abs{x}}{2}\exp\bracket{-x^2/2} d x +  \int_{\varepsilon}^{+\infty} \frac{\abs{x}}{2} \exp\bracket{-x^2/2} d x \\
+		&=\int^{-\varepsilon}_{-\infty} -\frac{x}{2} \exp\bracket{-x^2/2}/2 d x +  \int_{\varepsilon}^\infty \frac{x}{2} \exp\bracket{-x^2/2} d x \\
+		&= \int_{\varepsilon}^\infty x \exp\bracket{-x^2/2} d x \\
+		&= \exp\bracket{-\varepsilon^2/2}\,.
+	\end{align*}
+	\item[(b)] 
+	According to the definition of the sub-gaussian random variables, to prove $X$ is not $\sqrt{2-\varepsilon}$-subgaussian, we want to prove $\exists \lambda \in \RR$ such that 
+	\begin{align*}
+		\EE{\exp\bracket{\lambda X}} \le \exp\bracket{\frac{\lambda^2 (2-\varepsilon)}{2}} \triangleq g(\lambda) \,.
+	\end{align*}
+	For the LHS, there is
+	\begin{align*}
+		\EE{\exp\bracket{\lambda X}} &= 	\int_{-\infty}^{+\infty} \exp(\lambda x) \frac{|x|}{2} \exp(-x^2/2) dx \\
+		&= \frac{1}{2}\exp(\lambda^2/2)\int_{-\infty}^{+\infty} \abs{t+\lambda} \exp(-t^2/2)dt \\
+		&= \frac{\exp(\frac{\lambda^2}{2})}{2} \bracket{\int_{-\infty}^{-\lambda} (-t-\lambda) \exp(-t^2/2)dt+\int_{-\lambda}^{+\lambda} (t+\lambda) \exp(-t^2/2)dt + \int_{\lambda}^{+\infty}(t+\lambda) \exp(-t^2/2)dt} \\
+		&= \frac{\exp(\frac{\lambda^2}{2})}{2} \bracket{{2\exp(-\frac{\lambda^2}{2})} + 2\lambda \int_0^\lambda \exp(-t^2/2)dt } \\
+		&= 1 + \lambda \exp(\frac{\lambda^2}{2})\int_{0}^{\lambda} \exp(-t^2/2) dt \triangleq f(\lambda) \,,.
+	\end{align*}
+	Define $F(\lambda) = f(\lambda) - g(\lambda)$, now we want to prove $\exists \lambda \in \RR, F(\lambda)>0$. By computation, we found that $F(0)=0, F'(0) = 0, F''(0)=\varepsilon >0$. We can then conclude that $(0,0)$ is a minima of $F$, thus $\exists \delta>0, \forall \lambda\in (-\delta,\delta), F(\lambda)>0$. We then get the desired result. 
+\end{enumerate}
+\end{proof}
 
 
 
-(a)
-\begin{equation}
-P(|X|\geq \varepsilon) = P(X\geq\varepsilon)I\{X\geq 0\}+P(X\leq -\varepsilon)I\{X< 0\}
-=\int_{\varepsilon}^{\infty} \frac{x}{2} exp\{ \frac{-x^2}{2}\} dx + \int_{-\infty}^{\varepsilon} \frac{-x}{2} exp\{ \frac{-x^2}{2}\} dx
-\end{equation}
+% (a)
+% \begin{equation}
+% P(|X|\geq \varepsilon) = P(X\geq\varepsilon)I\{X\geq 0\}+P(X\leq -\varepsilon)I\{X< 0\}
+% =\int_{\varepsilon}^{\infty} \frac{x}{2} exp\{ \frac{-x^2}{2}\} dx + \int_{-\infty}^{\varepsilon} \frac{-x}{2} exp\{ \frac{-x^2}{2}\} dx
+% \end{equation}
 
-Calculate the above formula and get the result ,
+% Calculate the above formula and get the result ,
 
-$P(|X|\geq \varepsilon) =\frac{1}{2} exp\{ \frac{-\varepsilon^2}{2}\} + \frac{1}{2} exp\{ \frac{-\varepsilon^2}{2}\}$
+% $P(|X|\geq \varepsilon) =\frac{1}{2} exp\{ \frac{-\varepsilon^2}{2}\} + \frac{1}{2} exp\{ \frac{-\varepsilon^2}{2}\}$
 
-$=exp\{ \frac{-\varepsilon^2}{2}\}$
+% $=exp\{ \frac{-\varepsilon^2}{2}\}$
 
 
-(b)
+% (b)
 
-Let's start with a lemma:
+% Let's start with a lemma:
 
-If X is $\sigma-$subgaussian,then $P(|X|>t) \leq exp\{ -b \varepsilon^2\}$ , where $b=exp\{ -\sigma^2\}$
+% If X is $\sigma-$subgaussian,then $P(|X|>t) \leq exp\{ -b \varepsilon^2\}$ , where $b=exp\{ -\sigma^2\}$
 
-The proof of lemma is omitted.
+% The proof of lemma is omitted.
 
-It can be seen from the first question , $P(|X|\geq \varepsilon) = exp\{ \frac{-\varepsilon^2}{2}\}$
+% It can be seen from the first question , $P(|X|\geq \varepsilon) = exp\{ \frac{-\varepsilon^2}{2}\}$
 
-The comparison of the two formulas shows that , $0<b\leq 1/2$ . That is, $\sigma\geq \sqrt{ln2}$
+% The comparison of the two formulas shows that , $0<b\leq 1/2$ . That is, $\sigma\geq \sqrt{ln2}$
 
-By topic condition , $\sigma = \sqrt{2-\varepsilon}$
+% By topic condition , $\sigma = \sqrt{2-\varepsilon}$
 
-Hence , $\varepsilon \leq 2-ln2$ , this is in contradiction with the arbitrariness of $\varepsilon$
-
+% Hence , $\varepsilon \leq 2-ln2$ , this is in contradiction with the arbitrariness of $\varepsilon$
 
 \noindent\textbf{5.5}
 
