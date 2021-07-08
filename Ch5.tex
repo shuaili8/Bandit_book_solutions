@@ -3,19 +3,26 @@
 \label{sec:5}
 
 \noindent\textbf{5.1}
+(\textsc{Variance of average})
+Let $X_{1}, X_{2}, \ldots, X_{n}$ be a sequence of independent and identically distributed random variables with mean $\mu$ and variance $\sigma^{2}<\infty$.
+Let $\hat{\mu}=\frac{1}{n} \sum_{t=1}^{n} X_{t}$ and show that $\mathbb{V}[\hat{\mu}]=\mathbb{E}\left[(\hat{\mu}-\mu)^{2}\right]=\sigma^{2} / n$.
 
+\begin{proof}
+	We start straight from the definition:
 
+	\begin{equation*}
+		\begin{aligned}
+		&\mathbb{V}[\hat{\mu}]\\
+		= &\mathbb{E}((\hat{\mu }-\mu)^2)\\
+		= &\mathbb{E}((\frac{1}{n}\sum_{t=1}^{n}{X_t}-\mu)^2)\\
+		= &\mathbb{E}(\frac{1}{n^2}\sum_{t=1}^{n}{(X_t - \mu)^2})\\
+		= &\frac{1}{n^2}\sum_{t=1}^{n}{\mathbb{E}(X_t - \mu)^2}\\
+		= &\frac{1}{n^2}\sum_{t=1}^{n}{\sigma^2}\\
+		= &\frac{\sigma^2}{n}
+		\end{aligned}
+	\end{equation*}			
 
-\begin{equation}
-V(\hat{\mu })=E((\hat{\mu }-\mu)^2)
-=E((\frac{1}{n}\sum_{t=1}^{n}{X_t}-\mu)^2)
-=E(\frac{1}{n^2}\sum_{t=1}^{n}{(X_t - \mu)^2})
-=\frac{1}{n^2}\sum_{t=1}^{n}{E(X_t - \mu)^2}
-=\frac{1}{n^2}\sum_{t=1}^{n}{\sigma^2}
-=\frac{\sigma^2}{n}
-\end{equation}
-
-
+\end{proof}
 
 \noindent\textbf{5.2}
 % From the definition of expectation:
@@ -184,8 +191,25 @@ Hence , $X_1+X_2$ is $\sqrt{\sigma_1^2 + \sigma_2^2}-$subgaussian .
 
 
 \noindent\textbf{5.8}
+(\textsc{Properties of subgaussian random variables (ii)})
+Let $X_{i}$ be $\sigma_i$-subgaussian for $i \in\{1,2\}$ with $\sigma_i \geq 0$.
+Prove that $X_{1}+X_{2}$ is $(\sigma_1 + \sigma_2)$-subgaussian.
+Do \textit{not} assume independence of $X_1$ and $X_2$.
 
+\begin{proof}
+	We start straight from the definition:
 
+	\begin{equation*}
+	\begin{aligned}
+	&\mathbb{E}[\exp(\lambda(X_{1}+X_{2}))]\\
+	\leq &\mathbb{E}[\exp(\lambda p X_{1})]^\frac{1}{p} \mathbb{E}[\exp(\lambda q X_{2})]^\frac{1}{q}\\
+	\leq &\exp(\lambda^2 p^2 \sigma_1^2 / 2)^\frac{1}{p} \exp(\lambda^2 q^2 \sigma_2^2 / 2)^\frac{1}{q}\\
+	= &\exp(\frac{\lambda^2(p \sigma_1^2 + q \sigma_2^2)}{2})\\
+	= &\exp(\frac{\lambda^2(\sigma_1^2 + \sigma_2^2)}{2}),
+	\end{aligned}
+	\end{equation*}
+	where the first inequality holds according to Hölder's inequality and the last equality holds with $p = \frac{\sigma_1^2 + \sigma_2^2}{\sigma_2^2}$
+\end{proof}
 
 
 \noindent\textbf{5.11}
