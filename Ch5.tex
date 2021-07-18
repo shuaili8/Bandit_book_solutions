@@ -274,14 +274,41 @@ choosing $\lambda  = \frac{\epsilon-n}{\epsilon}$ completes the claim.
 
 
 
-\noindent \textbf{5.18(a)}
-Let $\lambda >0$. Then,
-$$exp(\lambda \mathbb{E}[Z]) \leq \mathbb{E}[exp(\lambda Z)] \leq \sum_{t=1}^n \mathbb{E}[exp(\lambda X_t)] \leq n exp(\frac{\lambda^2 \sigma^2}{2})$$
-\noindent
-Rearranging shows that,
-$$\mathbb{E}(Z) \leq \frac{log(n)}{\lambda} + \frac{\lambda \sigma^2}{2}$$
-\newline
+\noindent \textbf{5.18} (\textsc{Expectation of maximum})
+Let $X_{1}, \ldots, X_{n}$ be a sequence of $\sigma$-subgaussian random variables
+(possibly dependent) and $Z=\max _{t \in[n]} X_{t}$. Prove that
 
-\noindent
-Choosing $\lambda = \frac{1}{\sigma} \sqrt{2log(n)}$ shows  that $
-\mathbb{E}(Z) \leq \sqrt{2\sigma^2 log(n)}$
+\begin{itemize}
+	\item[(a)] $\mathbb{E}[Z] \leq \sqrt{2 \sigma^{2} \log (n)}$.
+	\item[(b)] $\mathbb{P}\left(Z \geq \sqrt{2 \sigma^{2} \log (n / \delta)}\right) \leq \delta \text { for any } \delta \in(0,1)$.
+\end{itemize}
+
+\begin{proof}
+	\begin{itemize}
+		\item[(a)] Let $\lambda >0$.
+		Then,
+		\begin{equation*}
+			\exp(\lambda \mathbb{E}[Z]) \leq \mathbb{E}[\exp(\lambda Z)] \leq \sum_{t=1}^n \mathbb{E}[\exp(\lambda X_t)] \leq n \exp(\frac{\lambda^2 \sigma^2}{2}).
+		\end{equation*}
+		
+		Rearranging shows that
+		\begin{equation*}
+			\mathbb{E}(Z) \leq \frac{log(n)}{\lambda} + \frac{\lambda \sigma^2}{2}.
+		\end{equation*}
+	
+		Choosing $\lambda = \frac{1}{\sigma} \sqrt{2log(n)}$ shows that $\mathbb{E}(Z) \leq \sqrt{2\sigma^2 log(n)}$
+		
+		\item[(b)] First notice that
+		\begin{equation*}
+			\begin{aligned}
+				\mathbb{P}\left(Z \geq \sqrt{2 \sigma^{2} \log (n / \delta)}\right)
+				&= \mathbb{P}\left(\exists i: X_i \geq \sqrt{2 \sigma^{2} \log (n / \delta)}\right)\\
+				&\leq \sum_{i=1}^n \mathbb{P}\left(X_i \geq \sqrt{2 \sigma^{2} \log (n / \delta)}\right),
+			\end{aligned}
+		\end{equation*} 
+		which is given directly by a union bound.
+
+		Then, according to Theorem 5.3, we have $\mathbb{P}\left(X_i \geq \sqrt{2 \sigma^{2} \log (n / \delta)}\right)
+		\leq \frac{\delta}{n}$ to complete the proof.
+	\end{itemize}
+\end{proof}
