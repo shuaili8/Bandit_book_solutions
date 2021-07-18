@@ -208,59 +208,80 @@ Do \textit{not} assume independence of $X_1$ and $X_2$.
 	= &\exp(\frac{\lambda^2(\sigma_1^2 + \sigma_2^2)}{2}),
 	\end{aligned}
 	\end{equation*}
-	where the first inequality holds according to Hölder's inequality and the last equality holds with $p = \frac{\sigma_1^2 + \sigma_2^2}{\sigma_2^2}$
+	where the first inequality holds according to Hölder's inequality and the last equality holds with $p = \frac{\sigma_1^2 + \sigma_2^2}{\sigma_2^2}$.
+\end{proof}
+
+\noindent\textbf{5.9}
+
+
+\noindent\textbf{5.10}
+
+\begin{proof}
+\begin{enumerate}
+	\item[(a)]
+
+	
+	\item[(b)]
+\end{enumerate}
 \end{proof}
 
 
 \noindent\textbf{5.11}
+\begin{proof}
+\begin{enumerate}
+	\item[(a)]
+
+
+	\item[(b)]
+\end{enumerate}
+\end{proof}
 
 
 
+% (a)
+% \begin{equation}
+% E(e^{\lambda X}) = 1+\lambda E(X)+\frac{\lambda^2 E(X^2)}{2}+O(\lambda^2) =1+\frac{\lambda^2 E(X^2)}{2}+O(\lambda^2)
+% \end{equation}
 
-(a)
-\begin{equation}
-E(e^{\lambda X}) = 1+\lambda E(X)+\frac{\lambda^2 E(X^2)}{2}+O(\lambda^2) =1+\frac{\lambda^2 E(X^2)}{2}+O(\lambda^2)
-\end{equation}
+% If the conclusion is true, then the above formula satisfies
 
-If the conclusion is true, then the above formula satisfies
+% $\leq 1+\frac{\lambda^2}{2}(\frac{(b-a)^2}{4})+O(\lambda^2)$
 
-$\leq 1+\frac{\lambda^2}{2}(\frac{(b-a)^2}{4})+O(\lambda^2)$
+% So just prove:
 
-So just prove:
+% $E(x^2)\leq (\frac{b-a}{2})^2$
 
-$E(x^2)\leq (\frac{b-a}{2})^2$
+% $E(x^2)=var(x)=E(x-\bar{x})^2$
 
-$E(x^2)=var(x)=E(x-\bar{x})^2$
+% However,$(x-\bar{x})^2\leq(\frac{b-a}{2})^2$ . The conclusion is proved.
 
-However,$(x-\bar{x})^2\leq(\frac{b-a}{2})^2$ . The conclusion is proved.
+% (b)
 
-(b)
+% The proof of Hoeffding's Inequality:
 
-The proof of Hoeffding's Inequality:
+% Let $X_i = Z_i - E(Z_i)$ , $\bar{X} = \frac{1}{m}\sum_{i=1}^{m}X_i$
 
-Let $X_i = Z_i - E(Z_i)$ , $\bar{X} = \frac{1}{m}\sum_{i=1}^{m}X_i$
+% By Markov inequality , for all $\lambda >0$ , $\varepsilon > 0$,
 
-By Markov inequality , for all $\lambda >0$ , $\varepsilon > 0$,
+% $P(\bar{X}\geq\varepsilon) = P(e^{\lambda \bar{X}} \geq e^{\lambda\varepsilon}) \leq \frac{E(e^{\lambda \bar{X}})}{e^{\lambda\varepsilon}}$
 
-$P(\bar{X}\geq\varepsilon) = P(e^{\lambda \bar{X}} \geq e^{\lambda\varepsilon}) \leq \frac{E(e^{\lambda \bar{X}})}{e^{\lambda\varepsilon}}$
+% $Z_1$,$\cdots$,$Z_m$ iid.r.v.
 
-$Z_1$,$\cdots$,$Z_m$ iid.r.v.
+% So,$E(e^{\lambda \bar{X}}) = \prod_{i=1}^{m} E(e^{\frac{\lambda X_i}{m}})$
 
-So,$E(e^{\lambda \bar{X}}) = \prod_{i=1}^{m} E(e^{\frac{\lambda X_i}{m}})$
+% By Hoeffding's lamma,
 
-By Hoeffding's lamma,
+% $ E(e^{\frac{\lambda X_i}{m}}) \leq e^{\frac{\lambda^2(b-a)^2}{8m^2}}$
 
-$ E(e^{\frac{\lambda X_i}{m}}) \leq e^{\frac{\lambda^2(b-a)^2}{8m^2}}$
+% So , $P(\bar{X}\geq\varepsilon) \leq e^{-\lambda\varepsilon}\prod_{i=1}^{m} E(e^{\frac{\lambda X_i}{m}})$
 
-So , $P(\bar{X}\geq\varepsilon) \leq e^{-\lambda\varepsilon}\prod_{i=1}^{m} E(e^{\frac{\lambda X_i}{m}})$
+% $\leq e^{-\lambda\varepsilon}e^{\frac{\lambda^2(b-a)^2}{8m}}$
 
-$\leq e^{-\lambda\varepsilon}e^{\frac{\lambda^2(b-a)^2}{8m}}$
+% $\leq e^{-\lambda\varepsilon+\frac{\lambda^2(b-a)^2}{8m}}$
 
-$\leq e^{-\lambda\varepsilon+\frac{\lambda^2(b-a)^2}{8m}}$
+% Let $\lambda = \frac{4m\varepsilon}{(b-a)^2}$ , then $P(\bar{X}\geq \varepsilon) \leq e^{\frac{-2m\varepsilon^2}{(b-a)^2}}$
 
-Let $\lambda = \frac{4m\varepsilon}{(b-a)^2}$ , then $P(\bar{X}\geq \varepsilon) \leq e^{\frac{-2m\varepsilon^2}{(b-a)^2}}$
-
-Similarly, we can prove the other side of the inequality.
+% Similarly, we can prove the other side of the inequality.
 
 
 \noindent \textbf{5.16}
