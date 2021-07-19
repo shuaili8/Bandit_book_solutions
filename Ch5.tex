@@ -271,7 +271,18 @@ Do \textit{not} assume independence of $X_1$ and $X_2$.
 \end{proof}
 
 
-\noindent\textbf{5.11}
+\noindent\textbf{5.11} (Hoeffding’s lemma) Suppose that $X$ is zero mean and $X \in [a,b]$ almost surely for constants $a <b$.
+\begin{enumerate}
+	\item[(a)]Show that $X$ is $(b-a)/2$-subgaussian.
+	\item[(b)]Prove Hoeffding’s inequality (Lemma \ref{lem:hoeffding}).
+\end{enumerate}
+\begin{lemma}[Hoeffding's inequality]\label{lem:hoeffding}
+	For a zero-mean random variable $X$ such that $X \in [a,b]$ almost surely for real values $a <b$, then $M_X(\lambda) \le \exp(\lambda^2 (b-a)^2 / 8)$. Applying the Cramér–Chernoff method shows that if $X_1,X_2,\ldots,X_n$ are independent and $X_t \in [a_t,b_t]$ almost surely with $a_t < b_t$ for all $t$. Then, 
+	\begin{align}
+		\PP{\frac{1}{n} \sum_{t=1}^n \bracket{X_t - \EE{X_t}} \ge \varepsilon } \le \exp\bracket{ \frac{-2n^2\varepsilon^2}{\sum_{t=1}^n (b_t-a_t)^2 } }\,.
+	\end{align}
+\end{lemma}
+
 \begin{proof}
 \begin{enumerate}
 	\item[(a)]
