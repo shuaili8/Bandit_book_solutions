@@ -212,6 +212,51 @@ Do \textit{not} assume independence of $X_1$ and $X_2$.
 \end{proof}
 
 \noindent\textbf{5.9}
+(Properties of moment/cumulative-generating functions) Let $X$ be a real-valued random variable and let $M_X(\lambda) = \EE{\exp(\lambda X)}$ be its moment-generating function defined over $\text{dom}(M_X) \subseteq \RR$, where the expectation takes on finite values. Show that the following properties hold:
+\begin{enumerate}
+	\item[(a)] $M_X$ is convex, and in particular $\text{dom}(M_X)$ is an interval containing zero.
+	\item[(b)] $M_X(\lambda) \ge e^{\lambda \EE{X}}$ for all $\lambda \in \text{dom}(M_X)$.
+	\item[(c)] For any $\lambda$ in the interior of $\text{dom}(M_X)$, $M_X$ is infinitely many times differentiable.
+	\item[(d)] Let $M^{(k)}_X(\lambda) = \frac{d^k}{d\lambda^k}M_X(\lambda)$. Then, for $\lambda$ in the interior of $\text{dom}(M_X)$, $M^{(k)(\lambda)} = \EE{X^k \exp(\lambda X)}$. 
+	\item[(e)] Assuming $0$ is in the interior of $\text{dom}(M_X)$, $M^{(k)(0)} = \EE{X^k}$ (hence the name of $M_X$).
+	\item[(f)] $\psi_X$ is convex (that is, $M_X$ is log-convex). 
+\end{enumerate}
+
+\begin{proof}
+
+\begin{enumerate}
+	\item[(a)] To prove $M_X$ is convex, we want to prove $\forall \alpha \in (0,1), a,b\in \text{dom}(M_X)$, there is $M_X(\alpha 
+	 a + (1-\alpha)b) \le \alpha M_X(a) + (1-\alpha)M_X(b)$. 
+	 \begin{align*}
+	 	M_X(\alpha a + (1-\alpha)b) &= \EE{ \exp\bracket{ \alpha a + (1-\alpha)b X }} \\
+	 	&\le \EE{ \alpha \exp\bracket{ a X}+ (1-\alpha)\exp\bracket{b X} } \\
+	 	&= \alpha \EE{\exp\bracket{ a X}}+(1-\alpha)\EE{\exp\bracket{b X}} = \alpha M_X(a) + (1-\alpha)M_X(b)\,,
+	 \end{align*}
+	 where the inequality comes from the convexity of $x \to \exp(x)$.
+
+	 To prove $\text{dom}(M_X)$ is an interval containing zero, we want to prove $M_X(0)<\infty$. It is obvious that $ M_X(0) = \EE{\exp(0\cdot X)} = \EE{\exp(0)} =1<\infty $. 
+	\item[(b)] For all $\lambda \in \text{dom}M_X$, we have
+	\begin{align*}
+		M_X(\lambda) = \EE{ \exp(\lambda X) } \ge \exp\bracket{\EE{\lambda X}} = \exp\bracket{\lambda\EE{ X}}\,,
+	\end{align*}
+	where the inequality comes from the convexity of $x \to \exp(x)$.
+	\item[(c)] TBD
+	\item[(d)] $M^{(1)}_X(\lambda) = \frac{d}{d\lambda} \EE{\exp(\lambda X)}= \EE{\frac{d}{d\lambda} \exp(\lambda X)} = \EE{X \exp(\lambda X)}$. 
+	Recursively, we have $M^{(k)}_X(\lambda) = \EE{X^k \exp(\lambda X)}$. 
+	\item[(e)] According to the result of (d), we have $M^{(k)}_X(0) = \EE{X^k \exp(0\cdot X)} = \EE{X^k}$.
+	\item[(f)] To prove $\psi_X$ is convex, we want to prove $\forall \alpha \in (0,1), a,b\in \text{dom}(\psi_X)$, there is $\psi_X(\alpha a + (1-\alpha)b) \le \alpha \psi_X(a) + (1-\alpha)\psi_X(b)$.
+	\begin{align*}
+		\psi_X(\alpha a + (1-\alpha)b) &= \log M_X( \alpha a + (1-\alpha)b ) \\
+		&= \log \EE{\exp\bracket{ \alpha a + (1-\alpha)b}X} \\
+		&= \log \EE{\exp\bracket{ \alpha aX } \exp((1-\alpha)bX)} \\
+		&= \log \EE{\bracket{\exp\bracket{ aX }}^{\alpha} \bracket{\exp(bX)}^{(1-\alpha)}}\\
+		&\le  \log \bracket{ \EE{\exp\bracket{ aX }}^{\alpha } \EE{\exp(bX)}^{(1-\alpha)} } \\
+		&= \alpha \log \EE{ \exp\bracket{ aX } } + (1-\alpha) \EE{\exp(bX)} = \alpha \psi_X(a) + (1-\alpha)\psi_X(b) \,,
+	\end{align*}
+	where the inequality comes from the Hölder's inequality. 
+\end{enumerate}
+
+\end{proof}
 
 
 \noindent\textbf{5.10}
@@ -220,7 +265,7 @@ Do \textit{not} assume independence of $X_1$ and $X_2$.
 \begin{enumerate}
 	\item[(a)]
 
-	
+
 	\item[(b)]
 \end{enumerate}
 \end{proof}
