@@ -285,7 +285,30 @@ Do \textit{not} assume independence of $X_1$ and $X_2$.
 
 \begin{proof}
 \begin{enumerate}
-	\item[(a)]
+	\item[(a)]To show $X$ is $(b-a)/2$-subgaussian, we want to prove $\forall \lambda \in \RR, \EE{\exp(\lambda X)} \le \exp\bracket{ \frac{\lambda^2 (b-a^2)}{8} }$.
+
+	According to the convexity of $x \to \exp(x)$ and Jensen's inequality, we have $\forall X \in [a,b]$,
+	\begin{align*}
+		\exp(\lambda X) = \exp\bracket{ \frac{b-X}{b-a}\lambda a + \frac{X-a}{b-a}\lambda b } \le \frac{b-X}{b-a}\exp(\lambda a)+ \frac{X-a}{b-a}\exp(\lambda b)\,.
+	\end{align*}
+	Thus, 
+	\begin{align*}
+		\EE{\exp(\lambda X)} &\le \frac{b-\EE{X}}{b-a}\exp(\lambda a)+ \frac{\EE{X}-a}{b-a}\exp(\lambda b) \\
+		&= \frac{b}{b-a}\exp(\lambda a)+ \frac{-a}{b-a}\exp(\lambda b)\\
+		&= (1-\theta)\exp(\lambda a)+\theta \exp(\lambda b) ~~~\bracket{\text{By letting $\theta = \frac{-a}{b-a}$}} \\
+		&= \exp(\lambda a) \bracket{1-\theta+\theta \exp(\lambda b - \lambda a)} \\
+		&= \exp(-\lambda(b-a)\theta) \bracket{ 1-\theta+\theta \exp(\lambda b - \lambda a) } ~~~\bracket{\text{By representing $a$ using $\theta$}}\\
+		&= \exp\bracket{-\theta u + \log(1-\theta+\theta\exp(u))} ~~~\bracket{\text{By letting $u=\lambda(b-a)$} } \\
+		&= \exp(\phi(u)), ~~~\text{where}~~ \phi(u)=-\theta u + \log(1-\theta+\theta\exp(u))\,.
+	\end{align*}
+	We next want to find the upper bound for $\exp(\phi(u))$. According to the Taylor’s theorem with mean-values forms of the remainder, we have 
+	\begin{align*}
+		\phi(u) &= \phi(0) + u\phi'(0) + \frac{1}{2}u^2 \phi''(v),~~~~\text{where}~v \in (0,u)\\
+		&= \frac{1}{2}u^2 \phi''(v) ~~~\bracket{\text{Since $\phi(0) = \phi'(0) = 0$}}\\
+		&= \frac{1}{2}u^2 \cdot \frac{\theta \exp(v)}{1-\theta+\theta \exp(v)}\bracket{1-\frac{\theta \exp(v)}{1-\theta+\theta \exp(v)}} \\
+		&\le \frac{1}{2}u^2 \cdot \frac{1}{4} =\frac{1}{8}u^2 = \frac{\lambda^2 (b-a)^2}{8}\,.
+	\end{align*}
+	Above all, we have proved that $\forall \lambda \in \RR, \EE{\exp(\lambda X)} \le \exp(\phi(u)) \le \exp\bracket{\frac{\lambda^2 (b-a)^2}{8}}$. 
 
 
 	\item[(b)]
