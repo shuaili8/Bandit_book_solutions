@@ -259,12 +259,30 @@ Do \textit{not} assume independence of $X_1$ and $X_2$.
 \end{proof}
 
 
-\noindent\textbf{5.10}
+\noindent\textbf{5.10}(Large deviation theory) Let $X,X_1,X_2,...,X_n$ be a sequence of independent and identically distributed random variables with zero mean and moment-generating function $M_X$ with $dom(M_X)=\RR.$ Let$\hat{\mu}_n=\frac{1}{n}\sum_{t=1}^nX_t$.
+\begin{enumerate}
+    \item[(a)]Show that for any $\epsilon>0$,
+        \begin{align}
+            \frac{1}{n}\log\PP{\hat{\mu}_n\geq\epsilon}\leq -\psi_X^{\ast}(\epsilon)=-\underset{\lambda}{\sup}(\lambda\epsilon-\log M_X(\lambda))
+        \end{align}
+    \item[(b)]Show that when X is a Rademacher variable$(\PP{X=1}=\PP{X=-1}=\frac{1}{2})$,$\psi_X^{\ast}(\epsilon)=\frac{1+\epsilon}{2}\log(1+\epsilon)+\frac{1-\epsilon}{2}\log(1-\epsilon)$when$\abs{\epsilon}\le 1$ and $\psi_X^{\ast}(\epsilon)=+\infty$,otherwise.
+\end{enumerate}
 
 \begin{proof}
 \begin{enumerate}
-	\item[(a)]
-
+	\item[(a)] For all $\lambda\in domM_X$,we have 
+	    \begin{align*}
+	        \frac{1}{n}\log\PP{\hat{\mu}_n\geq\epsilon}&=\frac{1}{n}\log\PP{\exp{(\lambda n\hat{\mu}_n)}\geq\exp{(\lambda n \epsilon)}}\\
+	        &\leq \frac{1}{n}\log(\EE{\exp{(\lambda n\hat{\mu}_n)}}\exp{(-\lambda n \epsilon)})\\
+	        &=\frac{1}{n}\log(\prod_{t=1}^n\EE{\exp{(\lambda X_t)}}\exp{(-\lambda n \epsilon)})\\
+	        &=\frac{1}{n}\log(\EE{\exp{(\lambda X)}}^n\exp{(-\lambda n \epsilon)})\\
+	        &=\log(\EE{\exp{(\lambda X)}}\exp{(-\lambda\epsilon)})\\
+	        &=-(\lambda\epsilon-\log M_X(\lambda))
+	    \end{align*}
+        Since it holds for all $\lambda\in domM_X$,we can imply
+        \begin{align*}
+            \frac{1}{n}\log\PP{\hat{\mu}_n\geq\epsilon}\leq -\psi_X^{\ast}(\epsilon)=-\underset{\lambda}{\sup}(\lambda\epsilon-\log M_X(\lambda))
+        \end{align*}
 
 	\item[(b)]
 \end{enumerate}
