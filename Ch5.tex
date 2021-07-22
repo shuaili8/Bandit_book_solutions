@@ -271,10 +271,10 @@ Do \textit{not} assume independence of $X_1$ and $X_2$.
 \end{proof}
 
 
-\noindent\textbf{5.11} (Hoeffding’s lemma) Suppose that $X$ is zero mean and $X \in [a,b]$ almost surely for constants $a <b$.
+\noindent\textbf{5.11} (Hoeffding's lemma) Suppose that $X$ is zero mean and $X \in [a,b]$ almost surely for constants $a <b$.
 \begin{enumerate}
 	\item[(a)]Show that $X$ is $(b-a)/2$-subgaussian.
-	\item[(b)]Prove Hoeffding’s inequality (Lemma \ref{lem:hoeffding}).
+	\item[(b)]Prove Hoeffding's inequality (Lemma \ref{lem:hoeffding}).
 \end{enumerate}
 \begin{lemma}[Hoeffding's inequality]\label{lem:hoeffding}
 	For a zero-mean random variable $X$ such that $X \in [a,b]$ almost surely for real values $a <b$, then $M_X(\lambda) \le \exp(\lambda^2 (b-a)^2 / 8)$. Applying the Cramér–Chernoff method shows that if $X_1,X_2,\ldots,X_n$ are independent and $X_t \in [a_t,b_t]$ almost surely with $a_t < b_t$ for all $t$. Then, 
@@ -301,7 +301,7 @@ Do \textit{not} assume independence of $X_1$ and $X_2$.
 		&= \exp\bracket{-\theta u + \log(1-\theta+\theta\exp(u))} ~~~\bracket{\text{By letting $u=\lambda(b-a)$} } \\
 		&= \exp(\phi(u)), ~~~\text{where}~~ \phi(u)=-\theta u + \log(1-\theta+\theta\exp(u))\,.
 	\end{align*}
-	We next want to find the upper bound for $\exp(\phi(u))$. According to the Taylor’s theorem with mean-values forms of the remainder, we have 
+	We next want to find the upper bound for $\exp(\phi(u))$. According to the Taylor's theorem with mean-values forms of the remainder, we have 
 	\begin{align*}
 		\phi(u) &= \phi(0) + u\phi'(0) + \frac{1}{2}u^2 \phi''(v),~~~~\text{where}~v \in (0,u)\\
 		&= \frac{1}{2}u^2 \phi''(v) ~~~\bracket{\text{Since $\phi(0) = \phi'(0) = 0$}}\\
@@ -311,7 +311,18 @@ Do \textit{not} assume independence of $X_1$ and $X_2$.
 	Above all, we have proved that $\forall \lambda \in \RR, \EE{\exp(\lambda X)} \le \exp(\phi(u)) \le \exp\bracket{\frac{\lambda^2 (b-a)^2}{8}}$. 
 
 
-	\item[(b)]
+	\item[(b)]  We only give the upper tail of the Hoeffding's Inequality using the Hoeffding's Lemma since the lower tail has a similar proof. Applying the Hoeffding' Lemma and the Chernoff bound technique immediately
+	shows that
+	\begin{align*}
+		\mathbb{P}\left(\frac{1}{n}\sum^n_{t=1}(X_t -\mathbb{E}[X_t])\geq\epsilon\right)&=\mathbb{P}\left(\sum^n_{t=1}(X_t-\mathbb{E}[X_t])\geq n\epsilon \right)\\
+		&\leq\mathbb{E}\left[\exp\left(\lambda\sum^n_{t=1}(X_t-\mathbb{E}[X_t]) \right) \right]e^{-\lambda n\epsilon}\\
+		&=\left(\Pi^n_{t=1}\mathbb{E}[\exp\left(\lambda(X_t-\mathbb{E}[X_t])\right)] \right)e^{-\lambda n\epsilon}\\
+		&\leq\left(\Pi^n_{t=1}e^{\frac{\lambda^2(b_t-a_t)^2}{8}} \right)e^{-\lambda n\epsilon}\,,
+	\end{align*}
+	where $\lambda\geq0$. Minimizing the RHS of the above inequality over $\lambda$ shows that
+	\begin{align*}
+		\mathbb{P}\left(\frac{1}{n}\sum^n_{t=1}(X_t -\mathbb{E}[X_t])\geq\epsilon\right)\leq \min_{\lambda\geq0}\left(\Pi^n_{t=1}e^{\frac{\lambda^2(b_t-a_t)^2}{8}} \right)e^{-\lambda n\epsilon} =\exp\left(\frac{-2n^2\epsilon^2}{\sum^n_{t=1}(b_t-a_t)^2}\right)\,.
+	\end{align*}
 \end{enumerate}
 \end{proof}
 
