@@ -290,7 +290,7 @@ Do \textit{not} assume independence of $X_1$ and $X_2$.
 \end{proof}
 
 
-\noindent\textbf{5.10}(Large deviation theory) Let $X,X_1,X_2,...,X_n$ be a sequence of independent and identically distributed random variables with zero mean and moment-generating function $M_X$ with $dom(M_X)=\RR.$ Let$\hat{\mu}_n=\frac{1}{n}\sum_{t=1}^nX_t$.
+\noindent\textbf{5.10} (Large deviation theory) Let $X,X_1,X_2,...,X_n$ be a sequence of independent and identically distributed random variables with zero mean and moment-generating function $M_X$ with $dom(M_X)=\RR.$ Let$\hat{\mu}_n=\frac{1}{n}\sum_{t=1}^nX_t$.
 \begin{enumerate}
     \item[(a)]Show that for any $\epsilon>0$,
         \begin{align}
@@ -315,7 +315,20 @@ Do \textit{not} assume independence of $X_1$ and $X_2$.
             \frac{1}{n}\log\PP{\hat{\mu}_n\geq\epsilon}\leq -\psi_X^{\ast}(\epsilon)=-\underset{\lambda}{\sup}(\lambda\epsilon-\log M_X(\lambda))
         \end{align*}
 
-	\item[(b)]
+	\item[(b)] By definition, $\psi_{X}(\lambda)=\log(\frac{1}{2}(\exp (-\lambda)+\exp (\lambda)))= \log(\cosh (\lambda))$, where $\cosh(\cdot)$ is the hyperbolic cosine function.
+	To find the maximum of $f(\lambda) = \lambda \varepsilon - \psi_{X}(\lambda)$, we have $f^\prime(\lambda) = \varepsilon - \tanh(\lambda)$, where $\tanh(\lambda) = \frac{\exp(\lambda) - \exp(-\lambda)}{\exp(\lambda) + \exp(-\lambda)}$ is the hyperbolic tangent function.
+	Since $\tanh(\lambda) \in[-1,1]$, $\sup _{\lambda} f(\lambda)=+\infty$ when $|\varepsilon|>1$.
+	Otherwise, we have
+	\begin{equation*}
+		\begin{aligned}
+			\psi_{X}^{*}(\varepsilon)
+			&=f\left(\tanh ^{-1}(\varepsilon)\right)\\
+			&=\tanh ^{-1}(\varepsilon) \varepsilon-\log \cosh \left(\tanh ^{-1}(\varepsilon)\right)\\
+			&=\frac{\varepsilon}{2} \log \left(\frac{1+\varepsilon}{1-\varepsilon}\right)+\frac{1}{2} \log \left(1-\varepsilon^{2}\right)\\
+			&=\frac{1+\varepsilon}{2} \log (1+\varepsilon)+\frac{1-\varepsilon}{2} \log (1-\varepsilon),
+		\end{aligned}
+	\end{equation*}
+	where the second equality holds as $\tanh ^{-1}(\varepsilon)=\frac{1}{2} \log \left(\frac{1+\varepsilon}{1-\varepsilon}\right)$.
 \end{enumerate}
 \end{proof}
 
