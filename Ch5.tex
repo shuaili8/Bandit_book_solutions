@@ -125,7 +125,38 @@ Let $\hat{\mu}=\frac{1}{n} \sum_{t=1}^{n} X_{t}$ and show that $\mathbb{V}[\hat{
 % Hence , $\varepsilon \leq 2-ln2$ , this is in contradiction with the arbitrariness of $\varepsilon$
 
 \noindent\textbf{5.5}
+\textsc{(Berry–Esseen inequality)} Let $X_1,X_2,\cdots,X_n$ be a sequence of independent and identically distributed random variables with mean $\mu$, variance $\sigma^2$ and bounded third absolute moment:
+\begin{align*}
+    \rho=\mathbb{E}[|X_1-\mu|^3]<\infty
+\end{align*}
+Let $S_n=\sum^n_{t=1}(X_t-\mu)/\sigma$. The Berry–Esseen theorem shows that
+\begin{align*}
+    \sup_x\left|\mathbb{P}\left(\frac{Sn}{\sqrt{n}}\leq x \right)-\underbrace{\frac{1}{\sqrt{2\pi}}\int^x_{-\infty}\exp(-y^2/2)dy}_{\Phi(x)} \right|\leq\frac{C\rho}{\sqrt{n}}\,,
+\end{align*}
+where $C<1/2$ is a universal constant.
+\begin{enumerate}
+	\item[(a)] Let $\hat{\mu}_n=\frac{1}{n}\sum^n_{t=1}X_t$ and derive a tail bound from the Berry–Esseen theorem. That is, give a bound of the form $\mathbb{P}(\hat{\mu}_n\geq\mu+\epsilon)$ for positive values of $\epsilon$.
+	\item[(b)] Compare your bound with the one that can be obtained from the Cram{\'e}r–Chernoff method. Argue pro- and contra- for the superiority of one over the other.
+\end{enumerate}
 
+\begin{proof}
+\begin{enumerate}
+	\item[(a)] 
+	\begin{align}\label{eq:Ex5.5_BEIneq}
+	    \mathbb{P}(\hat{\mu}_n\geq \mu+\epsilon)&=\mathbb{P}\left(\frac{1}{n}\sum^n_{t=1}(X_t-\mu)\geq\epsilon\right)\notag\\
+	    &=\mathbb{P}\left(\frac{\sum^n_{t=1}(X_t-\mu)}{\sqrt{n}\sigma}\geq\frac{\epsilon\sqrt{n}}{\sigma}\right)\notag\\
+	    &=1-\mathbb{P}\left(\frac{\sum^n_{t=1}(X_t-\mu)}{\sqrt{n}\sigma}\leq\frac{\epsilon\sqrt{n}}{\sigma}\right)\notag\\
+	    &\leq 1-\Phi\left(\frac{\epsilon\sqrt{n}}{\sigma}\right)+\frac{C\rho}{\sqrt{n}}\notag\\
+	    &=\mathbb{P}\left(Z>\frac{\epsilon\sqrt{n}}{\sigma}\right)+\frac{C\rho}{\sqrt{n}}\quad\text{where}\quad Z\sim\mathcal{N}(0,1)\notag\\
+	    &\leq\sqrt{\frac{\sigma^2}{2\pi n\epsilon^2}}\exp\left(-\frac{n\epsilon^2}{2\sigma^2}\right)+\frac{C\rho}{\sqrt{n}}\,.
+	\end{align}
+	\item[(b)] We further assume that $X_t$ is $\sigma$-subgaussian for all $t\in[n]$. Applying Cram{\'e}r–Chernoff method shows that
+	\begin{align}\label{eq:Ex5.5_CCEneq}
+	    \mathbb{P}(\hat{\mu}-\mu>\epsilon)\leq\exp\left(-\frac{n\epsilon^2}{2\sigma^2}\right)\,.
+	\end{align}
+	We now discuss the pros and cons based on the additional multiplicative term $\sqrt{\frac{\sigma^2}{2\pi n\epsilon^2}}$ and the additive term $\frac{C\rho}{\sqrt{n}}$ in Eq.\eqref{eq:Ex5.5_BEIneq}. When $n$ is large enough, the terms $\sqrt{\frac{\sigma^2}{2\pi n\epsilon^2}}$ and $\frac{C\rho}{\sqrt{n}}$ will both be small. It follows that Eq.\eqref{eq:Ex5.5_BEIneq} will be tighter when $n\rightarrow \infty$ but will be looser when $n$ is small than Eq.\eqref{eq:Ex5.5_CCEneq}.
+\end{enumerate}
+\end{proof}
 
 
 \noindent\textbf{5.6}
