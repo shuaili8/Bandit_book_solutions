@@ -56,7 +56,46 @@ Let $\hat{\mu}=\frac{1}{n} \sum_{t=1}^{n} X_{t}$ and show that $\mathbb{V}[\hat{
 
 
 
-\noindent\textbf{5.3}
+\noindent\textbf{5.3} Compare the Gaussian tail probability bound on the right-hand side of $(5.4)$ and the one on (5.2). What values of $\varepsilon$ make one smaller than the other? Discuss your findings.
+
+\begin{proof}
+	Two-slided tail directly in terms of the variance in (5.2) is $\mathbb{P}(|\hat{\mu}-\mu| \geq \varepsilon) \leq \frac{\sigma^{2}}{n \varepsilon^{2}}$. And in (5.4) 
+	\begin{equation}
+	\begin{aligned}
+	\mathbb{P}(\hat{\mu} \geq \mu+\varepsilon) &=\mathbb{P}\left(S_{n} / \sqrt{\sigma^{2} n} \geq \varepsilon \sqrt{n / \sigma^{2}}\right) \approx \mathbb{P}\left(Z \geq \varepsilon \sqrt{n / \sigma^{2}}\right) \\
+	& \leq \sqrt{\frac{\sigma^{2}}{2 \pi n \varepsilon^{2}}} \exp \left(-\frac{n \varepsilon^{2}}{2 \sigma^{2}}\right)
+	\end{aligned}
+	\end{equation}
+
+	We need to compare $\frac {\sigma^2} {2 n \varepsilon^2}$ and $ \sqrt{\frac{\sigma^{2}}{2 \pi n \varepsilon^{2}}} \exp \left(-\frac{n \varepsilon^{2}}{2 \sigma^{2}}\right)$
+
+	$f(\varepsilon) = \frac {\sigma^2} {2 n \varepsilon^2}- \sqrt{\frac{\sigma^{2}}{2 \pi n \varepsilon^{2}}} \exp \left(-\frac{n \varepsilon^{2}}{2 \sigma^{2}}\right)$
+
+	Let $x = \frac {\sigma ^2} {2 n \varepsilon^2}$, then $f(x) = x - \frac {\sqrt {x}} {\sqrt{\pi}} exp(\frac 1 {4 x})$
+
+	We could write the $f(x) = 0$ as Lambert form
+
+	$\frac 1 \pi = x exp(- frac {1} {2x})$
+
+	with the $\frac 1 {2x} = u$
+
+	$\frac 1 \pi = (\frac 1 {2 u} exp(-u))$ as Lambert form
+
+	$exp(u) u = \frac {\pi} {2}$ and it zero point is 
+
+	$u = W_0(\frac \pi 2)$
+
+	$\varepsilon = \sqrt{\frac {W_0(\frac {\pi} {2}) \sigma^2} {n}}$
+	
+	Monotonicity $f'(x) = x - \frac {\sqrt x}{\pi} exp(\frac 1 {4x})$
+
+	From the picture, $f'(x)$ is always bigger than 0.
+
+	Thus, when $\varepsilon > \sqrt{\frac {W_0(\frac {\pi} {2}) \sigma^2} {n}}$, (5.2) is bigger, otherwise (5.4) is bagger.
+	% for $f'(x) / \$
+
+\end{proof}
+
 
 
 
@@ -159,7 +198,131 @@ where $C<1/2$ is a universal constant.
 \end{proof}
 
 
-\noindent\textbf{5.6}
+\noindent\textbf{5.6} (CENTRAL LIMIT THEOREM) We mentioned that invoking the CLT to approximate the distribution of sums of independent Bernoulli random variables using a Gaussian can be a bad idea. Let $X_{1}, \ldots, X_{n} \sim \mathcal{B}(p)$ be independent Bernoulli random variables with common mean $p=p_{n}=\lambda / n$, where $\lambda \in(0,1)$. For $x \in \mathbb{N}$ natural number, let $P_{n}(x)=\mathbb{P}\left(X_{1}+\cdots+X_{n}=x\right)$.
+\begin{enumerate}
+	\item [(a)] Show that $\lim _{n \rightarrow \infty} P_{n}(x)=e^{-\lambda} \lambda^{x} /(x !)$, which is a Poisson distribution with parameter $\lambda$.
+	\item [(b)] Explain why this does not contradict the CLT, and discuss the implications of the Berry-Esseen.
+	\item [(c)] In what way does this show that the CLT is indeed a poor approximation in some cases?
+	\item [(d)] Based on Monte Carlo simulations, plot the distribution of $X_{1}+\cdots+X_{n}$ for $n=30$ and some well-chosen values of $\lambda$. Compare the distribution to what you would get from the CLT. What can you conclude?
+\end{enumerate}
+
+\begin{proof}
+	
+\begin{enumerate}
+	\item[(a)] 
+		\begin{equation}
+		\begin{aligned}
+		P(X=x) &=l_{n \rightarrow \infty}\left(\begin{array}{l}
+		n \\
+		x
+		\end{array}\right) p^{x}(1-p)^{n-x}  \\
+		&=l_{n \rightarrow \infty}\left(\begin{array}{l}
+		n \\
+		x
+		\end{array}\right)\left(\frac{\lambda}{n}\right)^{x}\left(1-\frac{\lambda}{n}\right)^{n-x}  \\
+		&=l_{n \rightarrow \infty} \frac{n !}{(n-x) ! x !}\left(\frac{\lambda}{n}\right)^{x}\left(1-\frac{\lambda}{n}\right)^{n}\left(1-\frac{\lambda}{n}\right)^{-x} \\
+		&=l_{n=\infty} \frac{n !}{(n-x) !} \frac{1}{n^{x}} \frac{\lambda^{x}}{x !} e^{-\lambda} \quad 1
+		\end{aligned}
+		\end{equation}
+		
+		Then, we just need to proof the coefficient of possion is 1.
+		\begin{equation}
+		\begin{aligned}
+		&\ell_{h=\infty} \underbrace{\frac{n !}{(n-x) !} \frac{1}{n^{x}}}_{h \rightarrow \infty}=1 . \\
+		&\frac{n(n-1)(n-2) \cdots(n-x+1)}{n}=1 .
+		\end{aligned}
+		\end{equation}
+		Thus, 
+		\begin{equation} 
+		\lim _{n \rightarrow \infty} P_{n}(x)=e^{-\lambda} \lambda^{x} /(x !)
+		\end{equation}
+	\item [(b)]
+		According to the definition in section 5.2, central limit theorem is the limiting distribution of $S_{n} / \sqrt{n \sigma^{2}}$ as $n \rightarrow \infty$ is a Gaussian with mean zero and unit variance with $S_{n}=\sum_{t=1}^{n}\left(X_{t}-\mu \right)$. 
+		
+		But  the conclusion in (a) is not conflict with central limit theorem, since $X_1, \ldots, X_n$ in Exp 5.6 with common mean $p=p_{n}=\lambda / n$ which does not satisfy the assumptions of variable's independence in the central limit theorem.
+	\item [(d)]
+
+		\begin{figure}[htbp]
+		\centering
+		
+		\subfigure[$\lambda=0.1$]{
+		\begin{minipage}[t]{0.25\linewidth}
+		\centering
+		\includegraphics[width=4cm]{5.6_picture/lamb0.1-iter10000.png}
+		%\caption{fig1}
+		\end{minipage}%
+		}%
+		\subfigure[$\lambda=0.2$]{
+		\begin{minipage}[t]{0.25\linewidth}
+		\centering
+		\includegraphics[width=4cm]{5.6_picture/lamb0.2-iter10000.png}
+		%\caption{fig2}
+		\end{minipage}%
+		}%
+		\subfigure[$\lambda=0.3$]{
+		\begin{minipage}[t]{0.25\linewidth}
+		\centering
+		\includegraphics[width=4cm]{5.6_picture/lamb0.3-iter10000.png}
+		%\caption{fig2}
+		\end{minipage}%
+		}%
+
+		                 %这个回车键很重要 \quad也可以
+		\subfigure[$\lambda=0.4$]{
+		\begin{minipage}[t]{0.25\linewidth}
+		\centering
+		\includegraphics[width=4cm]{5.6_picture/lamb0.4-iter10000.png}
+		%\caption{fig2}
+		\end{minipage}
+		}%
+		\subfigure[$\lambda=0.5$]{
+		\begin{minipage}[t]{0.25\linewidth}
+		\centering
+		\includegraphics[width=4cm]{5.6_picture/lamb0.5-iter10000.png}
+		%\caption{fig2}
+		\end{minipage}
+		}%
+		\subfigure[$\lambda=0.6$]{
+		\begin{minipage}[t]{0.25\linewidth}
+		\centering
+		\includegraphics[width=4cm]{5.6_picture/lamb0.6-iter10000.png}
+		%\caption{fig2}
+		\end{minipage}%
+		}%
+
+
+		\subfigure[$\lambda=0.7$]{
+		\begin{minipage}[t]{0.25\linewidth}
+		\centering
+		\includegraphics[width=4cm]{5.6_picture/lamb0.7-iter10000.png}
+		%\caption{fig2}
+		\end{minipage}%
+		}%
+		\subfigure[$\lambda=0.8$]{
+		\begin{minipage}[t]{0.25\linewidth}
+		\centering
+		\includegraphics[width=4cm]{5.6_picture/lamb0.8-iter10000.png}
+		%\caption{fig2}
+		\end{minipage}%
+		}%
+		\subfigure[$\lambda=0.9$]{
+		\begin{minipage}[t]{0.25\linewidth}
+		\centering
+		\includegraphics[width=4cm]{5.6_picture/lamb0.9-iter10000.png}
+		%\caption{fig2}
+		\end{minipage}%
+		}%
+		
+		\centering
+		\caption{Monte Carlo simulation and CLT results in 5.6.d}
+		\label{pics56}
+		\end{figure}
+
+		Monte Carlo simulation and CLT results are in Fig. \ref{pics56}.
+
+		Conclusion: When n becomes larger and can be regarded as continuous, the poisson distribution is similar to normal distribution.
+\end {enumerate}
+\end{proof}
 
 
 \noindent\textbf{5.7}
