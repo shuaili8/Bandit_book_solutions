@@ -62,37 +62,61 @@ Let $\hat{\mu}=\frac{1}{n} \sum_{t=1}^{n} X_{t}$ and show that $\mathbb{V}[\hat{
 	Two-slided tail directly in terms of the variance in (5.2) is $\mathbb{P}(|\hat{\mu}-\mu| \geq \varepsilon) \leq \frac{\sigma^{2}}{n \varepsilon^{2}}$. And in (5.4) 
 	\begin{equation}
 	\begin{aligned}
+ 	\notag
 	\mathbb{P}(\hat{\mu} \geq \mu+\varepsilon) &=\mathbb{P}\left(S_{n} / \sqrt{\sigma^{2} n} \geq \varepsilon \sqrt{n / \sigma^{2}}\right) \approx \mathbb{P}\left(Z \geq \varepsilon \sqrt{n / \sigma^{2}}\right) \\
 	& \leq \sqrt{\frac{\sigma^{2}}{2 \pi n \varepsilon^{2}}} \exp \left(-\frac{n \varepsilon^{2}}{2 \sigma^{2}}\right)
 	\end{aligned}
 	\end{equation}
 
-	We need to compare $\frac {\sigma^2} {2 n \varepsilon^2}$ and $ \sqrt{\frac{\sigma^{2}}{2 \pi n \varepsilon^{2}}} \exp \left(-\frac{n \varepsilon^{2}}{2 \sigma^{2}}\right)$
+	We need to compare $\frac {\sigma^2} {2 n \varepsilon^2}$ and $ \sqrt{\frac{\sigma^{2}}{2 \pi n \varepsilon^{2}}} \exp \left(-\frac{n \varepsilon^{2}}{2 \sigma^{2}}\right)$ and we can define:
 
-	$f(\varepsilon) = \frac {\sigma^2} {2 n \varepsilon^2}- \sqrt{\frac{\sigma^{2}}{2 \pi n \varepsilon^{2}}} \exp \left(-\frac{n \varepsilon^{2}}{2 \sigma^{2}}\right)$
+	\begin{equation}
+	\begin{aligned}
+		 \notag
+		f(\varepsilon) = \frac {\sigma^2} {2 n \varepsilon^2}- \sqrt{\frac{\sigma^{2}}{2 \pi n \varepsilon^{2}}} \exp \left(-\frac{n \varepsilon^{2}}{2 \sigma^{2}}\right)
+	\end{aligned}	
+	\end{equation}
 
-	Let $x = \frac {\sigma ^2} {2 n \varepsilon^2}$, then $f(x) = x - \frac {\sqrt {x}} {\sqrt{\pi}} exp(\frac 1 {4 x})$
 
-	We could write the $f(x) = 0$ as Lambert form
+	Let $x = \frac {\sigma ^2} {2 n \varepsilon^2}$, then 
 
-	$\frac 1 \pi = x exp(- frac {1} {2x})$
+	\begin{equation}
+	\begin{aligned}
+		 \notag
+		f(x) = x - \frac {\sqrt {x}} {\sqrt{\pi}} \exp(\frac 1 {4 x})
+	\end{aligned}
+	\end{equation}
 
-	with the $\frac 1 {2x} = u$
 
-	$\frac 1 \pi = (\frac 1 {2 u} exp(-u))$ as Lambert form
+	When $f(x) = 0$, the Lambert form of the equation could be writen as:
 
-	$exp(u) u = \frac {\pi} {2}$ and it zero point is 
+	\begin{equation}
+	\begin{aligned}
+ 	\notag
+	\frac 1 \pi = x \exp(- \frac {1} {2x})
+	\end{aligned}	
+	\end{equation}
 
-	$u = W_0(\frac \pi 2)$
-
-	$\varepsilon = \sqrt{\frac {W_0(\frac {\pi} {2}) \sigma^2} {n}}$
+	with the $\frac 1 {2x} = u$, the equation is transformed into
 	
-	Monotonicity $f'(x) = x - \frac {\sqrt x}{\pi} exp(\frac 1 {4x})$
+	\begin{equation}
+	\begin{aligned}
+	\notag
+	u \exp(u) = \frac {\pi} {2}
+	\end{aligned}	
+	\end{equation}
 
-	From the picture, $f'(x)$ is always bigger than 0.
+	Solve the equation, $u = W_0(\frac \pi 2)$, and then $f(x) = 0$ when
 
-	Thus, when $\varepsilon > \sqrt{\frac {W_0(\frac {\pi} {2}) \sigma^2} {n}}$, (5.2) is bigger, otherwise (5.4) is bagger.
-	% for $f'(x) / \$
+	\begin{equation}
+	\begin{aligned}
+	\notag
+\varepsilon = \sqrt{\frac {W_0(\frac {\pi} {2}) \sigma^2} {n}}
+	\end{aligned}	
+	\end{equation}
+
+	In order to judge the positive or negative of the $f(x)$, we need to judge the monotonicity in addition to solving the zero point. $f'(x) = x - \frac {\sqrt x}{\pi} exp(\frac 1 {4x})$, and from the picture, $f'(x)$ is always bigger than 0. Thus, when $\varepsilon > \sqrt{\frac {W_0(\frac {\pi} {2}) \sigma^2} {n}}$, (5.2) is greater than (5.4), otherwise (5.2) is smaller.
+
 
 \end{proof}
 
@@ -212,6 +236,7 @@ where $C<1/2$ is a universal constant.
 	\item[(a)] 
 		\begin{equation}
 		\begin{aligned}
+		\notag
 		P(X=x) &=l_{n \rightarrow \infty}\left(\begin{array}{l}
 		n \\
 		x
@@ -228,12 +253,14 @@ where $C<1/2$ is a universal constant.
 		Then, we just need to proof the coefficient of possion is 1.
 		\begin{equation}
 		\begin{aligned}
+		\notag
 		&\ell_{h=\infty} \underbrace{\frac{n !}{(n-x) !} \frac{1}{n^{x}}}_{h \rightarrow \infty}=1 . \\
 		&\frac{n(n-1)(n-2) \cdots(n-x+1)}{n}=1 .
 		\end{aligned}
 		\end{equation}
 		Thus, 
 		\begin{equation} 
+		\notag
 		\lim _{n \rightarrow \infty} P_{n}(x)=e^{-\lambda} \lambda^{x} /(x !)
 		\end{equation}
 	\item [(b)]
@@ -319,7 +346,7 @@ where $C<1/2$ is a universal constant.
 
 		Monte Carlo simulation and CLT results are in Fig. \ref{pics56}.
 
-		Conclusion: When n becomes larger and can be regarded as continuous, the poisson distribution is similar to normal distribution.
+		Conclusion: When $n$ becomes larger and can be regarded as continuous, the poisson distribution is similar to normal distribution.
 \end {enumerate}
 \end{proof}
 
