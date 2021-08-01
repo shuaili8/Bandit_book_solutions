@@ -232,46 +232,9 @@ where $C<1/2$ is a universal constant.
 
 \begin{proof}
 	
-\begin{enumerate}
-	\item[(a)] 
-		\begin{equation}
-		\begin{aligned}
-		\notag
-		P(X=x) &=l_{n \rightarrow \infty}\left(\begin{array}{l}
-		n \\
-		x
-		\end{array}\right) p^{x}(1-p)^{n-x}  \\
-		&=l_{n \rightarrow \infty}\left(\begin{array}{l}
-		n \\
-		x
-		\end{array}\right)\left(\frac{\lambda}{n}\right)^{x}\left(1-\frac{\lambda}{n}\right)^{n-x}  \\
-		&=l_{n \rightarrow \infty} \frac{n !}{(n-x) ! x !}\left(\frac{\lambda}{n}\right)^{x}\left(1-\frac{\lambda}{n}\right)^{n}\left(1-\frac{\lambda}{n}\right)^{-x} \\
-		&=l_{n=\infty} \frac{n !}{(n-x) !} \frac{1}{n^{x}} \frac{\lambda^{x}}{x !} e^{-\lambda} \quad 1
-		\end{aligned}
-		\end{equation}
-		
-		Then, we just need to proof the coefficient of possion is 1.
-		\begin{equation}
-		\begin{aligned}
-		\notag
-		&\ell_{h=\infty} \underbrace{\frac{n !}{(n-x) !} \frac{1}{n^{x}}}_{h \rightarrow \infty}=1 . \\
-		&\frac{n(n-1)(n-2) \cdots(n-x+1)}{n}=1 .
-		\end{aligned}
-		\end{equation}
-		Thus, 
-		\begin{equation} 
-		\notag
-		\lim _{n \rightarrow \infty} P_{n}(x)=e^{-\lambda} \lambda^{x} /(x !)
-		\end{equation}
-	\item [(b)]
-		According to the definition in section 5.2, central limit theorem is the limiting distribution of $S_{n} / \sqrt{n \sigma^{2}}$ as $n \rightarrow \infty$ is a Gaussian with mean zero and unit variance with $S_{n}=\sum_{t=1}^{n}\left(X_{t}-\mu \right)$. 
-		
-		But  the conclusion in (a) is not conflict with central limit theorem, since $X_1, \ldots, X_n$ in Exp 5.6 with common mean $p=p_{n}=\lambda / n$ which does not satisfy the assumptions of variable's independence in the central limit theorem.
-	\item [(d)]
 
-		\begin{figure}[htbp]
+\begin{figure}[tbh!]
 		\centering
-		
 		\subfigure[$\lambda=0.1$]{
 		\begin{minipage}[t]{0.25\linewidth}
 		\centering
@@ -343,12 +306,47 @@ where $C<1/2$ is a universal constant.
 		\caption{Monte Carlo simulation and CLT results in 5.6.d}
 		\label{pics56}
 		\end{figure}
-
-		Monte Carlo simulation and CLT results are in Fig. \ref{pics56}.
-
-		Conclusion: When $n$ becomes larger and can be regarded as continuous, the poisson distribution is similar to normal distribution.
+\begin{enumerate}
+	\item[(a)] 
+		\begin{equation}
+		\begin{aligned}
+		\notag
+		P(X=x) &=l_{n \rightarrow \infty}\left(\begin{array}{l}
+		n \\
+		x
+		\end{array}\right) p^{x}(1-p)^{n-x}  \\
+		&=l_{n \rightarrow \infty}\left(\begin{array}{l}
+		n \\
+		x
+		\end{array}\right)\left(\frac{\lambda}{n}\right)^{x}\left(1-\frac{\lambda}{n}\right)^{n-x}  \\
+		&=l_{n \rightarrow \infty} \frac{n !}{(n-x) ! x !}\left(\frac{\lambda}{n}\right)^{x}\left(1-\frac{\lambda}{n}\right)^{n}\left(1-\frac{\lambda}{n}\right)^{-x} \\
+		&=l_{n=\infty} \frac{n !}{(n-x) !} \frac{1}{n^{x}} \frac{\lambda^{x}}{x !} e^{-\lambda} \quad 1
+		\end{aligned}
+		\end{equation}
+		
+		Then, we just need to proof the coefficient of possion is 1.
+		\begin{equation}
+		\begin{aligned}
+		\notag
+		&\ell_{h=\infty} \underbrace{\frac{n !}{(n-x) !} \frac{1}{n^{x}}}_{h \rightarrow \infty}=1 . \\
+		&\frac{n(n-1)(n-2) \cdots(n-x+1)}{n}=1 .
+		\end{aligned}
+		\end{equation}
+		Thus, 
+		\begin{equation} 
+		\notag
+		\lim _{n \rightarrow \infty} P_{n}(x)=e^{-\lambda} \lambda^{x} /(x !)
+		\end{equation}
+	\item [(b)]
+		According to the definition in section 5.2, central limit theorem is the limiting distribution of $S_{n} / \sqrt{n \sigma^{2}}$ as $n \rightarrow \infty$ is a Gaussian with mean zero and unit variance with $S_{n}=\sum_{t=1}^{n}\left(X_{t}-\mu \right)$. 
+		
+		But  the conclusion in (a) is not conflict with central limit theorem, since $X_1, \ldots, X_n$ in Exp 5.6 with common mean $p=p_{n}=\lambda / n$ which does not satisfy the assumptions of variable's independence in the central limit theorem.
+	\item [(d)] The comparison of Monte Carlo simulation and CLT results can be found in Fig. \ref{pics56}.
+		Our observation is that, when $n$ becomes larger and can be regarded as continuous, the poisson distribution is more close to the normal distribution.
 \end {enumerate}
 \end{proof}
+
+
 
 
 \noindent\textbf{5.7}
