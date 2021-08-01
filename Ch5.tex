@@ -584,7 +584,7 @@ Do \textit{not} assume independence of $X_1$ and $X_2$.
 	\item[(d)] Let $\varepsilon > 0$ and $\alpha = b\varepsilon/v$ and prove that
 	\begin{align}
 		\PP{S\ge \varepsilon} &\le \exp\bracket{ -\frac{v}{b^2}\bracket{ (1+\alpha)\log(1+\alpha) -\alpha} } \label{eq:5-14-d-1}\\
-		&\le \exp\bracket{- \frac{\varepsilon^2}{2v\bracket{ 1+\frac{b\varepsilon}{3v} }} } \,.
+		&\le \exp\bracket{- \frac{\varepsilon^2}{2v\bracket{ 1+\frac{b\varepsilon}{3v} }} } \label{eq:5-14-d-2}\,.
 	\end{align}
 	\item[(e)] Use the previous result to show that
 	\begin{align*}
@@ -597,7 +597,46 @@ Do \textit{not} assume independence of $X_1$ and $X_2$.
 	Note that the right-hand side of this inequality is the same as that shown in Eq.\eqref{eq:5-14-d-1}.
 \end{enumerate}
 
+\begin{proof}
+	\begin{enumerate}
+		\item[(a)] To show $g(x)$ is increasing, we want to show that $g'(x)\ge 0$. 
+		\begin{align*}
+			g'(x) &= \frac{(\exp(x)-1)x^2 - (\exp(x)-x-1)2x}{x^4} \\
+			&= \frac{x(x-2)\exp(x)+x(x+2)}{x^4}\,.
+		\end{align*}
+		By letting $g'(x)=0$, we find $x=0$. And $\forall x\neq 0$, we have $g'(x)>0$. Above all, we can show $g(x)$ is increasing. 
+		\item[(b)] According to (a), we have $\exp(x) = x^2 g(x)+x+1$. Thus 
+		\begin{align*}
+			\EE{\exp(X)} = \EE{ X^2 g(X)+X+1 } &= \EE{X^2 g(X)}+\EE{X}+1\\
+			&\le g(b)\EE{X^2}+\EE{X}+1\\
+			&= g(b) \bracket{\mathbb{V}[X]+\EE{X}^2}+\EE{X}+1 \\
+			&= g(b)\mathbb{V}[X]+1\,,
+		\end{align*}
+		where the inequality is because $X\le b$ and the increasing property of $g(x)$ proved in (a), the second last equality comes from the definition of $\mathbb{V}[X]$, the last equality holds since $\EE{X}=0$.
+		\item[(c)]
+		\item[(d)] 
+		\item[(e)] 
+		By choosing $\delta = \exp\bracket{ -\frac{\varepsilon^2}{2v\bracket{1+\frac{b\varepsilon}{3v}}} }$, we have
+		\begin{align*}
+			\varepsilon^2 - 2v\log\bracket{\frac{1}{\delta}} - \frac{2b}{3}\varepsilon\log\bracket{\frac{1}{\delta}} = 0\,.
+		\end{align*}
+		By solving this equality, we have 
+		\begin{align*}
+			\varepsilon = \frac{1}{2}\sqrt{ \bracket{\frac{2b}{3}\log \bracket{\frac{1}{\delta}}}^2 + 8v\log \bracket{\frac{1}{\delta}}}+\frac{b}{3}\log \bracket{\frac{1}{\delta}}
+		\end{align*}
+		Then according to Eq.\eqref{eq:5-14-d-2}, 
+		\begin{align*}
+		\PP{S \ge \sqrt{2v\log \bracket{\frac{1}{\delta}}}+\frac{2b}{3}\log \bracket{\frac{1}{\delta}}} &= \PP{S \ge \sqrt{2v\log \bracket{\frac{1}{\delta}}}+\frac{b}{3}\log \bracket{\frac{1}{\delta}}+\frac{b}{3}\log \bracket{\frac{1}{\delta}}}\\
+			&\le
+			\PP{S \ge \frac{1}{2}\sqrt{ \bracket{\frac{2b}{3}\log \bracket{\frac{1}{\delta}}}^2 + 8v\log \bracket{\frac{1}{\delta}}}+\frac{b}{3}\log \bracket{\frac{1}{\delta}}} \le \delta \,,
+		\end{align*}
+		where the first inequality is because $\forall a,b\in \RR: \sqrt{|a|+|b|} \le \sqrt{|a|}+\sqrt{|b|}$
 
+
+
+
+	\end{enumerate}
+\end{proof}
 
 
 
