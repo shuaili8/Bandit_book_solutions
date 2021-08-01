@@ -576,51 +576,31 @@ Do \textit{not} assume independence of $X_1$ and $X_2$.
 \end{proof}
 
 
+\noindent \textbf{5.14}(Bernstein’s inequality) Let $X_1,X_2,\ldots,X_n$ be a sequence of independent random variables with $X_t - \EE{X_t} \le b$ almost surely and $S= \sum_{t=1}^n X_t -\EE{X_t}$ and $v = \sum_{t=1}^n \mathbb{V}[X_t]$.
+\begin{enumerate}
+	\item[(a)] Show that $g(x) = \frac{1}{2} + \frac{x}{3!}+\frac{x^2}{4!}+\cdots = \frac{\exp (x) - 1 -x}{x^2}$ is increasing.
+	\item[(b)] Let $X$ be a random variable with $\EE{X}=0$ and $X\le b$ almost surely. Show that $\EE{\exp (X)} \le 1+g(b)\mathbb{V}[X]$.
+	\item[(c)] Prove that $(1+\alpha)\log(1+\alpha) - \alpha \ge \frac{3\alpha^2}{6+2\alpha}$ for all $\alpha\ge 0$. Prove that this is the best possible approximation in the sense that the $2$ in the denominator cannot be increased.
+	\item[(d)] Let $\varepsilon > 0$ and $\alpha = b\varepsilon/v$ and prove that
+	\begin{align}
+		\PP{S\ge \varepsilon} &\le \exp\bracket{ -\frac{v}{b^2}\bracket{ (1+\alpha)\log(1+\alpha) -\alpha} } \label{eq:5-14-d-1}\\
+		&\le \exp\bracket{- \frac{\varepsilon^2}{2v\bracket{ 1+\frac{b\varepsilon}{3v} }} } \,.
+	\end{align}
+	\item[(e)] Use the previous result to show that
+	\begin{align*}
+		\PP{S\ge \sqrt{2v \log\bracket{\frac{1}{\delta}}}+ \frac{2b}{3}\log\bracket{\frac{1}{\delta}}}  &\le \delta \,.
+	\end{align*}
+	\item[(f)] Let $X_1,X_2,\ldots,X_n$ be a sequence of random variables adapted to filtration $\mathbb{F} = (\cF_t)_t$. Abbreviate $\mathbb{E}_t[\cdot] = \EE{\cdot \mid \cF_t}$ and $\mu_t = \mathbb{E}_{t-1}[X_t]$. Define $S = \sum_{t=1}^n X_t - \mu_t$ and let $V = \sum_{t=1}^n \mathbb{E}_{t-1}[(X_t - \mu_t)^2]$ be the predictable variation of $\bracket{\sum_{t=1}^p X_t-\mu_t }_p$. Show that if $X_t - \mu_t \le b$ holds almost surely for all $t \in [n]$, then with $\alpha = b\varepsilon / v$, 
+	\begin{align*}
+		\PP{S\ge \varepsilon,V\le v} \le \exp\bracket{ -\frac{v}{b^2}\bracket{ (1+\alpha)\log (1+\alpha)-\alpha } } \,.
+	\end{align*}
+	Note that the right-hand side of this inequality is the same as that shown in Eq.\eqref{eq:5-14-d-1}.
+\end{enumerate}
 
-% (a)
-% \begin{equation}
-% E(e^{\lambda X}) = 1+\lambda E(X)+\frac{\lambda^2 E(X^2)}{2}+O(\lambda^2) =1+\frac{\lambda^2 E(X^2)}{2}+O(\lambda^2)
-% \end{equation}
 
-% If the conclusion is true, then the above formula satisfies
 
-% $\leq 1+\frac{\lambda^2}{2}(\frac{(b-a)^2}{4})+O(\lambda^2)$
 
-% So just prove:
 
-% $E(x^2)\leq (\frac{b-a}{2})^2$
-
-% $E(x^2)=var(x)=E(x-\bar{x})^2$
-
-% However,$(x-\bar{x})^2\leq(\frac{b-a}{2})^2$ . The conclusion is proved.
-
-% (b)
-
-% The proof of Hoeffding's Inequality:
-
-% Let $X_i = Z_i - E(Z_i)$ , $\bar{X} = \frac{1}{m}\sum_{i=1}^{m}X_i$
-
-% By Markov inequality , for all $\lambda >0$ , $\varepsilon > 0$,
-
-% $P(\bar{X}\geq\varepsilon) = P(e^{\lambda \bar{X}} \geq e^{\lambda\varepsilon}) \leq \frac{E(e^{\lambda \bar{X}})}{e^{\lambda\varepsilon}}$
-
-% $Z_1$,$\cdots$,$Z_m$ iid.r.v.
-
-% So,$E(e^{\lambda \bar{X}}) = \prod_{i=1}^{m} E(e^{\frac{\lambda X_i}{m}})$
-
-% By Hoeffding's lamma,
-
-% $ E(e^{\frac{\lambda X_i}{m}}) \leq e^{\frac{\lambda^2(b-a)^2}{8m^2}}$
-
-% So , $P(\bar{X}\geq\varepsilon) \leq e^{-\lambda\varepsilon}\prod_{i=1}^{m} E(e^{\frac{\lambda X_i}{m}})$
-
-% $\leq e^{-\lambda\varepsilon}e^{\frac{\lambda^2(b-a)^2}{8m}}$
-
-% $\leq e^{-\lambda\varepsilon+\frac{\lambda^2(b-a)^2}{8m}}$
-
-% Let $\lambda = \frac{4m\varepsilon}{(b-a)^2}$ , then $P(\bar{X}\geq \varepsilon) \leq e^{\frac{-2m\varepsilon^2}{(b-a)^2}}$
-
-% Similarly, we can prove the other side of the inequality.
 
 
 \noindent \textbf{5.16}
@@ -631,6 +611,10 @@ By assumption $Pr(X_t\leq x)\leq x$, which means that for$\lambda <1$,
 Applying the Cramer-Chernoff method,
 $$P\left(\sum_{t=1}^n log(\frac{1}{X_t}) \geq \epsilon\right) = P\left(exp(\lambda \sum_{t=1}^n log(\frac{1}{X_t})) \geq exp(\lambda \epsilon) \right) \leq \left(\frac{1}{1-\lambda}\right)^n exp (-\lambda \epsilon)$$
 choosing $\lambda  = \frac{\epsilon-n}{\epsilon}$ completes the claim.
+
+
+
+
 
 
 
