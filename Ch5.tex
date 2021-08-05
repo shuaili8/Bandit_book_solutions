@@ -25,6 +25,20 @@ Let $\hat{\mu}=\frac{1}{n} \sum_{t=1}^{n} X_{t}$ and show that $\mathbb{V}[\hat{
 \end{proof}
 
 \noindent\textbf{5.2}
+(Markov’s inequality) Prove Markov’s inequality (Lemma 5.1).
+\begin{lemma}
+    For any random variable $X$ and $\epsilon>0$, the following holds:
+    \begin{align*}
+        \PP{\abs{X}\geq \epsilon}\leq \frac{\EE{\abs{X}}}{\epsilon}
+    \end{align*}
+\end{lemma}
+\begin{proof}
+    Suppose, for a contradiction, that $\PP{\abs{X}\geq \epsilon}> \frac{\EE{\abs{X}}}{\epsilon}$, then by definition the expectation of $abs{X}$ is
+    \begin{align*}
+        \EE{\abs{X}}=\int_{0}^{\infty} \PP{\abs{X}=x}xdx \geq \PP{\abs{X}\geq \epsilon} \epsilon > \EE{\abs{X}}
+    \end{align*}
+    which contradicts the assumption.
+\end{proof}
 % From the definition of expectation:
 % $$
 % {\displaystyle \operatorname {E} (X)=\int _{-\infty }^{\infty }xf(x)\,dx}{\displaystyle \operatorname {E} (X)=\int _{-\infty }^{\infty }xf(x)\,dx}$$
@@ -477,13 +491,24 @@ Do \textit{not} assume independence of $X_1$ and $X_2$.
 \end{proof}
 
 
-\noindent\textbf{5.10} (Large deviation theory) Let $X,X_1,X_2,...,X_n$ be a sequence of independent and identically distributed random variables with zero mean and moment-generating function $M_X$ with $dom(M_X)=\RR.$ Let$\hat{\mu}_n=\frac{1}{n}\sum_{t=1}^nX_t$.
+\noindent\textbf{5.10}(Large deviation theory) Let $X,X_1,X_2,...,X_n$ be a sequence of independent and identically distributed random variables with zero mean and moment-generating function $M_X$ with $dom(M_X)=\RR.$ Let$\hat{\mu}_n=\frac{1}{n}\sum_{t=1}^nX_t$.
 \begin{enumerate}
     \item[(a)]Show that for any $\epsilon>0$,
         \begin{align}
             \frac{1}{n}\log\PP{\hat{\mu}_n\geq\epsilon}\leq -\psi_X^{\ast}(\epsilon)=-\underset{\lambda}{\sup}(\lambda\epsilon-\log M_X(\lambda))
         \end{align}
     \item[(b)]Show that when X is a Rademacher variable$(\PP{X=1}=\PP{X=-1}=\frac{1}{2})$,$\psi_X^{\ast}(\epsilon)=\frac{1+\epsilon}{2}\log(1+\epsilon)+\frac{1-\epsilon}{2}\log(1-\epsilon)$when$\abs{\epsilon}\le 1$ and $\psi_X^{\ast}(\epsilon)=+\infty$,otherwise.
+    \item[(c)] Show that when $X$ is a centered Bernoulli random variable with parameter $p$ (that is, $\PP{X = −p}=1-p$ and  $\PP{X = 1-p}=p$) then $\psi_X^{\ast}(\epsilon)=\infty$ when $\epsilon$ is such that $p+\epsilon>1$ and $\psi_X^{\ast}(\epsilon)=d(p+\epsilon,p)$otherwise, where $d(p,q) = p\log(p/q) + (1-p) log((1-p)/(1-q))$ is the relative entropy between the distributions $B(p)$ and $B(q)$.
+    \item[(d)] Show that when $X\sim N(0,\sigma^2)$ then $\psi_X^{\ast}(\epsilon)=\epsilon^2/(2\sigma^2)$.
+    \item[(e)] Let $\sigma^2=\mathbb{V}[X]$. The (strong form of the) central limit theorem says that
+    \begin{align*}
+        \lim_{n\to\infty} \sup_{x\in\RR} \abs{\PP{\hat{\mu}_n\sqrt{\frac{n}{\sigma^2}}\geq x}-(1-\Phi(x))}=0
+    \end{align*}
+    where $\Phi(x)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^x \exp(-y^2/2) dy$ is the cumulative distribution of the standard Gaussian. Let $Z$ be a random variable distributed like a standard Gaussian. A careless application of this result might suggest that 
+    \begin{align*}
+        \lim_{n\to\infty}\frac{1}{n}\log\PP{\hat{\mu}_n\geq \epsilon}\overset{?}{=}\lim_{n\to\infty}\frac{1}{n}\log\PP{Z\geq \epsilon\sqrt{\frac{n}{\sigma^2}}}
+    \end{align*}
+    Evaluate the right-hand side. In light of the previous parts, what can you conclude about the validity of the question-marked equality? What goes wrong with the careless application of the central limit theorem? What do you conclude about the accuracy of this theorem?
 \end{enumerate}
 
 \begin{proof}
