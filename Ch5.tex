@@ -643,13 +643,33 @@ Do \textit{not} assume independence of $X_1$ and $X_2$.
 
 
 \noindent \textbf{5.16}
-By assumption $Pr(X_t\leq x)\leq x$, which means that for$\lambda <1$,
-\begin{align}
-\mathbb{E}\left[exp(\lambda log(\frac{1}{x_t}))\right] = \int_0^\infty P(exp(\lambda log(\frac{1}{x_t}))\geq x)dx = 1 +\int_1^\infty P(X_t \leq x^{-\frac{1}{\lambda}})dx
-\end{align}
-Applying the Cramer-Chernoff method,
-$$P\left(\sum_{t=1}^n log(\frac{1}{X_t}) \geq \epsilon\right) = P\left(exp(\lambda \sum_{t=1}^n log(\frac{1}{X_t})) \geq exp(\lambda \epsilon) \right) \leq \left(\frac{1}{1-\lambda}\right)^n exp (-\lambda \epsilon)$$
-choosing $\lambda  = \frac{\epsilon-n}{\epsilon}$ completes the claim.
+Let $X_{1}, \ldots, X_{n}$ be independent random variables with $\mathbb{P}\left(X_{t} \leq x\right) \leq x$ for each $x \in[0,1]$ and $t \in[n]$.
+Prove that for any $\varepsilon>0$ that
+\begin{equation*}
+	\mathbb{P}\left(\sum_{t=1}^{n} \log \left(1 / X_{t}\right) \geq \varepsilon\right) \leq\left(\frac{\varepsilon}{n}\right)^{n} \exp (n-\varepsilon).
+\end{equation*}
+
+\begin{proof}
+	In general we want to use the Cramer-Chernoff method:
+	\begin{equation*}
+		\begin{aligned}
+			\mathbb{P}\left(\sum_{t=1}^{n} \log \left(1 / X_{t}\right) \geq \varepsilon\right)
+			&=\mathbb{P}\left(\exp \left(\lambda \sum_{t=1}^{n} \log \left(1 / X_{i}\right)\right) \geq \exp (\lambda \varepsilon)\right)\\
+			&\leq \exp (-\lambda \varepsilon) \mathbb{E}\left[\exp \left(\lambda \sum_{t=1}^{n} \log \left(1 / X_{t}\right)\right)\right].
+		\end{aligned}
+	\end{equation*}
+
+	To bound the expectation term, the assumption $\mathbb{P}\left(X_{t} \leq x\right) \leq x$ tells us that for each $\lambda > 0$,
+	\begin{equation*}
+		\begin{aligned}
+			\mathbb{E}\left[\exp \left(\lambda \log \left(1 / X_{t}\right)\right)\right]
+			&=\int_{0}^{\infty} \mathbb{P}\left(\exp \left(\lambda \log \left(1 / X_{t}\right)\right) \geq x\right) d x\\
+			&=1+\int_{1}^{\infty} \mathbb{P}\left(X_{t} \leq x^{-1 / \lambda}\right) d x \leq 1+\int_{1}^{\infty} x^{-1 / \lambda} d x=\frac{1}{1-\lambda},
+		\end{aligned}
+	\end{equation*}
+	which completes the proof when choosing $\lambda=(\varepsilon-n) / \varepsilon$.
+\end{proof}
+
 
 
 
