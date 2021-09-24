@@ -498,7 +498,7 @@ Do \textit{not} assume independence of $X_1$ and $X_2$.
             \frac{1}{n}\log\PP{\hat{\mu}_n\geq\epsilon}\leq -\psi_X^{\ast}(\epsilon)=-\underset{\lambda}{\sup}(\lambda\epsilon-\log M_X(\lambda))
         \end{align}
     \item[(b)]Show that when X is a Rademacher variable$(\PP{X=1}=\PP{X=-1}=\frac{1}{2})$,$\psi_X^{\ast}(\epsilon)=\frac{1+\epsilon}{2}\log(1+\epsilon)+\frac{1-\epsilon}{2}\log(1-\epsilon)$when$\abs{\epsilon}\le 1$ and $\psi_X^{\ast}(\epsilon)=+\infty$,otherwise.
-    \item[(c)] Show that when $X$ is a centered Bernoulli random variable with parameter $p$ (that is, $\PP{X = -p}=1-p$ and  $\PP{X = 1-p}=p$) then $\psi_X^{\ast}(\epsilon)=\infty$ when $\epsilon$ is such that $p+\epsilon>1$ and $\psi_X^{\ast}(\epsilon)=d(p+\epsilon,p)$otherwise, where $d(p,q) = p\log(p/q) + (1-p) log((1-p)/(1-q))$ is the relative entropy between the distributions $B(p)$ and $B(q)$.
+    \item[(c)] Show that when $X$ is a centered Bernoulli random variable with parameter $p$ (that is, $\PP{X = -p}=1-p$ and  $\PP{X = 1-p}=p$) then $\psi_X^{\ast}(\epsilon)=\infty$ when $\epsilon$ is such that $p+\epsilon>1$ and $\psi_X^{\ast}(\epsilon)=d(p+\epsilon,p)$ otherwise, where $d(p,q) = p\log(p/q) + (1-p) \log((1-p)/(1-q))$ is the relative entropy between the distributions $B(p)$ and $B(q)$.
     \item[(d)] Show that when $X\sim N(0,\sigma^2)$ then $\psi_X^{\ast}(\epsilon)=\epsilon^2/(2\sigma^2)$.
     \item[(e)] Let $\sigma^2=\mathbb{V}[X]$. The (strong form of the) central limit theorem says that
     \begin{align*}
@@ -541,6 +541,25 @@ Do \textit{not} assume independence of $X_1$ and $X_2$.
 		\end{aligned}
 	\end{equation*}
 	where the second equality holds as $\tanh ^{-1}(\varepsilon)=\frac{1}{2} \log \left(\frac{1+\varepsilon}{1-\varepsilon}\right)$.
+
+	\item[(c)] By definition, 
+	\begin{align*}
+		\psi_X(\lambda) = \log \EE{\exp(\lambda X)} &= \log\bracket{ p\exp\bracket{\lambda(1-p)} + (1-p)\exp\bracket{-\lambda p} } \\
+		&= \log\bracket{ p\exp\lambda \exp\bracket{-\lambda p} + (1-p)\exp\bracket{-\lambda p} }\\
+		&= \log\bracket{  \exp\bracket{-\lambda p}\bracket{ p\exp\lambda+1-p } }\\
+		&= -\lambda p + \log \bracket{ p\exp\lambda+1-p }\,.
+	\end{align*}
+	Further, 
+	\begin{align*}
+		\psi_X^*(\varepsilon) &= \sup_{\lambda} \bracket{ \lambda\varepsilon - \psi_X(\lambda) } 
+		= \sup_{\lambda} \bracket{ \lambda\varepsilon +\lambda p - \log \bracket{ p\exp\lambda+1-p }} \triangleq \sup_{\lambda} f(\lambda) \,.
+	\end{align*}
+	By letting $f'(\lambda) = \varepsilon+p-p\exp \lambda \frac{1}{p\exp \lambda +1-p} = 0$, we have $\lambda^* = \log \frac{(1-p)(p+\varepsilon)}{p(1-(p+\varepsilon))}$ when $p+\varepsilon<1$. 
+
+	Above all, when $p+\varepsilon<1$, $\psi_X^*(\varepsilon) = f(\lambda^*) = d(p+\varepsilon,p)$. \\
+	When $p+\varepsilon=1$, $\psi_X^*(\varepsilon) = \lim_{\lambda \to \infty} f(\lambda) = \lim_{\lambda\to \infty}\lambda-\log (p\exp \lambda+1-p) = \lim_{\lambda\to \infty} \lambda-\log (p\exp \lambda) = -\log p = d(p+\varepsilon,p)$.\\
+	When $p+\varepsilon>1$, $\psi_X^*(\varepsilon) = \lim_{\lambda \to \infty} f(\lambda) = \lim_{\lambda\to \infty}\lambda(p+\varepsilon)-\log (p\exp \lambda+1-p) = \lim_{\lambda\to \infty} \lambda\varepsilon=\infty $. The result has been proved.
+
 \end{enumerate}
 \end{proof}
 
