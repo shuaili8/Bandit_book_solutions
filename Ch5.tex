@@ -658,7 +658,23 @@ Do \textit{not} assume independence of $X_1$ and $X_2$.
 		\end{align*}
 		where the inequality is because $X\le b$ and the increasing property of $g(x)$ proved in (a), the second last equality comes from the definition of $\mathbb{V}[X]$, the last equality holds since $\EE{X}=0$.
 		\item[(c)]
-		\item[(d)] 
+		\item[(d)]
+		\begin{align}
+			\PP{S\ge \varepsilon} &= \PP{\exp(\lambda S) \ge \exp(\lambda \varepsilon)} \notag\\
+			&\le \exp(-\lambda \varepsilon) \EE{\exp(\lambda S)} \notag\\
+			&= \exp(-\lambda \varepsilon)\EE{\exp\bracket{\lambda \sum_{t=1}^n (X_t - \EE{X_t})}} \notag \\
+			&= \exp(-\lambda \varepsilon) \prod_{t=1}^n \EE{\exp (X_t - \EE{X_t})} \label{eq:5-14:independence} \\
+			&\le \exp(-\lambda \varepsilon)\prod_{t=1}^n \bracket{1+g(\lambda b)\lambda^2 V[X_t]} \label{eq:5-14:accordingtob} \\
+			&\le \exp(-\lambda \varepsilon)\prod_{t=1}^n \exp\bracket{g(\lambda b)\lambda^2 V[X_t]} \label{eq:5-14:expx} \\
+			&= \exp(-\lambda \varepsilon)\exp\bracket{g(\lambda b)\lambda^2 \sum_{t=1}^n V[X_t] } \notag\\
+			&= \exp(-\lambda \varepsilon)\exp\bracket{g(\lambda b)\lambda^2 v } \notag \\
+			&= \exp(-\lambda \varepsilon)\exp\bracket{\frac{\exp(\lambda b) -1-\lambda b}{\lambda^2 b^2}\cdot \lambda^2 v } \label{eq:5-14:defg} \\
+			&= \exp\bracket{ \frac{v}{b^2}\bracket{\exp(\lambda b )-1-\lambda b} -\lambda \varepsilon } \notag \\
+			&\le \exp\bracket{ -\frac{v}{b^2} \bracket{ (1+\alpha)\log(1+\alpha) - \alpha } } \label{eq:5-14:calculate}\\
+			&\le \exp\bracket{-\frac{\varepsilon^2}{2v\bracket{1+\frac{b\varepsilon}{3v}}} } \label{eq:5-14:accordingtoc}
+		\end{align}
+		where \eqref{eq:5-14:independence} is due to the independence of $(X_t)_{t\in[n]}$, \eqref{eq:5-14:accordingtob} is because $X_t-\EE{X_t} \le b$ and the result of (b), \eqref{eq:5-14:expx} holds since $1+x \le \exp(x)$, \eqref{eq:5-14:defg} comes from the definition of $g(\lambda b)$. 
+		To get \eqref{eq:5-14:calculate}, we let $f(\lambda)=\frac{v}{b^2}\bracket{\exp(\lambda b )-1-\lambda b} -\lambda \varepsilon$ and find $f'(\lambda) = \frac{v}{b^2}\bracket{ b\exp(\lambda b)-b }-\varepsilon$. By letting $f'(\lambda)=0$, we have $f(\lambda) \le f(\frac{1}{b}\log (1+\alpha)) = -\frac{v}{b^2} \bracket{ (1+\alpha)\log(1+\alpha) - \alpha } $. \eqref{eq:5-14:accordingtoc} holds according to (c).
 		\item[(e)] 
 		By choosing $\delta = \exp\bracket{ -\frac{\varepsilon^2}{2v\bracket{1+\frac{b\varepsilon}{3v}}} }$, we have
 		\begin{align*}
