@@ -363,62 +363,97 @@ where $C<1/2$ is a universal constant.
 
 
 
+
+% (a)If X is $\sigma-$subgaussian , then $E(X)=0$,$E(X^2)\leq\sigma^2$
+
+% proof:
+
+% \begin{equation}
+% E(e^{\lambda X}) = \sum_{n=0}^{\infty}\frac{\lambda^n E(X^n)}{n!}=1+\lambda E(X)+\frac{\lambda^2 E(X^2)}{2}+O(\lambda^2)
+% \end{equation}
+
+% By definition ,
+
+% \begin{equation}
+% E(e^{\lambda X})\leq e^{\frac{\lambda^2 \sigma^2}{2}}=1+\frac{\lambda^2 \sigma^2}{2}+O(\lambda^2)
+% \end{equation}
+
+% By comparing the above two formulas and discussing the case that a approaches to 0 from above and below 0, we get the conclusion that ,
+
+% $E(X)=0$,$E(X^2)\leq\sigma^2$
+
+% (b)
+
+% If X is $\sigma-$subgaussian , then $E(X)=0$,$E(X^2)\leq\sigma^2$ .
+
+% $E(e^{c\lambda x}) = 1+\lambda E(cx)+\frac{\lambda^2 E(c^2 x^2)}{2}+O(\lambda^2)$
+
+% $\leq 1+c\lambda E(x)+\frac{\lambda^2 c^2}{2} E(x^2)+O(\lambda^2)$
+
+% $\leq 1+\frac{\lambda^2 c^2 \sigma^2}{2}+O(\lambda^2)$
+
+% $\leq e^{\frac{\lambda^2 c^2 \sigma^2}{2}}$
+
+% Hence , cX is $|c|\sigma-$subgaussian .
+
+% (c)
+
+% If $X_1$ is $\sigma_1-$subgaussian , $X_2$ is $\sigma_2-$subgaussian
+
+% then $E(X_1)=0$,$E(X_1^2)\leq\sigma_1^2$ ,$E(X_2)=0$,$E(X_2^2)\leq\sigma_2^2$
+
+% $E(e^{\lambda (x_1+x_2)}) = 1+\lambda E(x_1+x_2)+\frac{\lambda^2 E((x_1+x_2)^2)}{2}+O(\lambda^2)$
+
+% $= 1+\frac{\lambda^2}{2} Var(x_1+x_2)+O(\lambda^2)$
+
+% $= 1+\frac{\lambda^2}{2} (var(x_1)+var(x_2)+2cov(x_1,x_2))+O(\lambda^2)$
+
+% Because $x_1$, $x_2$ are independent ,
+
+% $= 1+\frac{\lambda^2}{2} (E(x_1^2) + E(x_2^2))(\lambda^2)$
+
+% $\leq 1+\frac{\lambda^2}{2} (\sigma_1^2 + \sigma_2^2)+O(\lambda^2)$
+
+% $\leq e^{\frac{\lambda^2 (\sigma_1^2 + \sigma_2^2)}{2}}$
+
+% Hence , $X_1+X_2$ is $\sqrt{\sigma_1^2 + \sigma_2^2}-$subgaussian .
 \noindent\textbf{5.7}
+(\textsc{Properties of subgaussian random variables (i)}) Prove Lemma 5.4. \textsc{Hint} Use Taylor series.
 
-
-(a)If X is $\sigma-$subgaussian , then $E(X)=0$,$E(X^2)\leq\sigma^2$
-
-proof:
-
-\begin{equation}
-E(e^{\lambda X}) = \sum_{n=0}^{\infty}\frac{\lambda^n E(X^n)}{n!}=1+\lambda E(X)+\frac{\lambda^2 E(X^2)}{2}+O(\lambda^2)
-\end{equation}
-
-By definition ,
-
-\begin{equation}
-E(e^{\lambda X})\leq e^{\frac{\lambda^2 \sigma^2}{2}}=1+\frac{\lambda^2 \sigma^2}{2}+O(\lambda^2)
-\end{equation}
-
-By comparing the above two formulas and discussing the case that a approaches to 0 from above and below 0, we get the conclusion that ,
-
-$E(X)=0$,$E(X^2)\leq\sigma^2$
-
-(b)
-
-If X is $\sigma-$subgaussian , then $E(X)=0$,$E(X^2)\leq\sigma^2$ .
-
-$E(e^{c\lambda x}) = 1+\lambda E(cx)+\frac{\lambda^2 E(c^2 x^2)}{2}+O(\lambda^2)$
-
-$\leq 1+c\lambda E(x)+\frac{\lambda^2 c^2}{2} E(x^2)+O(\lambda^2)$
-
-$\leq 1+\frac{\lambda^2 c^2 \sigma^2}{2}+O(\lambda^2)$
-
-$\leq e^{\frac{\lambda^2 c^2 \sigma^2}{2}}$
-
-Hence , cX is $|c|\sigma-$subgaussian .
-
-(c)
-
-If $X_1$ is $\sigma_1-$subgaussian , $X_2$ is $\sigma_2-$subgaussian
-
-then $E(X_1)=0$,$E(X_1^2)\leq\sigma_1^2$ ,$E(X_2)=0$,$E(X_2^2)\leq\sigma_2^2$
-
-$E(e^{\lambda (x_1+x_2)}) = 1+\lambda E(x_1+x_2)+\frac{\lambda^2 E((x_1+x_2)^2)}{2}+O(\lambda^2)$
-
-$= 1+\frac{\lambda^2}{2} Var(x_1+x_2)+O(\lambda^2)$
-
-$= 1+\frac{\lambda^2}{2} (var(x_1)+var(x_2)+2cov(x_1,x_2))+O(\lambda^2)$
-
-Because $x_1$, $x_2$ are independent ,
-
-$= 1+\frac{\lambda^2}{2} (E(x_1^2) + E(x_2^2))(\lambda^2)$
-
-$\leq 1+\frac{\lambda^2}{2} (\sigma_1^2 + \sigma_2^2)+O(\lambda^2)$
-
-$\leq e^{\frac{\lambda^2 (\sigma_1^2 + \sigma_2^2)}{2}}$
-
-Hence , $X_1+X_2$ is $\sqrt{\sigma_1^2 + \sigma_2^2}-$subgaussian .
+\begin{proof}
+	\begin{enumerate}
+		\item[(a)] We consider using the Taylor series of the moment-generating function of r.v. $X$ to prove the properties of 
+		the first moment and the second central moment of $X$. Specifically, 
+		\begin{align*}
+			\mathbb{E}[\exp(tx)]=&\mathbb{E}[\sum^{\infty}_{n=0}\frac{t^n}{n!}x^n]\\
+			=&\sum^{\infty}_{n=0}t^n\frac{\mathbb{E}[x^n]}{n!}\\
+			\leq& \exp(\frac{\sigma^2}{2}t^2)\\
+			=&\sum^{\infty}_{n=0}\frac{1}{n!}(\frac{\sigma^2}{2}t^2)^n\,,
+		\end{align*}
+		where the inequality is because $X$ is a $\sigma$-subgaussian r.v. When $n=2$, 
+		\begin{align}\label{eq:5.7.1}
+			1+t\mathbb{E}[x]+\frac{t^2}{2}\mathbb{E}[x^2]\leq 1+\frac{\sigma^2t^2}{2}+g(t)\,,
+		\end{align}
+		where $g(t)$ satisfies that $\frac{g(t)}{t^2}\rightarrow0$ for $t\rightarrow 0$. Based on this, 
+		one can see that $\mathbb{E}[x]\leq 0$ holds when $t\rightarrow 0_{+}$ and 
+		$\mathbb{E}[x]\geq 0$ holds when $t\rightarrow 0_{-}$, which implies that $\mathbb{E}[x]=0$. Dividing both sides of 
+		Eq. \eqref{eq:5.7.1} by $t^2$ shows that $\mathbb{E}[X^2]\leq \sigma^2$ and $\mathbb{V}[X^2]\leq\mathbb{E}[X^2]\leq \sigma^2$.
+		
+		\item[(b)] $\forall C\in \mathbb{R}$, it holds that 
+		\begin{align*}
+			\mathbb{E}[\exp(t\cdot cX)]\leq \exp(\frac{\sigma^2\cdot (tc)^2}{2})=\exp(\frac{(c\sigma)^2}{2}\cdot t^2)\,,
+		\end{align*} 
+		which shows that $cX$ is $|c|\sigma$-subgaussian immediately.
+		\item[(c)] One can see that 
+		\begin{align*}
+			\mathbb{E}[\exp(t\cdot (X_1+X_2))]=&\mathbb{E}[\exp(tX_1)\cdot \exp(tX_2)]\\
+			=&\mathbb{E}[\exp(tX_1)]\cdot\mathbb{E}[\exp(tX_2)]\\
+			\leq& \exp(\frac{\sigma_1^2}{2}t^2)\cdot\exp(\frac{\sigma_2^2}{2}t^2)\\
+			=& \exp(\frac{\sigma^2_1+\sigma^2_2}{2}t^2)\,,
+		\end{align*} 
+		which shows that $X_1+X_2$ is $\sqrt{\sigma^2_1+\sigma^2_2}$-subgaussian.
+	\end{enumerate}
+	\end{proof}
 
 
 
