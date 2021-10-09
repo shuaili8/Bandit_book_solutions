@@ -418,17 +418,17 @@ where $C<1/2$ is a universal constant.
 
 % Hence , $X_1+X_2$ is $\sqrt{\sigma_1^2 + \sigma_2^2}-$subgaussian .
 \noindent\textbf{5.7}
-(\textsc{Properties of subgaussian random variables (i)}) Prove Lemma 5.4. \textsc{Hint} Use Taylor series.
+(\textsc{Properties of subgaussian random variables (i)}) Prove Lemma 5.4. \\\textsc{Hint} Use Taylor series.
 
 \begin{proof}
 	\begin{enumerate}
 		\item[(a)] We consider using the Taylor series of the moment-generating function of r.v. $X$ to prove the properties of 
 		the first moment and the second central moment of $X$. Specifically, 
 		\begin{align*}
-			\mathbb{E}[\exp(tx)]=&\mathbb{E}[\sum^{\infty}_{n=0}\frac{t^n}{n!}x^n]\\
-			=&\sum^{\infty}_{n=0}t^n\frac{\mathbb{E}[x^n]}{n!}\\
-			\leq& \exp(\frac{\sigma^2}{2}t^2)\\
-			=&\sum^{\infty}_{n=0}\frac{1}{n!}(\frac{\sigma^2}{2}t^2)^n\,,
+			\mathbb{E}[\exp(tx)]=&\mathbb{E}[\sum^{\infty}_{n=0}\frac{t^n}{n!}x^n]
+			=\sum^{\infty}_{n=0}t^n\frac{\mathbb{E}[x^n]}{n!}
+			\leq \exp(\frac{\sigma^2}{2}t^2)
+			=\sum^{\infty}_{n=0}\frac{1}{n!}(\frac{\sigma^2}{2}t^2)^n\,,
 		\end{align*}
 		where the inequality is because $X$ is a $\sigma$-subgaussian r.v. When $n=2$, 
 		\begin{align}\label{eq:5.7.1}
@@ -441,15 +441,15 @@ where $C<1/2$ is a universal constant.
 		
 		\item[(b)] $\forall C\in \mathbb{R}$, it holds that 
 		\begin{align*}
-			\mathbb{E}[\exp(t\cdot cX)]\leq \exp(\frac{\sigma^2\cdot (tc)^2}{2})=\exp(\frac{(c\sigma)^2}{2}\cdot t^2)\,,
+			\mathbb{E}[\exp(t\cdot cX)]\leq \exp\left(\frac{\sigma^2\cdot (tc)^2}{2}\right)=\exp\left(\frac{(c\sigma)^2}{2}\cdot t^2\right)\,,
 		\end{align*} 
 		which shows that $cX$ is $|c|\sigma$-subgaussian immediately.
 		\item[(c)] One can see that 
 		\begin{align*}
-			\mathbb{E}[\exp(t\cdot (X_1+X_2))]=&\mathbb{E}[\exp(tX_1)\cdot \exp(tX_2)]\\
-			=&\mathbb{E}[\exp(tX_1)]\cdot\mathbb{E}[\exp(tX_2)]\\
-			\leq& \exp(\frac{\sigma_1^2}{2}t^2)\cdot\exp(\frac{\sigma_2^2}{2}t^2)\\
-			=& \exp(\frac{\sigma^2_1+\sigma^2_2}{2}t^2)\,,
+			\mathbb{E}[\exp(t\cdot (X_1+X_2))]=&\mathbb{E}[\exp(tX_1)\cdot \exp(tX_2)]
+			=\mathbb{E}[\exp(tX_1)]\cdot\mathbb{E}[\exp(tX_2)]\\
+			\leq& \exp(\frac{\sigma_1^2}{2}t^2)\cdot\exp(\frac{\sigma_2^2}{2}t^2)
+			= \exp(\frac{\sigma^2_1+\sigma^2_2}{2}t^2)\,,
 		\end{align*} 
 		which shows that $X_1+X_2$ is $\sqrt{\sigma^2_1+\sigma^2_2}$-subgaussian.
 	\end{enumerate}

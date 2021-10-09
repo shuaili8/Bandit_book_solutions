@@ -52,20 +52,25 @@ Hence, if we take $m = \min\{\lfloor \frac{n}{2}\rfloor, -\frac{4\log\delta}{\De
     \end{aligned}
 \end{equation*}
 
-\noindent\textbf{6.4}
-Denote the reward received in the $t$-th interaction with arm $i$ as $X_{i, t}$.
-From 6.3 we have that with probability $1 - \delta$,
-\begin{equation*}
-    \begin{aligned}
-        \hat{R}_{n}
-        &\leq \sum_{t = 1}^{n - m} (\mu_1 - X_{1, t}) + \sum_{t = 1}^{m} (\mu_1 - X_{2, t})\\
-        &= \sum_{t = 1}^{n - m} (\mu_1 - X_{1, t}) + \sum_{t = 1}^{m} (\mu_2 - X_{2, t}) + m\Delta
-    \end{aligned}
-\end{equation*}
-
-Notice that the sum of the first two terms is $(\sqrt{(n - m)^2 + m^2})$-subgaussian.
-Therefore, with probability $(1 - \delta)^2$, we have $\hat{R}_{n} \leq \sqrt{-2[(n - m)^2 + m^2] \log \delta} + m \Delta$.
-This suggests that compared to that derived for the pseudo-regret, the bound on the random regret is less tight with a smaller probability as more randomness is considered.
+\noindent\textbf{6.4} (\textsc{High-probability bounds (ii)}) Repeat the previous exercise, but now
+prove a high probability bound on the random regret: $\hat{R}_n=n\mu^{\ast}-\sum^n_{t=1}X_t$.
+Compare this to the bound derived for the pseudo-regret in the previous exercise.
+What can you conclude?
+\begin{proof}
+    Denote the reward received in the $t$-th interaction with arm $i$ as $X_{i, t}$.
+    From Ex. 6.3, we have that with probability $1 - \delta$,
+    \begin{equation*}
+        \begin{aligned}
+            \hat{R}_{n}
+            &\leq \sum_{t = 1}^{n - m} (\mu_1 - X_{1, t}) + \sum_{t = 1}^{m} (\mu_1 - X_{2, t})\\
+            &= \sum_{t = 1}^{n - m} (\mu_1 - X_{1, t}) + \sum_{t = 1}^{m} (\mu_2 - X_{2, t}) + m\Delta\,.
+        \end{aligned}
+    \end{equation*}
+    
+    Notice that the sum of the first two terms is $(\sqrt{(n - m)^2 + m^2})$-subgaussian.
+    Therefore, with probability $(1 - \delta)^2$, we have $\hat{R}_{n} \leq \sqrt{-2[(n - m)^2 + m^2] \log \delta} + m \Delta$.
+    This suggests that compared to that derived for the pseudo-regret, the bound on the random regret is less tight with a smaller probability as more randomness is considered.    
+\end{proof}
 
 \noindent\textbf{6.5}
 Suppose $\Delta_1 = 0$, $\Delta_2 = \Delta > 0$.
