@@ -1,33 +1,54 @@
 \chapter*{Chapter 6 The Explore-Then-Commit Algorithm}
 \label{sec:6}
 
-\noindent\textbf{6.2}
-We proceed by comparing the values of $n\Delta$ and $\Delta+\frac{4}{\Delta}\left(1+\max \left\{0, \log \left(\frac{n \Delta^{2}}{4}\right)\right\}\right)$.
+\noindent\textbf{6.1} (\textsc{Subgaussian empirical estimates})
+Let $\pi$ be the policy of ETC and $P_{1}, \ldots, P_{k}$ be the 1-subgaussian distributions associated with the $k$ arms.
+Provide a fully rigourous proof of the claim that
+    $$\hat{\mu}_{i}(m k)-\mu_{i}-\hat{\mu}_{1}(m k)+\mu_{1}$$
+is $\sqrt{2 / m}$-subgaussian.
+You should only use the definitions and the interaction protocol, which states that
+\begin{enumerate}
+    \item $\mathbb{P}\left(A_{t} \in \cdot \mid A_{1}, X_{1}, \ldots, A_{t-1}, X_{t-1}\right)=\pi\left(\cdot \mid A_{1}, X_{1}, \ldots, A_{t-1}, X_{t-1}\right)$ a.s.
+    \item $\mathbb{P}\left(X_{t} \in \cdot \mid A_{1}, X_{1}, \ldots, A_{t-1}, X_{t-1}, A_{t}\right)=P_{A_{t}}(\cdot)$ a.s.
+\end{enumerate}
+
+\begin{proof}
+    By Lemma 5.4, it holds that $(\hat{\mu}_{i}(m k)-\mu_{i})$ and $(\hat{\mu}_{1}(m k)-\mu_{1})$ are both $\sqrt{1 / m}$-subgaussian.
+    Hence $(\hat{\mu}_{i}(m k)-\mu_{i}) - (\hat{\mu}_{1}(m k)-\mu_{1})$ is $\sqrt{2 / m}$-subgaussian, again according to Lemma 5.4
+\end{proof}
+
+\noindent\textbf{6.2} (\textsc{Minimax regret})
+Show that Eq. (6.6) implies the regret of an optimally tuned ETC for subgaus-
+sian two-armed bandits satisfies $R_{n} \leq \Delta+C \sqrt{n}$ where $C>0$ is a universal constant.
+
+\begin{proof}
+    We proceed by comparing the values of $n\Delta$ and $\Delta+\frac{4}{\Delta}\left(1+\max \left\{0, \log \left(\frac{n \Delta^{2}}{4}\right)\right\}\right)$.
 
 \begin{enumerate}
     \item[(a)] If $n\Delta > \Delta+\frac{4}{\Delta}\left(1+\max \left\{0, \log \left(\frac{n \Delta^{2}}{4}\right)\right\}\right)$,
-    we have $(n - 1) \Delta^2 > 4 (1 + \max \left\{0, \log \left(\frac{n \Delta^{2}}{4}\right)\right\}) \geq 4$,
-    which suggests that $\Delta \geq \frac{2}{\sqrt{n}}$.
-    Therefore, \begin{equation*}
-        \begin{aligned}
-            R_n
-            &=\Delta+\frac{4}{\Delta}\left(1+\max \left\{0, \log \left(\frac{n \Delta^{2}}{4}\right)\right\}\right)\\
-            &= \Delta+\frac{4}{\Delta}\left(1+\log \left(\frac{n \Delta^{2}}{4}\right)\right)\\
-            &= \Delta+\frac{4}{\Delta}+\frac{4}{\Delta}\log(\frac{n\Delta^2}{4})\\
-            &\leq \Delta+2\sqrt{n}+\frac{16}{e^4}\sqrt{n}\\
-            &=\Delta + C\sqrt{n},
-        \end{aligned}
-    \end{equation*}
-    where the inequality follows from taking $x^* = \frac{2e^4}{\sqrt{n}}$ to maximize $f(x) = \frac{4}{x} log(\frac{nx^2}{4})$.
+        we have $(n - 1) \Delta^2 > 4 (1 + \max \left\{0, \log \left(\frac{n \Delta^{2}}{4}\right)\right\}) \geq 4$,
+        which suggests that $\Delta \geq \frac{2}{\sqrt{n}}$.
+        Therefore, \begin{equation*}
+            \begin{aligned}
+                R_n
+                &=\Delta+\frac{4}{\Delta}\left(1+\max \left\{0, \log \left(\frac{n \Delta^{2}}{4}\right)\right\}\right)\\
+                &= \Delta+\frac{4}{\Delta}\left(1+\log \left(\frac{n \Delta^{2}}{4}\right)\right)\\
+                &= \Delta+\frac{4}{\Delta}+\frac{4}{\Delta}\log(\frac{n\Delta^2}{4})\\
+                &\leq \Delta+2\sqrt{n}+\frac{16}{e^4}\sqrt{n}\\
+                &=\Delta + C\sqrt{n},
+            \end{aligned}
+        \end{equation*}
+        where the inequality follows from taking $x^* = \frac{2e^4}{\sqrt{n}}$ to maximize $f(x) = \frac{4}{x} log(\frac{nx^2}{4})$.
 
-    \item[(a)] If $n\Delta \leq \Delta+\frac{4}{\Delta}\left(1+\max \left\{0, \log \left(\frac{n \Delta^{2}}{4}\right)\right\}\right)$,
-    we consider another two cases:
+        \item[(a)] If $n\Delta \leq \Delta+\frac{4}{\Delta}\left(1+\max \left\{0, \log \left(\frac{n \Delta^{2}}{4}\right)\right\}\right)$,
+        we consider another two cases:
 
-    \begin{enumerate}
-        \item[(i)] If $\Delta \geq \frac{2}{\sqrt{n}}$, by (1) we still have $R_n = n\Delta \leq \Delta+\frac{4}{\Delta}\left(1+\max \left\{0, \log \left(\frac{n \Delta^{2}}{4}\right)\right\}\right) \leq \Delta + C\sqrt{n}$.
-        \item[(ii)] If $\Delta < \frac{2}{\sqrt{n}}$, $R_n \leq n\Delta \leq 2\sqrt{n} \leq \Delta + C\sqrt{n}$, where the first inequality is trivial.
+        \begin{enumerate}
+            \item[(i)] If $\Delta \geq \frac{2}{\sqrt{n}}$, by (1) we still have $R_n = n\Delta \leq \Delta+\frac{4}{\Delta}\left(1+\max \left\{0, \log \left(\frac{n \Delta^{2}}{4}\right)\right\}\right) \leq \Delta + C\sqrt{n}$.
+            \item[(ii)] If $\Delta < \frac{2}{\sqrt{n}}$, $R_n \leq n\Delta \leq 2\sqrt{n} \leq \Delta + C\sqrt{n}$, where the first inequality is trivial.
+        \end{enumerate}
     \end{enumerate}
-\end{enumerate}
+\end{proof}
 
 \noindent\textbf{6.3}
 Suppose $\Delta_1 = 0$, $\Delta_2 = \Delta > 0$.
@@ -107,3 +128,70 @@ Suppose $\Delta_1 = 0$, $\Delta_2 = \Delta > 0$.
         \item[(ii)] If $\Delta < \sqrt{\frac{e}{n}}$, $R_n(v) \leq n \Delta \leq \sqrt{en} \leq \Delta + C\sqrt{n}$.
     \end{enumerate}
 \end{enumerate}
+
+\noindent\textbf{6.8} (\textsc{Elimination algorithm})
+A simple way to generalise the ETC policy to multiple arms and overcome the problem of tuning the commitment time is to use an elimination algorithm.
+The algorithm operates in phases and maintains an active set of arms that could be optimal.
+In the $\ell$-th phase, the algorithm aims to eliminate from the active set all arms $i$ for which $\Delta_{i} \geq 2^{-\ell}$.
+
+Without loss of generality, assume that arm 1 is an optimal arm.
+You may assume that the horizon $n$ is known.
+
+\begin{enumerate}
+    \item[(a)] Show that for any $\ell \geq 1$,
+    $$\mathbb{P}\left(1 \notin A_{\ell+1}, 1 \in A_{\ell}\right) \leq k \exp \left(-\frac{m_{\ell} 2^{-2 \ell}}{4}\right).$$
+
+    \item[(b)] Show that if $i \in[k]$ and $\ell \geq 1$ are such that $\Delta_{i} \geq 2^{-\ell}$, then
+    $$\mathbb{P}\left(i \in A_{\ell+1}, 1 \in A_{\ell}, i \in A_{\ell}\right) \leq \exp \left(-\frac{m_{\ell}\left(\Delta_{i}-2^{-\ell}\right)^{2}}{4}\right).$$ 
+    
+    \item[(c)] Let $\ell_{i}=\min \left\{\ell \geq 1: 2^{-\ell} \leq \Delta_{i} / 2\right\}$.
+    Choose $m_\ell$ in such a way that $\mathbb{P}\left(\text { exists } \ell: 1 \notin A_{\ell}\right) \leq 1 / n$ and $\mathbb{P}\left(i \in A_{\ell_{i}+1}\right) \leq 1 / n$.
+\end{enumerate}
+
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] Using the definition of the algorithm and concentration for subgaussian random variables:
+        \begin{equation*}
+            \begin{aligned}
+                \mathbb{P}\left(1 \notin A_{\ell+1}, 1 \in A_{\ell}\right) & \leq \mathbb{P}\left(1 \in A_{\ell}, \text { exists } i \in A_{\ell} \backslash\{1\}: \hat{\mu}_{i, \ell} \geq \hat{\mu}_{1, \ell}+2^{-\ell}\right) \\
+                &=\mathbb{P}\left(1 \in A_{\ell}, \text { exists } i \in A_{\ell} \backslash\{1\}: \hat{\mu}_{i, \ell}-\hat{\mu}_{1, \ell} \geq 2^{-\ell}\right) \\
+                & \leq k \exp \left(-\frac{m_{\ell} 2^{-2 \ell}}{4}\right),
+            \end{aligned}
+        \end{equation*} 
+        where in the last final inequality we used (c) of Lemma 5.4 and Theorem 5.3.
+
+        \item[(b)] Again, concentration and the algorithm definition show that:
+        \begin{equation*}
+            \begin{aligned}
+                \mathbb{P}\left(i \in A_{\ell+1}, 1 \in A_{\ell}, i \in A_{\ell}\right) &\leq \mathbb{P}\left(1 \in A_{\ell}, i \in A_{\ell}, \hat{\mu}_{i, \ell}+2^{-\ell} \geq \hat{\mu}_{1, \ell}\right) \\
+                &=\mathbb{P}\left(1 \in A_{\ell}, i \in A_{\ell},\left(\hat{\mu}_{i, \ell}-\mu_{i}\right)-\left(\hat{\mu}_{1, \ell}-\mu_{1}\right) \geq \Delta_{i}-2^{-\ell}\right) \\
+                & \leq \exp \left(-\frac{m_{\ell}\left(\Delta_{i}-2^{-\ell}\right)^{2}}{4}\right).
+            \end{aligned}
+        \end{equation*}
+
+        \item[(c)] Let $\delta \in(0,1)$ be some constant to be chosen later and
+        $$m_{\ell}=2^{4+2 \ell} \log (\ell / \delta).$$
+        
+        Then by Part (a),
+        \begin{equation*}
+            \begin{aligned}
+                \mathbb{P}\left(\text { exists } \ell: 1 \notin A_{\ell}\right) & \leq \sum_{\ell=1}^{\infty} \mathbb{P}\left(1 \notin A_{\ell+1}, 1 \in A_{\ell}\right) \\
+                & \leq k \sum_{\ell=1}^{\infty} \exp \left(-\frac{m_{\ell} 2^{2 \ell}}{4}\right) \\
+                & \leq k \delta \sum_{\ell=1}^{\infty} \frac{1}{\ell^{2}} \\
+                &=\frac{k \pi^{2} \delta}{6}.
+            \end{aligned}
+        \end{equation*}
+
+        Furthermore, by Part (b),
+        \begin{equation*}
+            \begin{aligned}
+                \mathbb{P}\left(i \in A_{\ell_{i}+1}\right) & \leq \mathbb{P}\left(i \in A_{\ell_{i}+1}, i \in A_{\ell_{i}}, 1 \in A_{\ell_{i}}\right)+\mathbb{P}\left(1 \notin A_{\ell_{i}}\right) \\
+                & \leq \exp \left(-\frac{m_{\ell}\left(\Delta_{i}-2^{-\ell_{i}}\right)^{2}}{4}\right)+\frac{k \pi^{2} \delta}{6} \\
+                & \leq \exp \left(-\frac{m_{\ell} 2^{-2 \ell_{i}}}{16}\right)+\frac{k \pi^{2} \delta}{6} \\
+                & \leq \delta\left(1+\frac{k \pi^{2}}{6}\right).
+            \end{aligned}
+        \end{equation*}
+
+        Choosing $\delta=n^{-1}\left(1+k \pi^{2} / 6\right)^{-1}$ completes the result.
+    \end{enumerate}
+\end{proof}
