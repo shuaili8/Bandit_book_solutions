@@ -129,6 +129,49 @@ Suppose $\Delta_1 = 0$, $\Delta_2 = \Delta > 0$.
     \end{enumerate}
 \end{enumerate}
 
+\textbf{\noindent\textbf{6.6}}
+
+The purpose of this exercise is to analyse a meta-algorithm based on the so-called \textbf{doubling trick} that converts a policy depending on the horizon to a policy with similar
+guarantees that does not. Let E be an arbitrary set of bandits. Suppose you are given a policy π = π(n)
+designed for E that accepts the horizon n as a parameter and has a regret guarantee of
+\begin{align*}
+    \max_{1\leq t\leq n} R_t(\pi(n),v)\leq f_n(v) \, ,
+\end{align*}
+where $f_n:\mathcal{E}\rightarrow [0,+\infty)$ is a sequence of function. Let $n_1 < n_2 < n_3 < \cdots$ be a fixed sequence of integers and consider the policy that runs $\pi$ with horizon $n_1$ until round $t =\min\set{n, n_1}$, then runs $\pi$ with horizon $n_2$ until $t = \min\set{n, n_1 + n_2}$, and then restarts again with horizon $n_3$ until $t = \min\set{n, n_1 + n_2 + n_3}$ and so-on. Note that $t$ is the real-time counter and is not reset on each restart. Let $\pi^*$ be the resulting policy. When $n_{l+1} = 2n_l$ , the length of periods when $\pi$ is used double with each phase, hence the name ‘doubling trick’.
+
+\begin{enumerate}
+    \item[(a)]  Let $n > 0$ be arbitrary, $l_{\max} = \min\set{l :\sum_{i=1}^l n_i \geq n}$. Prove that for any $ν \in\mathcal{E},$ the n-horizon regret of $\pi^{dbl}$ on $ν$ is at most
+    \begin{align*}
+        R_n(\pi^*,v)\leq \sum_{l=1}^{l_{\max}}f_{n_l}(v)
+    \end{align*}
+    \begin{proof}
+    \begin{align*}
+        R_n(\pi^*,v) = \sum_{l=1}^{l_{\max}} R_{n_l}(\pi(n_l),v) \leq \sum_{l=1}^{l_{\max}} \max_{1\leq t\leq n_l} R_t(\pi(n_l),v)\leq f_{n_l}(v) \leq \sum_{l=1}^{l_{\max}}f_{n_l}(v)
+    \end{align*}
+    \end{proof}
+    \item[(b)] Suppose that $f_n(ν) ≤ \sqrt{n}$. Show that if $n_l = 2^l −1$, then for any $ν\in \mathcal{E}$ and horizon $n$ the regret of $\pi^{dbl}$ is at most
+    \begin{align*}
+        R_n(\pi^*,v)\leq C\sqrt{n} \, ,
+    \end{align*}
+    where $C > 0$ is a carefully chosen universal constant.
+    \begin{proof}
+        Since $\sum_{i=1}^{l}n_i = \sum_{i=0}^{l-1}2^i = 2^l-1$, $l_{\max} = \lceil \log(n+1)\rceil$ and $2^{l_{\max}}\leq 2n+2$. Hence
+        \begin{align*}
+            R_n(\pi^*,v) \leq \sum_{l=1}^{l_{\max}} \sqrt{2}^{l-1}\leq \frac{1}{\sqrt{2}-1} \sqrt{2^{l_{\max}}} = 2(1+\sqrt{2})\sqrt{n}
+        \end{align*}
+    \end{proof}
+    \item[(c)] Suppose that $f_n(v) = g(v) \log(n)$ for some function $g : \mathcal{E} → [0, \infty)$. What is the regret of $\pi^*$ if $n_l = 2^l −1$? Can you find a better choice of $(n_l)_l$ ?
+    \begin{align*}
+        R_n(\pi^*,v)\leq g(v)\sum_{l=1}^{l_{\max}}\log(2^{l-1})
+        =\frac{\log(2)}{2}g(v)(l_{\max}-1)l_{\max}\leq C g(v)\log^2(n+1)
+    \end{align*}
+    where $C$ is some universal constant. A better choice is $n_l = 2^{2^{l-1}}$. With this,
+    \begin{align*}
+        R_n(\pi^*,v)\leq g(v)\sum_{l=1}^{l_{\max}} \log(2^{2^{l-1}})\leq \log(2)g(v)2^{l_{\max}}\leq Cg(v)\log(n)
+    \end{align*}
+    where $C>0$ is another universal constant.
+\end{enumerate}
+
 \noindent\textbf{6.8} (\textsc{Elimination algorithm})
 A simple way to generalise the ETC policy to multiple arms and overcome the problem of tuning the commitment time is to use an elimination algorithm.
 The algorithm operates in phases and maintains an active set of arms that could be optimal.
