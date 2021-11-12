@@ -1,6 +1,41 @@
 %!TEX root =  main.tex
-\chapter*{Chapter 7}
+\chapter*{Chapter 7 The Upper Confidence Bound Algorithm}
 \label{sec:7}
+
+
+
+
+\noindent\textbf{7.2} (\textsc{Relaxing the subgaussian assumption}) In this chapter, we assumed the pay-off distributions were 1-subgaussian. The purpose of this exercise is to relax this assumption. 
+\begin{enumerate}
+    \item[(a)] First suppose that $\sigma^2$ is a known constant and that $\nu \in \cE_{SG}^k (\sigma^2)$. Modify the UCB algorithm and state and prove an analogue of Theorems 7.1 and 7.2 for this case.
+    \item[(b)] Now suppose that $\nu =(P_i)_{i=1}^k $ is chosen so that $P_i$ is $\sigma_i$-subgaussian where $(\sigma_i^2)_{i=1}^k$ are known. Modify the UCB algorithm and state and prove an analogue of Theorems 7.1 and 7.2 for this case.
+    \item[(c)] If you did things correctly, the regret bound in the previous part should not depend on the values $\set{\sigma_i^2:\Delta_i=0}$. Explain why not.
+\end{enumerate}
+
+\begin{proof}
+\begin{enumerate}
+    \item[(a)] We modify the UCB algorithm by replacing $\sqrt{\frac{2\log (1/\delta)}{T_i(t-1)}}$ with $\sqrt{\frac{2\sigma^2 \log (1/\delta)}{T_i(t-1)}}$ in Eq. (7.2) on page 85 of the book. 
+    Recall the reward $X_{t,i}$ of each arm $i$ at time $t$ is $\sigma$-subgaussian. According to the properties of subgaussian random variables, we have $\PP{\abs{\hat{\mu}_{is} - \mu_i }\ge \sqrt{\frac{2\sigma^2 \log (1/\delta)}{s}} } \le 2\delta$ for each arm $i$ and $s>0$. 
+
+    Define event $\cF_t = \set{\exists i \in [k]: \abs{\hat{\mu}_{i}(t) - \mu_i }\ge \sqrt{\frac{2\sigma^2 \log (1/\delta)}{T_i(t-1)}}}$. 
+    The regret can be decomposed by
+    \begin{align*}
+        R_n &= \sum_{i:\Delta_i>0}\Delta_i \EE{ \sum_{t=1}^n \bOne{A_t = i} } \\
+        &\le \sum_{i:\Delta_i>0}\Delta_i \set{ \EE{ \sum_{t=1}^n \bOne{A_t = i, \cF_t} } +  \EE{ \sum_{t=1}^n \bOne{A_t = i, \neg \cF_t} } } \\
+        &\le \sum_{i:\Delta_i>0}\Delta_i \set{ \EE{ \sum_{t=1}^n \bOne{A_t = i, \neg \cF_t} } +  2nk\delta }\\
+        &\le \sum_{i:\Delta_i>0}\Delta_i \set{ \EE{ 1+ \sum_{s=1}^{n-1} \bOne{ \mu_i + 2\sqrt{\frac{2\sigma^2 \log (1/\delta)}{s}} } \ge \mu_1 }  +  2nk\delta } \\
+        &= \sum_{i:\Delta_i>0}\Delta_i \bracket{ 3 + \frac{16\sigma^2 \log n}{\Delta_i^2}} \,,
+    \end{align*}
+    where the last inequality holds by choosing $\delta=1/n^2$.  Thus the analogue of Theorems 7.1 for this case has been proved. Similar to the proof technique of Theorem 7.2, by setting $\Delta = 4\sqrt{\frac{k\sigma^2 \log n}{n}}$, we have $R_n \le 8\sqrt{nk\sigma^2 \log n} + 3\sum_{i:\Delta_i >0} \Delta_i$. Thus the analogue of Theorems 7.2 for this case has also been proved. 
+
+    \item[(b)] For this case, we modify the UCB algorithm by replacing $\sqrt{\frac{2\log (1/\delta)}{T_i(t-1)}}$ with $\sqrt{\frac{2\sigma_i^2 \log (1/\delta)}{T_i(t-1)}}$ in Eq. (7.2) on page 85 of the book. The same proof techniques with part (a) can be used to derive the regret upper bound of order $R_n = \sum_{i:\Delta_i>0}\Delta_i \bracket{ 3 + \frac{16\sigma_i^2 \log n}{\Delta_i^2}}$, which is the analogue of Theorems 7.1 for this case. Define $\sigma_{\max} = \max_{i:\Delta_i>0}\sigma_i$ and set $\Delta = 4\sqrt{\frac{k\sigma_{\max}^2 \log n}{n}}$, we can get the analogue of Theorems 7.2 for this case with $R_n \le 8\sqrt{nk\sigma_{\max}^2 \log n} + 3\sum_{i:\Delta_i >0} \Delta_i$.
+
+    \item[(c)] As shown in part (a) and (b), our regret bound does not depend on the values $\set{\sigma_i^2:\Delta_i=0}$. Due to the monotonicity between UCB$_1$ and $\mu_1$, the number of pulls of a suboptimal arm $i$ only depends on $\sigma_i$ but is not influenced by optimal arms. 
+\end{enumerate}
+\end{proof}
+
+
+
 
 \noindent\textbf{7.1}
 
@@ -28,6 +63,11 @@
     &\le \sum^{\infty}_{n=1} \dfrac{\delta}{n(n+1)}\\
     &\le \delta
     \end{align*}
+
+
+
+
+
 
 
 
