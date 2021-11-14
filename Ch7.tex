@@ -89,6 +89,49 @@
     &=f(n,k)\delta
     \end{align*}
 
+\noindent\textbf{7.4} (\textsc{Phased UCB (i)})
+Fix a $1$-subgaussian $k$-armed bandit environment and a horizon $n$.
+Consider the version of UCB that works in phases of exponentially increasing length of $1,2,4, \ldots$.
+In each phase, the algorithm uses the action that would have been chosen by UCB at the beginning of the phase (see Algorithm 4).
+
+\begin{enumerate}
+    \item[(a)] State and prove a bound on the regret for this version of UCB.
+    \item[(b)] Compare your result with Theorem 7.1.
+    \item[(c)] How would the result change if the $\ell$-th phase had a length of $\left\lceil\alpha^{\ell}\right\rceil$ with $\alpha > 1$?
+\end{enumerate}
+
+\begin{proof}
+    \begin{enumerate}
+        \item[(a)] Let $T_{i}(n)$ denote the number of times pulling arm $i$.
+        By definition we have
+        $$
+        \begin{aligned}
+            \mathbb{E}\left[T_{i}(n)\right]
+            &=\mathbb{E}\left[ \sum_{t=1}^{n} \mathbb{1}\left\{A_{t}=i\right\}\right]\\
+            &=\mathbb{E}\left[ \sum_{\ell=1}^{\ell_{max}} 2^\ell \mathbb{1}\left\{A_{\ell}=i\right\}\right]\\
+            &=\mathbb{E}\left[ \sum_{\ell=1}^{\ell_{max}} 2^\ell \mathbb{1}\left\{A_{\ell}=i, \mathrm{UCB}_{i} > \mu_1\right\}\right]\\
+            &=\mathbb{E}\left[ \sum_{\ell=1}^{\ell_{max}} 2^\ell \mathbb{1}\left\{A_{\ell}=i, \mu_{i} + \sqrt{\frac{2 \log (1 / \delta)}{T_{i}(t-1)}} > \mu_1\right\}\right]\\
+            &=\mathbb{E}\left[ \sum_{\ell=1}^{\ell_{max}} 2^\ell \mathbb{1}\left\{A_{\ell}=i, T_{i}(t-1) < \frac{8 \log \frac{1}{\delta}}{\Delta_{i}^{2}} \right\}\right],\\
+        \end{aligned}
+        $$
+        where $\Delta_i$ is the suboptimality gap.
+
+        To find $\ell_i$ such that $\sum_{\ell=1}^{\ell_{i}} 2^{\ell} \geq \frac{8 \log \frac{1}{\delta}}{\Delta_{i}^{2}}$, we derive that $\ell_i \geq \lceil \log _{2} \frac{4 \log \frac{1}{\delta}}{\Delta_{1}^{2}}+1 \rceil$.
+        Hence, we have
+        $$
+            \mathbb{E}\left[T_{i}(n)\right] \leq \sum_{\ell = 1}^{\ell_i} 2^\ell \leq 32 \frac{\log \frac{1}{\delta}}{\Delta_i^2},
+        $$
+        Taking $\delta = \frac{1}{n^2}$ results in an upper bound $64\frac{\log n}{\Delta_{i}^{2}}$ for $\mathbb{E}\left[T_{i}(n)\right]$.
+    
+        \item[(b)] Compared with Theorem 7.1, the constant is larger while the order remains the same.
+        
+        \item[(c)] With the alternative phase length, the above analysis results in an upper bound of $\mathbb{E}\left[T_{i}(n)\right]$:
+        $$
+            \mathbb{E}\left[T_{i}(n)\right] \leq \sum_{\ell = 1}^{\ell_i} \alpha^\ell \leq 16\frac{\alpha^{2} \log n}{\Delta_i^{2}},
+        $$
+        where $\ell_{i}=\left[\log _{\alpha} \frac{8(\alpha-1) \log \frac{1}{\delta}}{\alpha \Delta_i^{2}}+1\right]$.
+    \end{enumerate}
+\end{proof}
 
 \noindent\textbf{7.6}
     \item
