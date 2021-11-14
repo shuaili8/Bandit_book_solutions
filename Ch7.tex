@@ -2,8 +2,41 @@
 \chapter*{Chapter 7 The Upper Confidence Bound Algorithm}
 \label{sec:7}
 
+\noindent\textbf{7.1} (\textsc{Concentration for sequences of random length})
+    In this exercise, we investigate one of the more annoying challenges when analyzing sequential algorithms.
+    Let $X_{1}, X_{2}, \ldots$ be a sequence of independent standard Gaussian random variables defined on probability space $(\Omega, \mathcal{F}, \mathbb{P})$.
+    Suppose that $T: \Omega \rightarrow\{1,2,3, \ldots\}$ is another random variable, and let $\hat{\mu}=\sum_{t=1}^{T} X_{t} / T$ be the empirical mean based on $T$ samples.
 
+    \begin{enumerate}[(a)]
+    \item 
 
+    \begin{align*}
+    P &=(\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(1/\delta)}{T}})\\
+    &=\sum^{\infty}_{n=1}E[\{T=n\}\|\{\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(1/\delta)}{T}}\}]\\
+    &=\sum^{\infty}_{n=1}E[\|\{T=n\}\delta]\\
+    &=\delta\sum^{\infty}_{n=1}P(T=n)\\
+    &=\delta
+    \end{align*}
+
+    \item
+    $\hat{\mu}-\mu=\frac{1}{n}\sum^{\infty}_{t=1}(X_t-\mu)\ge\sqrt{\dfrac{2-\log(1/\delta)}{T}}$
+
+    T=min(n)
+
+    $E_t=\|\{T=t\}$ is $\mathcal{F}_t$-measurable
+
+    \item Show that
+    $$\mathbb{P}\left(\hat{\mu}-\mu \geq \sqrt{\frac{2 \log (T(T+1) / \delta)}{T}}\right) \leq \delta.$$
+
+    \begin{proof}
+        Note that
+        \begin{align*}
+            P(\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(T(T+1)/\delta}{T}}) &\le P(\bigcup^{\infty}_{n=1}\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(n(n+1)/\delta}{n}})\\
+            &\le \sum^{\infty}_{n=1}P(\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(n(n+1)/\delta}{n}})\\
+            &\le \sum^{\infty}_{n=1} \dfrac{\delta}{n(n+1)}\\
+            &\le \delta
+        \end{align*}
+    \end{proof}
 
 \noindent\textbf{7.2} (\textsc{Relaxing the subgaussian assumption}) In this chapter, we assumed the pay-off distributions were 1-subgaussian. The purpose of this exercise is to relax this assumption. 
 \begin{enumerate}
@@ -33,43 +66,6 @@
     \item[(c)] As shown in part (a) and (b), our regret bound does not depend on the values $\set{\sigma_i^2:\Delta_i=0}$. Due to the monotonicity between UCB$_1$ and $\mu_1$, the number of pulls of a suboptimal arm $i$ only depends on $\sigma_i$ but is not influenced by optimal arms. 
 \end{enumerate}
 \end{proof}
-
-
-
-
-\noindent\textbf{7.1}
-
-    \begin{enumerate}[(a)]
-    \item
-    \begin{align*}
-    P &=(\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(1/\delta)}{T}})\\
-    &=\sum^{\infty}_{n=1}E[\{T=n\}\|\{\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(1/\delta)}{T}}\}]\\
-    &=\sum^{\infty}_{n=1}E[\|\{T=n\}\delta]\\
-    &=\delta\sum^{\infty}_{n=1}P(T=n)\\
-    &=\delta
-    \end{align*}
-
-    \item
-    $\hat{\mu}-\mu=\frac{1}{n}\sum^{\infty}_{t=1}(X_t-\mu)\ge\sqrt{\dfrac{2-\log(1/\delta)}{T}}$
-
-    T=min(n)
-
-    $E_t=\|\{T=t\}$ is $\mathcal{F}_t$-measurable
-
-    \item
-    \begin{align*}
-    P(\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(T(T+1)/\delta}{T}}) &\le P(\bigcup^{\infty}_{n=1}\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(n(n+1)/\delta}{n}})\\
-    &\le \sum^{\infty}_{n=1}P(\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(n(n+1)/\delta}{n}})\\
-    &\le \sum^{\infty}_{n=1} \dfrac{\delta}{n(n+1)}\\
-    &\le \delta
-    \end{align*}
-
-
-
-
-
-
-
 
 \noindent\textbf{7.3}
     $E[Ti(n)]\le\dfrac{-8ln\delta}{\bigtriangleup_i}+\delta n(n=1)$
