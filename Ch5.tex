@@ -741,7 +741,90 @@ Do \textit{not} assume independence of $X_1$ and $X_2$.
 	\end{enumerate}
 \end{proof}
 
+\noindent \textbf{5.15} (ANOTHER BERNSTEIN-TYPE INEQUALITY) Let $X_{1}, X_{2}, \ldots, X_{n}$ be a sequence of random variables adapted to the filtration $\mathbb{F}=\left(\mathcal{F}_{t}\right)_{t}$. Abbreviate $\mathbb{E}_{t}[\cdot]=\mathbb{E}\left[\cdot \mid \mathcal{F}_{t}\right]$ and $\mu_{t}=\mathbb{E}_{t-1}\left[X_{t}\right]$. Prove
+the following
+\begin{enumerate}
+	\item[(a)]  If $\eta>0$ and $\eta\left(X_{t}-\mu_{t}\right) \leq 1$ almost surely, then
+	$$
+	\mathbb{P}\left(\sum_{t=1}^{n}\left(X_{t}-\mu_{t}\right) \geq \eta \sum_{t=1}^{n} \mathbb{E}_{t-1}\left[\left(X_{t}-\mu_{t}\right)^{2}\right]+\frac{1}{\eta} \log \left(\frac{1}{\delta}\right)\right) \leq \delta
+	$$
+	
+	\item[(b)] If $\eta>0$ and $\eta X_{t} \leq 1$ almost surely, then
+	$$
+	\mathbb{P}\left(\sum_{t=1}^{n}\left(X_{t}-\mu_{t}\right) \geq \eta \sum_{t=1}^{n} \mathbb{E}_{t-1}\left[X_{t}^{2}\right]+\frac{1}{\eta} \log \left(\frac{1}{\delta}\right)\right) \leq \delta
+	$$
+\end{enumerate}
+HINT Use the Cramér-Chernoff method and the fact that $\exp (x) \leq 1+x+x^{2}$ for all $x \leq 1$ and $\exp (x) \geq 1+x$ for all $x$.
 
+\begin{proof}
+The (a) and (b) have the same proof process, the proof of is as follows:
+
+To prove 
+$$
+\mathbb{P}\left(\sum_{t=1}^{n}\left(X_{t}-\mu_{t}\right) \geq \eta \sum_{t=1}^{n} \mathbb{E}_{t-1}\left[\left(X_{t}-\mu_{t}\right)^{2}\right]+\frac{1}{\eta} \log \left(\frac{1}{\delta}\right)\right) \leq \delta
+$$
+
+We could observe the $\sum_{t=1}^{n} \mathbb{E}_{t-1}\left[\left(X_{t}-\mu_{t}\right)^{2}\right]$ has a similar type to $\sum_{t=1}^{n}\left(X_{t}-\mu_{t}\right)$. 
+
+Let $\alpha_{t}=\eta \mathbb{E}_{t-1}\left[\left(X_{t}-\mu_{t}\right)^{2}\right]$
+
+$$
+\alpha_{t}=\eta \mathbb{E}_{t-1}\left[\left(X_{t}-\mu_{t}\right)^{2}\right]
+$$
+
+$$
+\begin{aligned}
+\mathbb{P}\left(\sum_{t=1}^{n}\left(X_{t}-\mu_{t}\right) \geq \sum_{t=1}^{n}\alpha_{t} + \frac{1}{\eta} \log \left(\frac{1}{\delta}\right)\right) & =\mathbb{P}\left(\sum_{t=1}^{n}\left(X_{t}-\mu_{t}-\alpha_{t}\right) \geq \frac{1}{\eta} \log \left(\frac{1}{\delta}\right)\right) \\
+& =\mathbb{P}\left(\exp \left(\eta \sum_{t=1}^{n}\left(X_{t}-\mu_{t}-\alpha_{t}\right)\right) \geq \frac{1}{\delta}\right) \\
+& = \delta \mathbb{E} \left(\exp\left(\eta \sum_{t=1}^n (X_{t} - \mu_t - \alpha_t) \right)\right)
+\end{aligned}
+$$
+
+To prove 
+
+$$
+\mathbb{P}\left(\sum_{t=1}^{n}\left(X_{t}-\mu_{t}\right) \geq \eta \sum_{t=1}^{n} \mathbb{E}_{t-1}\left[\left(X_{t}-\mu_{t}\right)^{2}\right]+\frac{1}{\eta} \log \left(\frac{1}{\delta}\right)\right) \leq \delta
+$$
+
+we need to prove 
+
+$$
+\mathbb{E} \left(\exp\left(\eta \sum_{t=1}^n \left(X_{t} - \mu_t - \alpha_t \right) \right)\right) <= 1
+$$
+
+According to 
+$\exp(x) \leq 1 + x + x^2$
+
+$$
+\begin{aligned}
+\mathbb{E} \left(\exp\left(\eta \left(X_{t} - \mu_t - \alpha_t\right) \right)\right)
+&=\exp\left(-\eta \alpha_t\right) \mathbb E \left(\exp\left(\eta\left(X_t - \mu_{t}\right)\right)\right) \\
+&\leq \exp\left(-\eta \alpha) \mathbb E [1 + \eta (X_t - \mu) + \eta^2 (X_t - \mu_t)^2 \right)
+\end{aligned}
+$$
+
+Since $\mathbb {E} \left(X_t - \mu_t \right) = 0$ and $1 + x \leq \exp(x)$
+$$
+\begin{aligned}
+\exp(-\eta \alpha) \mathbb E (1 + \eta (X_t - \mu_t) + \eta^2 (X_t - \mu_t)^2)
+& = \exp(-\eta \alpha) \mathbb E (1 + \eta^2 (X_t - \mu_t)^2) \\
+& \leq \exp(-\eta \alpha) \mathbb E (\eta^2(X_t - \mu_t)^2) \\
+& = \exp(-\eta \alpha + \eta ^ 2 (X_t - \mu) ^ 2) = 1
+\end{aligned}
+$$
+
+Thus, $\exp \left(\eta \sum ^n _ {t = 1} \left( X_t - \mu_t - \alpha_t \right) \right)$ is super martingale and,
+$$
+\exp \left(\eta \sum ^n _ {t = 1} \left( X_t - \mu_t - \alpha_t \right) \right) \leq 1
+$$
+
+Thus, 
+
+$$
+\mathbb{P}\left(\sum_{t=1}^{n}\left(X_{t}-\mu_{t}\right) \geq \eta \sum_{t=1}^{n} \mathbb{E}_{t-1}\left[\left(X_{t}-\mu_{t}\right)^{2}\right]+\frac{1}{\eta} \log \left(\frac{1}{\delta}\right)\right) \leq \delta
+$$
+
+\end{proof}
 
 
 
