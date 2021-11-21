@@ -173,6 +173,89 @@ where $f_n:\mathcal{E}\rightarrow [0,+\infty)$ is a sequence of function. Let $n
     where $C>0$ is another universal constant.
 \end{enumerate}
 
+\noindent\textbf{6.7} ($\varepsilon$-GREEDY) For this exercise assume the rewards are 1 -subgaussian and there are $k \geq 2$ arms. The $\varepsilon$-greedy algorithm depends on a sequence of parameters $\varepsilon_{1}, \varepsilon_{2}, \ldots . .$ First it chooses each arm once and subsequently chooses $A_{t}=\operatorname{argmax}_{i} \hat{\mu}_{i}(t-1)$ with probability $1-\varepsilon_{t}$ and otherwise chooses an arm uniformly at random.
+\begin{enumerate}
+    \item[(a)] Prove that if $\varepsilon_{t}=\varepsilon>0$, then $\lim _{n \rightarrow \infty} \frac{R_{n}}{n}=\frac{\varepsilon}{k} \sum_{i=1}^{k} \Delta_{i}$.
+    \item[(b)] Let $\Delta_{\min }=\min \left\{\Delta_{i}: \Delta_{i}>0\right\}$ and let $\varepsilon_{t}=\min \left\{1, \frac{C k}{t \Delta_{\min }^{2}}\right\}$, where $C>0$ is a sufficiently large universal constant. Prove that there exists a universal $C^{\prime}>0$ such that
+    $$
+    R_{n} \leq C^{\prime} \sum_{i=1}^{k}\left(\Delta_{i}+\frac{\Delta_{i}}{\Delta_{\min }^{2}} \log \max \left\{e, \frac{n \Delta_{\min }^{2}}{k}\right\}\right)
+    $$
+\end{enumerate}
+
+\begin{proof}
+
+\begin{enumerate}
+    \item [(a)]
+        To prove the $\frac {R_n} {n}$ in $\varepsilon$-GREEDY algorithms, we prove it with uniformly choosing arm and select $A_{t}=\operatorname{argmax}_{i} \hat{\mu}_{i}(t-1)$.
+    
+        \begin{enumerate}
+        \item [1] In uniformly choosing arm situation (with $\varepsilon$ probability), the regret is 
+        
+            $$
+            \begin{aligned}
+            & \sum_{t=1}^{n}\left(x-x_{a t}\right) \\
+            &=\sum_{i=1}^{n} \mathbb {E} \left(x-x_{a t}\right)\\
+            &=\sum_{i=1}^{n} \mathbb {E} \Delta_{i} \\
+            &=\sum_{t=1}^{n}\frac{\sum_{i=1}^{k} \Delta_{i}}{k}.
+            \end{aligned}
+            $$
+        
+            $\lim _{n \rightarrow \infty} \frac{R_{n}}{n}=\frac{\sum_{i=1}^{k} \Delta_{i}}{k}$
+    
+        \item [2] In selecting $A_{t}=\operatorname{argmax}_{i} \hat{\mu}_{i}(t-1)$ situation, assuming the best arm is arm 1.
+        
+            We could prove the select arm is always the best arm 1, when $t$ is large enough. Namely, 
+        
+            Prove $\exists t_n, t > t_n, A_t = 1$
+        
+            By contradiction, assuming for $\forall t_n, \exists A_t \neq 1$ in $t > t_n$.
+        
+            Since $A_t \neq 1$ and $A_{t}=\operatorname{argmax}_{i} \hat{\mu}_{i}(t-1)$, $\hat \mu_i > \hat \mu_1$.
+            
+            According to reward is 1-subgaussian, 
+            $$
+            \left | \hat \mu_i - \mu_i \right | < \delta_i
+            $$
+            
+            $$
+            \left | \hat \mu_1 - \mu_1 \right | < \delta_1
+            $$
+
+            Thus
+            $$
+            \hat \mu_i < \mu_i + \delta_i \\
+            $$
+            
+            $$
+            \hat \mu_1 > \mu_1 - \delta_1
+            $$
+        
+            Let $t_n$ big enough to enable $\delta_i + \delta_1 < \mu_i - \mu_1$.
+        
+            $\mu_i + \delta_i < \mu_1 - \delta_1$
+        
+            $\hat \mu_i < \hat \mu_1$ and   $A_t = 1$ which is contradict with our assumption. Thus $\exists t_n, t > t_n, A_t = 1$.
+        
+            When $t > t_n, A_1 = 1$, $R_t - R_{t_n} = 0$;
+        
+            % When $t \t_n, R_{t} = \sum_{i = 1} ^ {t_n} {x - x_{a i}} \leq t_n \Delta$
+            
+            $R_n = R_{tn} + {R_t - R_n} \leq t_n \Delta$
+        
+            $$
+            \lim _{n \rightarrow \infty} \frac{R_{n}}{n}=0
+            $$
+        \end{enumerate}
+        
+        The algorithm uniformly chooses arm with $\varepsilon$ probability and selects $A_{t}=\operatorname{argmax}_{i} \hat{\mu}_{i}(t-1)$ with $1 - \varepsilon$ probability.
+    
+        $\lim _{n \rightarrow \infty} \frac{R_{n}}{n}={\varepsilon}  \frac{\sum_{i=1}^{k} \Delta_{i}} {k} + \left(1 - \varepsilon\right) \cdot 0 = \frac{\varepsilon}{k} \sum_{i=1}^{k} \Delta_{i}$
+    \item [(b)]
+\end{enumerate}
+\end{proof}
+
+
+
 \noindent\textbf{6.8} (\textsc{Elimination algorithm})
 A simple way to generalise the ETC policy to multiple arms and overcome the problem of tuning the commitment time is to use an elimination algorithm.
 The algorithm operates in phases and maintains an active set of arms that could be optimal.
