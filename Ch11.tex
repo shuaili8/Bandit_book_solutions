@@ -4,6 +4,19 @@
 \chapter*{Chapter 11 The Exp3 Algorithm}
 \label{sec:11}
 
+\noindent\textbf{11.1} (\textsc{Sampling from a multinomial}) In order to implement Exp3, you need a way to sample from the exponential weights distribution. Many programming languages provide a standard way to do this. For example, in Python you can use the Numpy library and numpy.random.multinomial. In more basic languages, however, you only have access to a function rand() that returns a floating point number `uniformly' distributed in $[0, 1]$. Describe an algorithm that takes as input a probability vector $p \in \mathcal{P}_{k-1}$ and uses a single call to rand() to return $X \in [k]$ with $P (X = i) = p_i$.
+
+\begin{proof}
+Recall that the probability vector $p$ satisfies $\sum_{i=1}^k p_i = 1$. We can divide the interval $[0,1]$ into several slices. For example, the first is $[0,p_1)$, the second is $[p_1,p_1+p_2)$, ..., and the last is $[\sum_{i=1}^{k-1} p_i, 1)$. Every time we call rand(0,1) and get an output. The returned $X\in[k]$ is just the index of the slice in which the output falls. 
+\end{proof}
+
+
+
+
+
+
+
+
 \noindent\textbf{11.2} Let $\pi$ be a deterministic policy, and we define $x_{ti}=0$ if $A_t=i$ otherwise $x_{ti}=1$. The deterministic policy collects zero rewards all time,
 \begin{equation}
     \max _{i \in[k]} \sum_{t=1}^{n} x_{t i} \geq \frac{1}{k} \sum_{t=1}^{n} \sum_{i=1}^{k} x_{t i}=\frac{n(k-1)}{k} \notag
@@ -44,16 +57,16 @@ Show that if $Z_{ti}$ is a standard Gumbel, then follow-the-perturbed-leader is 
 % Let $\hat{X}_{ti}=1-\hat{Y}_{ti}$. 
 Recall in Exp3, 
 \begin{align*}
-    \PP{A_t=i} = \frac{\exp\bracket{\eta \sum_{s=1}^{t-1} \hat{X}_{si} }}{\sum_{j=1}^K \exp\bracket{\eta \sum_{s=1}^{t-1} \hat{X}_{sj} }} \,, \text{ where } \hat{X}_{ti} = 1-\frac{ \bOne{A_t=i}(1-X_t) }{\PP{A_t=i} } = 1-Y_{ti}\,. 
+    \PP{A_t=i} = \frac{\exp\bracket{\eta \sum_{s=1}^{t-1} \hat{X}_{si} }}{\sum_{j=1}^k \exp\bracket{\eta \sum_{s=1}^{t-1} \hat{X}_{sj} }} \,, \text{ where } \hat{X}_{ti} = 1-\frac{ \bOne{A_t=i}(1-X_t) }{\PP{A_t=i} } = 1-Y_{ti}\,. 
  \end{align*}
  And in FTPL, 
  \begin{align*}
-\PP{A_t=i} &= \PP{ i =\argmax_{j\in[K]} Z_{tj}-\eta \sum_{s=1}^{t-1} \hat{Y}_{sj}} \\
-&= \PP{ i = \argmax_{j\in[K]}Z_{tj}-\eta \sum_{s=1}^{t-1} (1-\hat{X}_{sj})  } \\
-&= \PP{ i = \argmax_{j\in[K]}Z_{tj}- \eta(t-1)+ \eta \sum_{s=1}^{t-1} \hat{X}_{sj}  } \\
-&= \PP{ i = \argmax_{j\in[K]}Z_{tj}+ \eta \sum_{s=1}^{t-1} \hat{X}_{sj}  } \\
-&= \PP{ i = \argmax_{j\in[K]}Z_{tj}+ \log a_j  }  \\
-&= \frac{a_i}{\sum_{j=1}^K a_j} = \frac{\exp\bracket{\eta \sum_{s=1}^{t-1} \hat{X}_{si} }}{\sum_{j=1}^K \exp\bracket{\eta \sum_{s=1}^{t-1} \hat{X}_{sj} }} \,,
+\PP{A_t=i} &= \PP{ i =\argmax_{j\in[k]} Z_{tj}-\eta \sum_{s=1}^{t-1} \hat{Y}_{sj}} \\
+&= \PP{ i = \argmax_{j\in[k]}Z_{tj}-\eta \sum_{s=1}^{t-1} (1-\hat{X}_{sj})  } \\
+&= \PP{ i = \argmax_{j\in[k]}Z_{tj}- \eta(t-1)+ \eta \sum_{s=1}^{t-1} \hat{X}_{sj}  } \\
+&= \PP{ i = \argmax_{j\in[k]}Z_{tj}+ \eta \sum_{s=1}^{t-1} \hat{X}_{sj}  } \\
+&= \PP{ i = \argmax_{j\in[k]}Z_{tj}+ \log a_j  }  \\
+&= \frac{a_i}{\sum_{j=1}^k a_j} = \frac{\exp\bracket{\eta \sum_{s=1}^{t-1} \hat{X}_{si} }}{\sum_{j=1}^K \exp\bracket{\eta \sum_{s=1}^{t-1} \hat{X}_{sj} }} \,,
  \end{align*}
  where we set $a_i = \exp\bracket{\eta \sum_{s=1}^{t-1}\hat{X}_{si}}$ and apply the result of 11.7. 
 
