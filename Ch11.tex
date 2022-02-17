@@ -1,3 +1,6 @@
+%!TEX root =  main.tex
+
+
 \chapter*{Chapter 11 The Exp3 Algorithm}
 \label{sec:11}
 
@@ -32,12 +35,30 @@ Show that there exists an $a\in \mathbb{R}^k$ such that $<a,P>=0$ and for all $i
         \end{aligned}
 \end{equation}
 
-\noindent\textbf{11.8} Let $Z_ti$ be a standard Gambel. The follow-theperturbed-leader algorithm chooses
-\begin{equation}
-    A_{t}=\operatorname{argmax}_{i \in[k]}\left(Z_{t i}-\eta \sum_{s=1}^{t-1} \hat{Y}_{s i}\right)\notag
-\end{equation}
-is the same as EXP3. Given (11.7)
-\begin{equation}
-    \mathbb{P}\left(\log \left(a_{i}\right)+G_{i}=\max _{j \in[k]}\left(\log \left(a_{j}\right)+G_{j}\right)\right)=\frac{a_{i}}{\sum_{j=1}^{k} a_{j}}\notag
-\end{equation}
-Just simply take $a_i$ as $-\eta \sum_{s=1}^{t-1} \hat{Y}_{s i}$, then the form is identical.
+\noindent\textbf{11.8} (\textsc{Exp3 as follow-the-perturbed-leader}) Let $(Z_{ti})_{ti}$ be a collection of independent and identically distributed random variables. The follow-the-perturbed-leader (FTPL) algorithm chooses
+\begin{align*}
+A_{t}=\argmax_{i \in[k]}\bracket{Z_{ti}-\eta \sum_{s=1}^{t-1} \hat{Y}_{s i}}\,.
+\end{align*}
+Show that if $Z_{ti}$ is a standard Gumbel, then follow-the-perturbed-leader is the same as Exp3. 
+\begin{proof}
+% Let $\hat{X}_{ti}=1-\hat{Y}_{ti}$. 
+Recall in Exp3, 
+\begin{align*}
+    \PP{A_t=i} = \frac{\exp\bracket{\eta \sum_{s=1}^{t-1} \hat{X}_{si} }}{\sum_{j=1}^K \exp\bracket{\eta \sum_{s=1}^{t-1} \hat{X}_{sj} }} \,, \text{ where } \hat{X}_{ti} = 1-\frac{ \bOne{A_t=i}(1-X_t) }{\PP{A_t=i} } = 1-Y_{ti}\,. 
+ \end{align*}
+ And in FTPL, 
+ \begin{align*}
+\PP{A_t=i} &= \PP{ i =\argmax_{j\in[K]} Z_{tj}-\eta \sum_{s=1}^{t-1} \hat{Y}_{sj}} \\
+&= \PP{ i = \argmax_{j\in[K]}Z_{tj}-\eta \sum_{s=1}^{t-1} (1-\hat{X}_{sj})  } \\
+&= \PP{ i = \argmax_{j\in[K]}Z_{tj}- \eta(t-1)+ \eta \sum_{s=1}^{t-1} \hat{X}_{sj}  } \\
+&= \PP{ i = \argmax_{j\in[K]}Z_{tj}+ \eta \sum_{s=1}^{t-1} \hat{X}_{sj}  } \\
+&= \PP{ i = \argmax_{j\in[K]}Z_{tj}+ \log a_j  }  \\
+&= \frac{a_i}{\sum_{j=1}^K a_j} = \frac{\exp\bracket{\eta \sum_{s=1}^{t-1} \hat{X}_{si} }}{\sum_{j=1}^K \exp\bracket{\eta \sum_{s=1}^{t-1} \hat{X}_{sj} }} \,,
+ \end{align*}
+ where we set $a_i = \exp\bracket{\eta \sum_{s=1}^{t-1}\hat{X}_{si}}$ and apply the result of 11.7. 
+
+ Above all, we have shown that the policy of FTPL is equivalent to that of Exp3. 
+
+
+\end{proof}
+
