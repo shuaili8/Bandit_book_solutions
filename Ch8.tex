@@ -19,5 +19,26 @@
     &=\sum^{20}_{t=1}+\frac{1}{log(20)}\\
     &\le\frac{5}{2}
     \end{align*}
-    \end{enumerate}
+    
+\noindent\textbf{8.2}
+
+    \begin{align*}
+    &\EE{T_2(n)}\\
+    &=\EE{\bOne{A_t = 2}}\\
+    &=\EE{\sum_{t=1}^n\bOne{\hat{\mu}_1(t-1)+\sqrt{\frac{2\log(f(t))}{T_1(t-1)}}\leq \mu_1-\epsilon}} + \EE{\sum_{t=1}^n\bOne{\hat{\mu}_2(t-1)+\sqrt{\frac{2\log(f(t))}{T_2(t-1)}}\leq \mu_1-\epsilon}}
+    \end{align*}
+    Since $\mu_2=0$ is known, we can rewrite that
+    \begin{align*}
+    \EE{\sum_{t=1}^n\bOne{\mu_2\geq \mu_1-\epsilon}} = \EE{0\geq\mu_1-\epsilon}.
+    \end{align*}
+    Since $\mu_1>0$, when $\epsilon\rightarrow 0$, $\EE{0\geq\mu_1-\epsilon} = 0 $. We take $\epsilon=\log^{-\frac{1}{4}}(n)$.
+    \begin{align*}
+    &\EE{\sum_{t=1}^n\bOne{\hat{\mu}_1(t-1)+\sqrt{\frac{2\log(f(t))}{T_1(t-1)}}\leq \mu_1-\epsilon}}\\
+    \leq&\sum_{t=1}^n\sum_{s=1}^n \PP{\hat{\mu}_{1,s}+\sqrt{\frac{2\log(f(t))}{s}}\leq \mu_1-\epsilon}\\
+    \leq&\sum_{t=1}^n\sum_{s=1}^n \exp(-\frac{\delta(\sqrt{\frac{2\log(f(t))}{s}}+\epsilon)^2}{2})\\
+    \leq&\sum_{t=1}^n \frac{1}{f(t)}\sum_{s=1}^n \exp(-\frac{s\epsilon^2}{2})\\
+    \leq&\frac{5}{\epsilon^2}
+    \end{align*}
+    Then we have $R_n=\mu_1\EE{T_2(n)}\leq\frac{5}{\epsilon^2}=5\log^{\frac{1}{2}}n$, and $\lim_{n\to \infty}\sup\frac{R_n}{\log n}$=0.
+    %\end{enumerate}
 
