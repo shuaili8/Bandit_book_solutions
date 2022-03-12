@@ -38,6 +38,14 @@ Show that there exists an $a\in \mathbb{R}^k$ such that $<a,P>=0$ and for all $i
 \end{proof}
 
 \noindent\textbf{11.6}
+(\textsc{Variance of Exp3}) In this exercise, you will show that 
+if $\eta\in[n^{-p},1]$ for some $p\in(0,1)$,
+then for sufficiently large $n$,
+there exists a bandit on which Exp3 has a constant probability of suffering linear regret. We work with losses so that given a bandit $y \in[0, 1]^{n\times k}$, the learner samples $A_t$ from $P_t$ given by
+\begin{align*}
+    P_{t,i} = \frac{ \exp\bracket{-\eta\sum_{s=1}^{t-1}\hat{Y}_{si} } }{ \sum_{j=1}^k \exp\bracket{-\eta\sum_{s=1}^{t-1}\hat{Y}_{sj} } }
+\end{align*}
+
 \begin{proof}
 \begin{itemize}
     \item[(c)] Let $B_0, \dots, B_s$ be random variables following Geometric distribution, and
