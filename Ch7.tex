@@ -7,36 +7,35 @@
     Let $X_{1}, X_{2}, \ldots$ be a sequence of independent standard Gaussian random variables defined on probability space $(\Omega, \mathcal{F}, \mathbb{P})$.
     Suppose that $T: \Omega \rightarrow\{1,2,3, \ldots\}$ is another random variable, and let $\hat{\mu}=\sum_{t=1}^{T} X_{t} / T$ be the empirical mean based on $T$ samples.
 
-    \begin{enumerate}[(a)]
-    \item 
+%     \begin{enumerate}[(a)]
+%     \item \begin{align*}
+%     P &=(\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(1/\delta)}{T}})\\
+%     &=\sum^{\infty}_{n=1}E[\{T=n\}\|\{\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(1/\delta)}{T}}\}]\\
+%     &=\sum^{\infty}_{n=1}E[\|\{T=n\}\delta]\\
+%     &=\delta\sum^{\infty}_{n=1}P(T=n)\\
+%     &=\delta
+%     \end{align*}
 
-    \begin{align*}
-    P &=(\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(1/\delta)}{T}})\\
-    &=\sum^{\infty}_{n=1}E[\{T=n\}\|\{\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(1/\delta)}{T}}\}]\\
-    &=\sum^{\infty}_{n=1}E[\|\{T=n\}\delta]\\
-    &=\delta\sum^{\infty}_{n=1}P(T=n)\\
-    &=\delta
-    \end{align*}
+%     \item
+%  $\hat{\mu}-\mu=\frac{1}{n}\sum^{\infty}_{t=1}(X_t-\mu)\ge\sqrt{\dfrac{2-\log(1/\delta)}{T}}$
 
-    \item
-    $\hat{\mu}-\mu=\frac{1}{n}\sum^{\infty}_{t=1}(X_t-\mu)\ge\sqrt{\dfrac{2-\log(1/\delta)}{T}}$
+%     T=min(n)
 
-    T=min(n)
+%     $E_t=\|\{T=t\}$ is $\mathcal{F}_t$-measurable
 
-    $E_t=\|\{T=t\}$ is $\mathcal{F}_t$-measurable
+%     \item Show that
+%     $$\mathbb{P}\left(\hat{\mu}-\mu \geq \sqrt{\frac{2 \log (T(T+1) / \delta)}{T}}\right) \leq \delta.$$
 
-    \item Show that
-    $$\mathbb{P}\left(\hat{\mu}-\mu \geq \sqrt{\frac{2 \log (T(T+1) / \delta)}{T}}\right) \leq \delta.$$
-
-    \begin{proof}
-        Note that
-        \begin{align*}
-            P(\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(T(T+1)/\delta}{T}}) &\le P(\bigcup^{\infty}_{n=1}\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(n(n+1)/\delta}{n}})\\
-            &\le \sum^{\infty}_{n=1}P(\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(n(n+1)/\delta}{n}})\\
-            &\le \sum^{\infty}_{n=1} \dfrac{\delta}{n(n+1)}\\
-            &\le \delta
-        \end{align*}
-    \end{proof}
+%     \begin{proof}
+%         Note that
+%         \begin{align*}
+%             P(\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(T(T+1)/\delta}{T}}) &\le P(\bigcup^{\infty}_{n=1}\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(n(n+1)/\delta}{n}})\\
+%             &\le \sum^{\infty}_{n=1}P(\hat{\mu}-\mu\ge\sqrt{\dfrac{2log(n(n+1)/\delta}{n}})\\
+%             &\le \sum^{\infty}_{n=1} \dfrac{\delta}{n(n+1)}\\
+%             &\le \delta
+%         \end{align*}
+%     \end{proof}
+% \end{enumerate}
 
 \noindent\textbf{7.2} (\textsc{Relaxing the subgaussian assumption}) In this chapter, we assumed the pay-off distributions were 1-subgaussian. The purpose of this exercise is to relax this assumption. 
 \begin{enumerate}
@@ -67,27 +66,27 @@
 \end{enumerate}
 \end{proof}
 
-\noindent\textbf{7.3}
-    $E[Ti(n)]\le\dfrac{-8ln\delta}{\bigtriangleup_i}+\delta n(n=1)$
+% \noindent\textbf{7.3}
+%     $E[Ti(n)]\le\dfrac{-8ln\delta}{\bigtriangleup_i}+\delta n(n=1)$
 
 
-    $R_n=E[\overline{R_n}]\le\sum^{k}_{i=2}\dfrac{-8ln\delta}{\bigtriangleup_i}+\bigtriangleup_i\delta n(n+1)$
+%     $R_n=E[\overline{R_n}]\le\sum^{k}_{i=2}\dfrac{-8ln\delta}{\bigtriangleup_i}+\bigtriangleup_i\delta n(n+1)$
 
 
-    Choosing
-    $\delta=\dfrac{\sum^{k}_{i=2}\frac{8}{\bigtriangleup_i}}{\sum^{k}_{i=2}\bigtriangleup_i   n(n+1)}$
-    \begin{align*}
-    R_n &\le\sum^{k}_{i=2}\frac{8}{\bigtriangleup_i}+\sum^{k}_{i=2}\frac{8}{\bigtriangleup_i}ln\frac{\sum^{k}_{i=2}\bigtriangleup_i n(n+1)}{\sum^{k}_{i=2}\frac{8}{\bigtriangleup_i}}\\
-    &:=h(n,k)
-    \end{align*}
-    $g(n,k,\delta)=\dfrac{\sqrt{h(n,k)}}{\delta};f(n,k)=\sqrt{h(n,k)}$
-    \begin{align*}
-    P(\overline{R_n}\ge g(n,k,\delta)) &\le\dfrac{R_n}{g(n,k,\delta)}\\
-    &\le\dfrac{h(n,k)}{g(n,k,\delta)}\\
-    &=\dfrac{h(n,k)}{\sqrt{h(n,k)}}\delta\\
-    &=\sqrt{h(n,k)}\delta\\
-    &=f(n,k)\delta
-    \end{align*}
+%     Choosing
+%     $\delta=\dfrac{\sum^{k}_{i=2}\frac{8}{\bigtriangleup_i}}{\sum^{k}_{i=2}\bigtriangleup_i   n(n+1)}$
+%     \begin{align*}
+%     R_n &\le\sum^{k}_{i=2}\frac{8}{\bigtriangleup_i}+\sum^{k}_{i=2}\frac{8}{\bigtriangleup_i}ln\frac{\sum^{k}_{i=2}\bigtriangleup_i n(n+1)}{\sum^{k}_{i=2}\frac{8}{\bigtriangleup_i}}\\
+%     &:=h(n,k)
+%     \end{align*}
+%     $g(n,k,\delta)=\dfrac{\sqrt{h(n,k)}}{\delta};f(n,k)=\sqrt{h(n,k)}$
+%     \begin{align*}
+%     P(\overline{R_n}\ge g(n,k,\delta)) &\le\dfrac{R_n}{g(n,k,\delta)}\\
+%     &\le\dfrac{h(n,k)}{g(n,k,\delta)}\\
+%     &=\dfrac{h(n,k)}{\sqrt{h(n,k)}}\delta\\
+%     &=\sqrt{h(n,k)}\delta\\
+%     &=f(n,k)\delta
+%     \end{align*}
 
 \noindent\textbf{7.4} (\textsc{Phased UCB (i)})
 Fix a $1$-subgaussian $k$-armed bandit environment and a horizon $n$.
@@ -134,7 +133,7 @@ In each phase, the algorithm uses the action that would have been chosen by UCB 
 \end{proof}
 
 \noindent\textbf{7.6}
-    \item
+    % \item
     \begin{align*}
     \hat{\delta}^2 &=\frac{1}{n}\sum^{n}_{t=1}(\hat{\mu}-X_t)^2\\
     &=\frac{1}{n}\sum^{n}_{t=1}[(\hat{\mu}-\mu)+(\mu-X_t)]^2\\
