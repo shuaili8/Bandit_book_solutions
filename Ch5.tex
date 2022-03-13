@@ -773,7 +773,35 @@ Prove that for any $\varepsilon>0$ that
 	which completes the proof when choosing $\lambda=(\varepsilon-n) / \varepsilon$.
 \end{proof}
 
+\noindent \textbf{5.17} (\textsc{Concentration for categorical distribution}) Let $X_{1}, \ldots, X_{n}$ be an independent and identically distributed sequence taking values in $[m]$. For $i\in [m]$, let $p(i)=\mathbb{P}(X_1 =i)$ and $\hat{p}(i)=\frac{1}{n}\sum_{t=1}^n\mathbb{I}\{X_t=i\}$. Show that for any $\delta\in(0,1)$,
+\begin{align*}
+    \mathbb{P}\bigg(\|p-\hat{p}\|_1\ge \sqrt{\frac{2[\log(\frac{1}{\delta})+m\log(2)]}{n}}\bigg)\leq \delta
+\end{align*}
+\textsc{Hint} Use the fact that $\|p-\hat{p}\|_1 = \max_{\lambda\in\{-1,1\}^m}\langle\lambda,p-\hat{p}\rangle$.
 
+\begin{proof}
+First, fix a $\lambda\in\{-1,1\}^m$ and use hint, then 
+\begin{align*}
+    \langle \lambda,p-\hat{p}\rangle = \frac{1}{n}\sum_{t=1}^n\langle p-e_{X_t}\rangle
+\end{align*}
+    where $e_{X_t}$ means unit vector that is not 0 only at $X_t$.
+\begin{align*}
+    |\langle \lambda,p-e_{X_t}\rangle|\leq\|\lambda\|_\infty\|p-e_{X_t}\|_1\leq 2\\
+    \mathbb{E}[\langle\lambda,p-e_{X_t}\rangle] =0
+\end{align*}
+    Then using Hoeffding's inequality:
+\begin{align*}
+    \mathbb{P}(\langle\lambda,p-\hat{p}\rangle\ge \epsilon) \leq \exp(\frac{-2n^2\epsilon^2}{16n})=\delta
+\end{align*}
+which complete the proof when choosing $\epsilon = \sqrt{\frac{8\log(1/\delta)}{n}}$.
+\begin{align*}
+    \mathbb{P}\bigg(\|p-\hat{p}\|_1\ge \sqrt{\frac{8[\log(\frac{1}{\delta})+m\log(2)]}{n}}\bigg)\leq \delta
+\end{align*}
+
+
+
+
+\end{proof}
 
 
 
