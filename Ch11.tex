@@ -45,37 +45,53 @@ there exists a bandit on which Exp3 has a constant probability of suffering line
 \begin{align*}
     P_{t,i} = \frac{ \exp\bracket{-\eta\sum_{s=1}^{t-1}\hat{Y}_{si} } }{ \sum_{j=1}^k \exp\bracket{-\eta\sum_{s=1}^{t-1}\hat{Y}_{sj} } }
 \end{align*}
+where $\hat{Y}_{ti}=A_{ti}y_{ti}/P_{ti}$, let $\alpha \in [1/4,1/2]$ be a constant to be tuned subsequently and define a two-armed adversarial bandit in terms of its losses by $y_{t1}=0$ if $t\le n/2$ and $y_{t1}=1$ otherwise; $y_{t2}=\alpha$ if $t\le n/2$ and $y_{t2}=0$ otherwise. For simplicity you may assume that $n$ is even. 
+\begin{enumerate}
+    \item[(a)] 
+    \item[(b)]
+    \item[(c)]
+    \item[(d)] Prove that $\PP{R_n\ge n/4} \ge (1-n\exp(-\eta n)/2)/65$.
+\end{enumerate}
 
 \begin{proof}
-\begin{itemize}
-    \item[(c)] Let $B_0, \dots, B_s$ be random variables following Geometric distribution, and
-    \begin{equation}
-        \mathbb{P}(B_n = k) = (1 - q_n(\alpha))^{k-1} q_n(\alpha), \quad \mathbb{E}[B_n] = \frac{1}{q_n(\alpha)}\notag
-    \end{equation}
-    Thus
-    \begin{equation}
-        \mathbb{P}\left(T_2\left(\frac{n}{2}\right) \geq s+1\right) = \mathbb{P}\left( \sum_{u=0}^s B_u \leq \frac{n}{2} \right) \geq \mathbb{P}\left( \sum_{u=0}^{s-1} B_u \leq \frac{n}{4} \right) \cdot \mathbb{P}(B_s \leq \frac{n}{4})\notag
-    \end{equation}
-    in which we have
-    \begin{enumerate}
-        \item 
-        \begin{equation}
-            \mathbb{E}\left[ \sum_{u=0}^{s-1} B_n\right] = \sum_{u=0}^{s-1} \frac{1}{q_n(\alpha)} \leq \frac{n}{8}\notag
-        \end{equation}
-        therefore by Markov's inequality,
-        \begin{equation}
-            \mathbb{P}\left( \sum_{u=0}^{s-1} B_u \leq \frac{n}{4} \right) = 1 - \mathbb{P}\left( \sum_{u=0}^{s-1} B_u > \frac{n}{4} \right) \geq \frac{1}{2};\notag
-        \end{equation}
-        \item By definition we have
-        \begin{equation}
-            \mathbb{P}\left[ B_s \leq \frac{n}{4} \right] =  1 - \left( 1 - \frac{1}{8n}\right)^{\frac{n}{4}} = 1 - \left( 1 - \frac{4}{32 n}\right)^{\frac{n}{4}} \geq 1 - \exp\left(-\frac{1}{32}\right)\notag
-        \end{equation}
-    \end{enumerate}
-    Therefore
-    \begin{equation}
-        \mathbb{P}\left(T_2\left(\frac{n}{2}\right) \geq s+1\right) \geq \frac{1}{2} \cdot \left( 1 - \exp\left(-\frac{1}{32}\right) \right) \geq \frac{1}{65}.\notag
-    \end{equation}
-\end{itemize}
+\begin{enumerate}
+    \item[(a)]
+    \item[(b)]
+    \item[(c)]
+    \item[(d)]
+    $\PP{\hat{R}_n\ge n/4}\ge \PP{A_t=1,\forall t>n/2}$ since when $A_t=1,\forall t>n/2$, we have $\hat{R}_n\ge n/2-\alpha\cdot n/2 \ge n/4$. In the following, we will try to lower bound $\PP{A_t=1,\forall t>n/2}$. 
+    
+    
+\end{enumerate}
+% \begin{itemize}
+%     \item[(c)] Let $B_0, \dots, B_s$ be random variables following Geometric distribution, and
+%     \begin{equation}
+%         \mathbb{P}(B_n = k) = (1 - q_n(\alpha))^{k-1} q_n(\alpha), \quad \mathbb{E}[B_n] = \frac{1}{q_n(\alpha)}\notag
+%     \end{equation}
+%     Thus
+%     \begin{equation}
+%         \mathbb{P}\left(T_2\left(\frac{n}{2}\right) \geq s+1\right) = \mathbb{P}\left( \sum_{u=0}^s B_u \leq \frac{n}{2} \right) \geq \mathbb{P}\left( \sum_{u=0}^{s-1} B_u \leq \frac{n}{4} \right) \cdot \mathbb{P}(B_s \leq \frac{n}{4})\notag
+%     \end{equation}
+%     in which we have
+%     \begin{enumerate}
+%         \item 
+%         \begin{equation}
+%             \mathbb{E}\left[ \sum_{u=0}^{s-1} B_n\right] = \sum_{u=0}^{s-1} \frac{1}{q_n(\alpha)} \leq \frac{n}{8}\notag
+%         \end{equation}
+%         therefore by Markov's inequality,
+%         \begin{equation}
+%             \mathbb{P}\left( \sum_{u=0}^{s-1} B_u \leq \frac{n}{4} \right) = 1 - \mathbb{P}\left( \sum_{u=0}^{s-1} B_u > \frac{n}{4} \right) \geq \frac{1}{2};\notag
+%         \end{equation}
+%         \item By definition we have
+%         \begin{equation}
+%             \mathbb{P}\left[ B_s \leq \frac{n}{4} \right] =  1 - \left( 1 - \frac{1}{8n}\right)^{\frac{n}{4}} = 1 - \left( 1 - \frac{4}{32 n}\right)^{\frac{n}{4}} \geq 1 - \exp\left(-\frac{1}{32}\right)\notag
+%         \end{equation}
+%     \end{enumerate}
+%     Therefore
+%     \begin{equation}
+%         \mathbb{P}\left(T_2\left(\frac{n}{2}\right) \geq s+1\right) \geq \frac{1}{2} \cdot \left( 1 - \exp\left(-\frac{1}{32}\right) \right) \geq \frac{1}{65}.\notag
+%     \end{equation}
+% \end{itemize}
 \end{proof}
 
 \noindent\textbf{11.7} First, note that if $G=-\log (-\log (U))$ then $\mathbb{P}(G \leq g)=e^{-\exp (-g)}$.
