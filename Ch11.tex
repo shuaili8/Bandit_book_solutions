@@ -51,6 +51,11 @@ where $\hat{Y}_{ti}=A_{ti}y_{ti}/P_{ti}$, let $\alpha \in [1/4,1/2]$ be a consta
     \item[(b)]
     \item[(c)]
     \item[(d)] Prove that $\PP{R_n\ge n/4} \ge (1-n\exp(-\eta n)/2)/65$.
+    \item[(e)] The previous part shows that the regret is linear with constant probability for sufficiently large $n$. On the other hand, a dubious application of Markov’s inequality and Theorem 11.1 shows that
+    \begin{align*}
+        \PP{\hat{R}_n \ge n/4}\le \frac{4\EE{\hat{R}_n}}{n} \le O(n^{-1/2})\,.
+    \end{align*}
+    Explain the apparent contradiction.
 \end{enumerate}
 
 \begin{proof}
@@ -61,6 +66,14 @@ where $\hat{Y}_{ti}=A_{ti}y_{ti}/P_{ti}$, let $\alpha \in [1/4,1/2]$ be a consta
     \item[(d)]
     $\PP{\hat{R}_n\ge n/4}\ge \PP{A_t=1,\forall t>n/2}$ since when $A_t=1,\forall t>n/2$, we have $\hat{R}_n\ge n/2-\alpha\cdot n/2 \ge n/4$. In the following, we will try to lower bound $\PP{A_t=1,\forall t>n/2}$. 
     
+    Based on the result of (c), we fist suppose $T_2(n/2)\ge s+1$. Then for any $t>n/2$, $\hat{L}_{t2}=\sum_{u=1}^{t-1}\hat{Y}_{u2}\ge 8\alpha n\ge 2n$. And $\hat{L}_{t1}=\sum_{u=1}^{t-1}\hat{Y}_{u1}=\sum_{u=n/2+1}^{t-1} 1/P_{u1}$. 
+    Based on the event $T_2(n/2)\ge s+1$ and the fact that $P_{t1}\ge 1/2$, we can show that $\hat{L}_{t1}\le \hat{L}_{t2}$ for all $t$ by induction.
+    Above all, 
+    \begin{align*}
+        P_{t2}\le \exp\bracket{ -\eta\sum_{s=1}^{t-1}(\hat{Y}_{s2}-\hat{Y}_{s1}) } \le \exp \bracket{ \eta\bracket{ \sum_{s=1}^{t-1}\hat{Y}_{s1}-2n} }\le \exp(-\eta n)\,.
+    \end{align*}
+    Further, based one (c), we have $\PP{\hat{R}_n\ge n/4}\ge \PP{A_t=1,\forall t>n/2} \ge 1/65\bracket{ 1-n/2\exp(-\eta n) }$.
+    \item[(e)] The reason is that the result obtained by using Markov's inequality is not correct since $\hat{R}_n$ may be negative. 
     
 \end{enumerate}
 % \begin{itemize}
