@@ -19,3 +19,35 @@ Prove that $M_{t}=\exp \left(\lambda \sum_{s=1}^{t} X_{s}\right)$ is a $\mathbb{
     where the inequality follows from Jenson's inequality.
 \end{proof}
 
+
+\noindent\textbf{9.2} Let $\Delta_{\min} = \min_{i:\Delta_i>0} \Delta_i$. Show there exists a universal constant $C > 0$ such that the regret of MOSS is bounded by
+\begin{align*}
+    R_n \leq Ck\Delta_{\min} \log^+(\frac{n\Delta_{\min}^2}{k}) + \sum_{i=1}^{k} \Delta_i 
+\end{align*}
+
+\begin{proof}
+\begin{align*}
+    R_n &= \sum_{i=1}^k \Delta_i \EE{T_i(n)} \\
+    &\leq \Delta_i + \Delta_i\EE{\sum_{i=k+1}^{n}\bOne{A_t=i; UCB_i(t)>\mu_i + \frac{\Delta_i}{2}}} +  \Delta_i\EE{\sum_{i=k+1}^{n}\bOne{ UCB_1(t)\leq\mu_1 - \frac{\Delta_i}{2}}} \\
+    &\leq \Delta_i + \underbrace{\Delta_i\EE{\sum_{s=1}^{n}\bOne{\hat{\mu}_{i,s}+\sqrt{\frac{4}{s}\log^+(\frac{n}{ks})}>\mu_i+\frac{\Delta}{2}}}}_{(a)} +  \underbrace{\Delta_i\EE{\sum_{i=k+1}^{n}\bOne{ UCB_1(t)\leq\mu_1 - \frac{\Delta_i}{2}}}}_{(b)}
+\end{align*}
+To bound (a), from lemma 8.2 we have that
+\begin{align*}
+    &\Delta_i\EE{\sum_{s=1}^{n}\bOne{\hat{\mu}_{i,s}+\sqrt{\frac{4}{s}\log^+(\frac{n}{ks})}>\mu_i+\frac{\Delta}{2}}}\\
+    &\leq \Delta_i(1+\frac{4}{\Delta_i^2}(\log^+\frac{n\Delta_i^2}{K}+\sqrt{\pi \log^+\frac{n\Delta_i^2}{K}}+1))\\
+    &= O(\frac{1}{\Delta_i}\log^+\frac{n\Delta_i^2}{K})
+\end{align*}
+Then we turn to bound (b), using lemma 9.3 we have that
+\begin{align*}
+    &\Delta_i\EE{\sum_{i=k+1}^{n}\bOne{ UCB_1(t)\leq\mu_1 - \frac{\Delta_i}{2}}}\\
+    &= \Delta_i\sum_{t=k+1}^n \PP{UCB_1(t)\leq \mu_1 - \frac{\Delta_i}{2}}\\
+    &\leq \frac{60K}{\Delta_i} = O(\frac{K}{\Delta_i})
+\end{align*}
+Thus we can have
+\begin{align*}
+    \Delta_i\EE{T_i(n)} \leq O(\Delta_i + \frac{\log^+\frac{n\Delta_i^2}{K}}{\Delta_i} + \frac{K}{\Delta_i}) = O(\Delta_i + \frac{\log^+\frac{n\Delta_i^2}{K}}{\Delta_i})
+\end{align*}
+\begin{align*}
+    R_n = \sum_{i=1}^{k}\Delta_i\EE{T_i(n)} \leq O(\sum_{i=1}^k\Delta_i+\frac{K\log^+\frac{n\Delta_{\min}^2}{K}}{\Delta_{\min}})
+\end{align*}
+\end{proof}
