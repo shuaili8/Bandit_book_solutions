@@ -1,0 +1,12 @@
+\chapter*{Chapter 28 Follow-the-Regularised-Leader and Mirror Descent}
+\label{sec:28}
+
+
+\noindent\textbf{28.5}\textsc{(Regret for follow-the-regularised-leader)} Prove Theorem 28.5.
+
+\begin{theorem}[Theorem 28.5]{((Follow-the-regularised-leader regret bound).)}
+Let $\eta>0$, $\cF$ be convex with domain $\cD$, $\cA\subseteq \RR^d$ be a non-empty convex set. Assume that $a_1,a_2,\ldots,a_{n+1}$ chosen by follow-the-regularised-leader are well defined. Then, for any $a\in\cA$, the regret of follow-the-regularised-leader is bounded by
+\begin{align*}
+    R_n(a) \le \frac{F(a)-F(a_1)}{\eta} + \sum_{t=1}^n \langle a_t-a_{t-1}, y_t \rangle - \frac{1}{\eta} \sum_{t=1}^n D\bracket{ a_{t+1},a_t } \,.
+\end{align*}
+\end{theorem}

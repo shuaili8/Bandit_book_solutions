@@ -44,12 +44,12 @@ By taking derivatives, show that $g \geq 0$.
     which leads to the asymptotic claim in Theorem 10.6.
 \end{proof}
 
-\noindent\textbf{10.2} (\textsc{Concentration for bounded random variables}) Let $\mathbb{F}=\left(\mathcal{F}_{t}\right)_{t}$ be a filtration,
+\noindent\textbf{10.3} (\textsc{Concentration for bounded random variables}) Let $\mathbb{F}=\left(\mathcal{F}_{t}\right)_{t}$ be a filtration,
 $\left(X_{t}\right)_{t}$ be $[0,1]$-valued, $\mathbb{F}$-adapted sequence,
 such that $\mathbb{E}\left[X_{t} \mid \mathcal{F}_{t-1}\right]=\mu_{t}$ for some $\mu_{1}, \ldots, \mu_{n} \in[0,1]$ non-random numbers.
 Define $\mu=\frac{1}{n} \sum_{t=1}^{n} \mu_{t}$, $\hat{\mu}=\frac{1}{n} \sum_{t=1}^{n} X_{t}$.
 Prove that the conclusion of Lemma 10.3 still holds.
-
+~\\
 \noindent\textsc{Hint}\quad Read Note 2 at the end of this chapter.
 Let $g(\cdot, \mu)$ be the cumulant-generating function of the $\mu$-parameter Bernoulli distribution.
 For $X \sim \mathcal{B}(\mu)$, $\lambda \in \mathbb{R}$, $g(\lambda, \mu)=\log \mathbb{E}[\exp (\lambda X)]$.
@@ -57,46 +57,46 @@ Show that $g(\lambda, \cdot)$ is concave.
 Next, use this and the tower rule to show that $\mathbb{E}[\exp (\lambda n(\hat{\mu}-\mu))] \leq g(\lambda, \mu)^{n}$.
 
 \begin{proof}
-    We first follow the same procedure
-    \begin{equation*}
-        \begin{aligned}
-            \mathbb{P}(\hat{\mu} \geq \mu+\varepsilon)
-            &= \mathbb{P}(\hat{\mu} - \mu \geq \varepsilon)\\
-            &= \mathbb{P}(\exp(\lambda \sum_{t=1}^n (X_t - \mu)) \geq \exp(\lambda n \varepsilon))\\
-            &\leq \frac{\mathbb{E}[\exp(\lambda \sum_{t=1}^n (X_t - \mu))]}{\exp(\lambda n \varepsilon)},
-        \end{aligned}
-    \end{equation*}
-    where the inequality follows from Markov's inequality.
+    % We first follow the same procedure
+    % \begin{equation*}
+    %     \begin{aligned}
+    %         \mathbb{P}(\hat{\mu} \geq \mu+\varepsilon)
+    %         &= \mathbb{P}(\hat{\mu} - \mu \geq \varepsilon)\\
+    %         &= \mathbb{P}\bracket{\exp(\lambda \sum_{t=1}^n (X_t - \mu)) \geq \exp(\lambda n \varepsilon)}\\
+    %         &\leq \frac{\EE{\exp(\lambda \sum_{t=1}^n (X_t - \mu))}}{\exp(\lambda n \varepsilon)},
+    %     \end{aligned}
+    % \end{equation*}
+    % where the inequality holds according to Markov's inequality.
 
-    Then, we verify that $g(\lambda, \cdot)$ is concave.
-    Note $g(\lambda, \mu) = \log(\mu \exp(\lambda) + (1 - \mu)) - \lambda \mu$,
+    According to the Hint, let $g(\lambda, \mu) = \log \EE{\exp\bracket{\lambda X}}$ and we would show that $g(\lambda, \cdot)$ is concave in the following.
+    Based on the definition, we can compute that $g(\lambda, \mu) = \log(\mu \exp(\lambda) + (1 - \mu)) - \lambda \mu$,
     which leads to $\frac{d^2}{d \mu^2} g(\lambda, \mu) = \frac{-(\exp(\lambda) - 1)^2}{(\mu \exp(\lambda) + 1 - \mu)^2} \leq 0$.
 
-    Next, let $S_p = \sum_{t=1}^p (X_t - \mu_t)$. We have
+    Let $S_p = \sum_{t=1}^p (X_t - \mu_t)$, it holds that
     \begin{equation*}
         \begin{aligned}
             \mathbb{E}[\exp(\lambda S_p)]
             &= \mathbb{E}[\mathbb{E}[\exp(\lambda S_p) | \mathcal{F}_{p-1}]]\\
             &= \mathbb{E}[\mathbb{E}[\exp(\lambda S_{p-1}) \exp(\lambda(X_p - \mu_p)) | \mathcal{F}_{p-1}]]\\
             &= \mathbb{E}[\exp(\lambda S_{p-1}) \mathbb{E}[\exp(\lambda(X_p - \mu_p)) | \mathcal{F}_{p-1}]]\\
-            &= \mathbb{E}[\exp(\lambda S_{p-1}) \mathbb{E}[\frac{\exp(\lambda X_p)}{\exp(\lambda \mu_p)} | \mathcal{F}_{p-1}]]\\
-            &\leq \mathbb{E}[\exp(\lambda S_{p-1}) \mathbb{E}[\frac{X_p (\exp(\lambda) - 1) + 1}{\exp(\lambda \mu_p)} | \mathcal{F}_{p-1}]]\\
-            &= \mathbb{E}[\exp(\lambda S_{p-1}) \frac{\mu_p(\exp(\lambda) - 1) + 1}{\exp(\lambda \mu_p)}]\\
+            &= \EE{\exp(\lambda S_{p-1}) \EE{ \frac{\exp(\lambda X_p)}{\exp(\lambda \mu_p)} | \mathcal{F}_{p-1} }}\\
+            &\leq \EE{\exp(\lambda S_{p-1}) \EE{\frac{X_p (\exp(\lambda) - 1) + 1}{\exp(\lambda \mu_p)} | \mathcal{F}_{p-1}}}\\
+            &= \EE{\exp(\lambda S_{p-1}) \frac{\mu_p(\exp(\lambda) - 1) + 1}{\exp(\lambda \mu_p)}}\\
             &= \mathbb{E}[\exp(\lambda S_{p-1})] \exp(g(\lambda, \mu_p)),
         \end{aligned}
     \end{equation*}
-    where the inequality follows from noticing that $f(x) = \exp(\lambda x) - x(\exp(\lambda) - 1) - 1 \leq 0$ on $[0, 1]$, as suggested in Note 2.
+    where the inequality follows from noticing that $f(x) = \exp(\lambda x) - x(\exp(\lambda) - 1) - 1 \leq 0$ on $[0, 1]$, as suggested in Note 2. 
 
-    The above conclusion leads to $\mathbb{E}[\exp(\lambda S_{n})] \leq \exp(\sum_{t=1}^n g(\lambda, \mu_t)) \leq \exp(n g(\lambda, \mu))$.
+    The above conclusion leads to $\mathbb{E}[\exp(\lambda S_{n})] \leq \exp\bracket{\sum_{t=1}^n g(\lambda, \mu_t)} \leq \exp(n g(\lambda, \mu))$.
     Hence, we have
     \begin{equation*}
         \begin{aligned}
             \mathbb{P}(\hat{\mu} \geq \mu+\varepsilon)
             &\leq \frac{\mathbb{E}[\exp(\lambda \sum_{t=1}^n (X_t - \mu))]}{\exp(\lambda n \varepsilon)}\\
             &\leq \frac{\exp(n g(\lambda, \mu))}{\exp(\lambda n \varepsilon)}\\
-            &= (\frac{\exp(g(\lambda, \mu))}{\exp(\lambda \varepsilon)})^2\\
+            &= \bracket{\frac{\exp(g(\lambda, \mu))}{\exp(\lambda \varepsilon)}}^2\\
             &= (\mu \exp(\lambda(1 - \mu - \varepsilon)) + (1 - \mu) \exp(-\lambda(\mu + \varepsilon)))^n,
         \end{aligned}
     \end{equation*}
-    which can be followed by the same procedures as in the proof of Lemma 10.3.
+    which can be followed by the same procedures as in the proof of Lemma 10.3, and the first inequality is due to Markov inequality that $\PP{\hat{\mu} \geq \mu+\varepsilon}= \PP{\hat{\mu} - \mu \geq \varepsilon} = \PP{\exp(\lambda \sum_{t=1}^n (X_t - \mu)) \geq \exp(\lambda n \varepsilon)} \le \frac{\EE{\exp(\lambda \sum_{t=1}^n (X_t - \mu))}}{\exp(\lambda n \varepsilon)}$. 
 \end{proof}
