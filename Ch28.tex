@@ -7,6 +7,31 @@
 \begin{theorem}[Theorem 28.5]{((Follow-the-regularised-leader regret bound).)}
 Let $\eta>0$, $\cF$ be convex with domain $\cD$, $\cA\subseteq \RR^d$ be a non-empty convex set. Assume that $a_1,a_2,\ldots,a_{n+1}$ chosen by follow-the-regularised-leader are well defined. Then, for any $a\in\cA$, the regret of follow-the-regularised-leader is bounded by
 \begin{align*}
-    R_n(a) \le \frac{F(a)-F(a_1)}{\eta} + \sum_{t=1}^n \langle a_t-a_{t-1}, y_t \rangle - \frac{1}{\eta} \sum_{t=1}^n D\bracket{ a_{t+1},a_t } \,.
+    R_n(a) \le \frac{F(a)-F(a_1)}{\eta} + \sum_{t=1}^n \langle a_t-a_{t+1}, y_t \rangle - \frac{1}{\eta} \sum_{t=1}^n D\bracket{ a_{t+1},a_t } \,.
 \end{align*}
 \end{theorem}
+
+\begin{proof}
+According to the definition, the regret can be decomposed as 
+\begin{align}
+    R_n(a) = \sum_{t=1}^n \langle a_t - a, y_t\rangle = \sum_{t=1}^n \langle a_t - a_{t+1}, y_t\rangle + \sum_{t=1}^n \langle a_{t+1}- a, y_t\rangle \,.  \label{eq:28.5:1}
+\end{align}
+Define $\Phi_t(a) = \frac{F(a)}{\eta} + \sum_{s=1}^t \langle a, y_s\rangle$. 
+Then according to FTRL, $a_{t+1} = \argmin_{a\in\cA}\Phi_t(a)$ for any $t$. The second term can then be bounded by
+\begin{align}
+    \sum_{t=1}^n \langle a_{t+1}-a, y_t \rangle &= \sum_{t=1}^n \Angle{a_{t+1},y_t} - \Phi_n(a) + \frac{F(a)}{\eta}  \notag\\
+    &= \sum_{t=1}^n\bracket{ \Phi_t(a_{t+1}) - \Phi_{t-1}(a_{t+1}) } - \Phi_n(a) + \frac{F(a)}{\eta}  \notag \\
+    &= -\Phi_0(a_1) + \sum_{t=0}^{a-1} \bracket{ \Phi_t(a_{t+1}) -\Phi_t(a_{t+2})  } + \Phi_n(a_{n+1}) - \Phi_n(a) + \frac{F(a)}{\eta}   \notag \\
+    &\le \frac{F(a)-F(a_1)}{\eta} + \sum_{t=0}^{a-1} \bracket{ \Phi_t(a_{t+1}) -\Phi_t(a_{t+2})  } \label{eq:28.5:2} \,,
+\end{align}
+where the first two equalities are due to the definition of $\Phi_t$ and the inequality holds according to the selection rule of FTRL. 
+For the second term, we have
+\begin{align}
+    \Phi_t(a_{t+1}) -\Phi_t(a_{t+2})  = -\Angle{ \nabla \Phi_t(a_{t+1}), a_{t+2}-a_{t+1} } -\frac{1}{\eta} D_F\bracket{a_{t+2}, a_{t+1}} \le -\frac{1}{\eta} D_F\bracket{a_{t+2}, a_{t+1}} \label{eq:28.5:3} \,,
+\end{align}
+where the inequality holds according to the first-order optimality since $a_{t+1} = \argmin _{a\in\cA \cap dom(F)} \Phi_t(a)$. 
+
+Above all, we can finish the proof by substituting \eqref{eq:28.5:3} into \eqref{eq:28.5:2} and further substituting \eqref{eq:28.5:2} into \eqref{eq:28.5:1}.  
+
+
+\end{proof}

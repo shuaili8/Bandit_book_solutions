@@ -48,7 +48,11 @@ By taking derivatives, show that $g \geq 0$.
 $\left(X_{t}\right)_{t}$ be $[0,1]$-valued, $\mathbb{F}$-adapted sequence,
 such that $\mathbb{E}\left[X_{t} \mid \mathcal{F}_{t-1}\right]=\mu_{t}$ for some $\mu_{1}, \ldots, \mu_{n} \in[0,1]$ non-random numbers.
 Define $\mu=\frac{1}{n} \sum_{t=1}^{n} \mu_{t}$, $\hat{\mu}=\frac{1}{n} \sum_{t=1}^{n} X_{t}$.
-Prove that the conclusion of Lemma 10.3 still holds.
+Prove that the conclusion of Lemma 10.3 still holds, i.e., 
+\begin{align*}
+   & \PP{ \hat{\mu}\ge \mu+ \varepsilon} \le \exp\bracket{-nd(\mu+\varepsilon,\mu)} \text{ for $\varepsilon\in[0,1-\mu]$ } \,; \\
+    &\PP{\hat{\mu}\le \mu- \varepsilon} \le \exp\bracket{-nd(\mu-\varepsilon,\mu)} \text{ for $\varepsilon\in[0,\mu]$ } \,. 
+\end{align*}
 ~\\
 \noindent\textsc{Hint}\quad Read Note 2 at the end of this chapter.
 Let $g(\cdot, \mu)$ be the cumulant-generating function of the $\mu$-parameter Bernoulli distribution.
@@ -82,7 +86,7 @@ Next, use this and the tower rule to show that $\mathbb{E}[\exp (\lambda n(\hat{
             &= \EE{\exp(\lambda S_{p-1}) \EE{ \frac{\exp(\lambda X_p)}{\exp(\lambda \mu_p)} | \mathcal{F}_{p-1} }}\\
             &\leq \EE{\exp(\lambda S_{p-1}) \EE{\frac{X_p (\exp(\lambda) - 1) + 1}{\exp(\lambda \mu_p)} | \mathcal{F}_{p-1}}}\\
             &= \EE{\exp(\lambda S_{p-1}) \frac{\mu_p(\exp(\lambda) - 1) + 1}{\exp(\lambda \mu_p)}}\\
-            &= \mathbb{E}[\exp(\lambda S_{p-1})] \exp(g(\lambda, \mu_p)),
+            &= \mathbb{E}[\exp(\lambda S_{p-1})] \exp(g(\lambda, \mu_p))\,,
         \end{aligned}
     \end{equation*}
     where the inequality follows from noticing that $f(x) = \exp(\lambda x) - x(\exp(\lambda) - 1) - 1 \leq 0$ on $[0, 1]$, as suggested in Note 2. 
@@ -95,7 +99,7 @@ Next, use this and the tower rule to show that $\mathbb{E}[\exp (\lambda n(\hat{
             &\leq \frac{\mathbb{E}[\exp(\lambda \sum_{t=1}^n (X_t - \mu))]}{\exp(\lambda n \varepsilon)}\\
             &\leq \frac{\exp(n g(\lambda, \mu))}{\exp(\lambda n \varepsilon)}\\
             &= \bracket{\frac{\exp(g(\lambda, \mu))}{\exp(\lambda \varepsilon)}}^2\\
-            &= (\mu \exp(\lambda(1 - \mu - \varepsilon)) + (1 - \mu) \exp(-\lambda(\mu + \varepsilon)))^n,
+            &= (\mu \exp(\lambda(1 - \mu - \varepsilon)) + (1 - \mu) \exp(-\lambda(\mu + \varepsilon)))^n \,,
         \end{aligned}
     \end{equation*}
     which can be followed by the same procedures as in the proof of Lemma 10.3, and the first inequality is due to Markov inequality that $\PP{\hat{\mu} \geq \mu+\varepsilon}= \PP{\hat{\mu} - \mu \geq \varepsilon} = \PP{\exp(\lambda \sum_{t=1}^n (X_t - \mu)) \geq \exp(\lambda n \varepsilon)} \le \frac{\EE{\exp(\lambda \sum_{t=1}^n (X_t - \mu))}}{\exp(\lambda n \varepsilon)}$. 
